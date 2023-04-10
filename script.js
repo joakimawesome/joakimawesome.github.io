@@ -4,6 +4,7 @@ window.addEventListener("scroll", function() {
     header.style.backgroundPosition = "0 " + (scrolledHeight * 0.3) + "px";
   });
 
+
 function toggleNav() {
     var navLinks = document.getElementById("nav-links");
     if (navLinks.style.display == "flex") {
