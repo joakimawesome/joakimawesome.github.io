@@ -1,0 +1,182 @@
+body {
+    background-color: #f2f2ff;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-image: url('images/7cdf385dcbca5a4dfdc3e85a0f16bb44.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    height: 300px; /* Added height */
+    margin-bottom: 20px; /* Added margin */
+    transition: background-position-y 0.05s ease; /* Add smooth transition */
+}
+
+header.parallax {
+    background-image: url("images/7cdf385dcbca5a4dfdc3e85a0f16bb44.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 300px; /* or a fixed height in pixels */
+  }
+  
+  header.parallax:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+  }
+  
+  header.parallax:before {
+    background: rgba(0, 0, 0, 0.6) url("images/7cdf385dcbca5a4dfdc3e85a0f16bb44.jpg") fixed center top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }  
+    
+
+h1 {
+    color: #fff;
+    font-size: 3em;
+    margin: 0;
+}
+
+.logo-container {
+    float: left;
+    margin: 10px 0;
+}
+
+.logo {
+    margin-right: 1rem;
+    height: 50px;
+}
+
+.toggle-btn {
+    display: none;
+    float: right;
+    cursor: pointer;
+}
+
+nav {
+    background-color: #e0f0ff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #666;
+    font-size: 1.2em;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #a6c9e2;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    display: block;
+    padding: 1rem;
+    margin: 0 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 4rem;
+        right: 0;
+        width: 50%;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        z-index: 1;
+    }
+    .nav-links a {
+        margin: 0;
+    }
+    .toggle-btn {
+        display: block;
+    }
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    color: #333;
+    font-size: 2em;
+    margin-top: 0;
+}
+
+section p {
+    color: #666;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portfolio-item {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-color: #a6c9e2;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.1);
+}
+
+.portfolio-item a {
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.portfolio-item a:hover {
+    color: #e0f0ff;
+}
+
+footer {
+    background-color: #a6c9e2;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
