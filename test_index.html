@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .parallax {
+            height: 100vh;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        h1 {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff;
+            transition: opacity 0.3s;
+        }
+        
+        nav {
+            height: 60px;
+            background-color: #333333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 200;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .logo-container {
+            margin-right: auto;
+        }
+        
+        .nav-links {
+            margin-left: auto;
+            display: flex;
+        }
+        
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .nav-links a:hover {
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <header class="parallax">
+        <h1 id="sticky-h1">Joakim Nguyen</h1>
+        <div class="toggle-btn" onclick="toggleNav()">
+            <svg width="30" height="30">
+                <path d="M0 4h30v4H0zm0 8h30v4H0zm0 8h30v4H0z" fill="#fff"/>
+            </svg>
+        </div>
+    </header>
+    
+    <nav id="sticky-nav">
+        <div class="logo-container">
+            <img class="logo" src="images/bunny_logo.png" alt="Logo"> <!-- Replace with your logo URL -->
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Portfolio</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+    
+    <script>
+        window.onscroll = function() {stickyFunction()};
+        
+        function stickyFunction() {
+            var h1 = document.getElementById("sticky-h1");
+            var nav = document.getElementById("sticky-nav");
+            var sticky = h1.offsetTop;
+            
+            if (window.pageYOffset >= sticky) {
+                h1.style.opacity = "0";
+                nav.style.opacity = "1";
+            } else {
+                h1.style.opacity = "1";
+                nav.style.opacity = "0";
+            }
+        }
+    </script>
+</body>
+</html>
