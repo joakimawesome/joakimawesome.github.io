@@ -1,3 +1,7 @@
+html, body {
+    scroll-behavior: smooth;
+  }  
+
 body {
     background-color: #f2f2ff;
     font-family: Arial, sans-serif;
@@ -35,11 +39,7 @@ background: #e0f0ff;
 z-index: -1;
 }
 
-#target-home {
-    
-}
  
-
 h1 {
     color: #fff;
     font-size: 3em;
@@ -65,11 +65,13 @@ h1 {
 nav {
     position: sticky;
     top: 0;
+    height: 100px;
     background-color: #e0f0ff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100; /* add z-index to ensure nav is on top of other content */
+    scroll-padding-top: 100px; /* add scroll-padding-top to create padding space above the scrollable content area */
 }
 
 nav a {
@@ -114,6 +116,22 @@ nav a:hover {
     .toggle-btn {
         display: block;
     }
+}
+
+#target-home {
+    scroll-snap-type: y proximity;
+}
+
+#target-portfolio {
+    scroll-snap-type: y proximity;
+}
+
+#target-about {
+    scroll-snap-type: y proximity;
+}
+
+#target-contact {
+    scroll-snap-type: y proximity;
 }
 
 section {

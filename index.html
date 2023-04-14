@@ -13,18 +13,17 @@
         <nav id="sticky-nav">
             <div class="logo-container">
                 <img class="logo" src="images/bunny_logo.png" alt="Logo"> <!-- Replace with your logo URL -->
-                <h1 id="sticky-h1">Joakim Nguyen</h1>
+                <h1>Joakim Nguyen</h1>
             </div>
             <div class="nav-links" id="nav-links">
-                <a href="#">Home</a>
-                <a href="#">Portfolio</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
+                <a href="#target-home">Home</a>
+                <a href="#target-portfolio">Portfolio</a>
+                <a href="#target-about">About</a>
+                <a href="#target-contact">Contact</a>
             </div>
         </nav>
 
-        <header class="parallax" style="background-image: url('images/bunny_background_2.png');">
-            
+        <header class="parallax" style="background-image: url('images/bunny_background_2.png');" id="target-home">
             <div class="toggle-btn" onclick="toggleNav()">
                 <svg width="30" height="30">
                     <path d="M0 4h30v4H0zm0 8h30v4H0zm0 8h30v4H0z" fill="#fff"/>
@@ -33,7 +32,7 @@
         </header>
 
 
-        <section>
+        <section id="target-portfolio">
             <h2>Portfolio</h2>
             <div class="portfolio-container">
                 <div class="portfolio-item">
@@ -118,13 +117,13 @@
         </section>
         
         
-        <section>
+        <section id="target-about">
             <h2>About Me</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non vestibulum mi, id ultricies urna. Quisque auctor, nunc sit amet volutpat imperdiet, elit elit semper velit, eu vehicula eros sapien vel mi. Ut nec erat euismod, finibus nibh sed, blandit mi. Aliquam sit amet urna luctus, semper urna nec, ullamcorper massa. Etiam ut fringilla felis, eu bibendum eros. Donec vel dui in lorem congue venenatis a vitae lorem. Nulla ac elit dolor. Nulla facilisi. Vestibulum mattis est mauris, in laoreet arcu vestibulum non.</p>
         </section>
 
         
-        <section class="form-section">
+        <section class="form-section" id="target-contact">
             <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/{form_id}" method="post">
               <label for="full-name">Full Name</label>
               <input type="text" name="name" id="full-name" placeholder="First and Last" required="">
