@@ -133,7 +133,7 @@ section p {
 
 .portfolio-container {
     display: grid;
-    grid-column: auto;
+    /* grid-column: auto; */
     grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
     grid-gap: 30px;
 }
@@ -159,13 +159,12 @@ section p {
 .portfolio-image-preview {
     flex: 1;
     position: relative;
-    height: 300px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; /* fill the entire box with the image */
+    height: 100%; /* Set height to 0 */
     opacity: 0.6;
     margin-bottom: 20px;
-    box-shadow: none;
     transition: opacity 0.2s ease-in-out;
 }
 
@@ -174,6 +173,8 @@ section p {
     display: block;
     margin-right: auto;
     margin-left: auto;
+    object-fit: cover; /* Add this property */
+    height: 100%; /* Add this property */
 }
 
 /* Image preview pseudo-element for blur effect */
@@ -218,13 +219,11 @@ section p {
     display: inline-block;
     margin-top: 10px;
     text-decoration: none;
-    transition: color 0.3s;
+    /* transition: color 0.3s; */
 }
 
 .portfolio-item-link {
     display: block;
-    height: 100%;
-    width: 100%;
     position: absolute;
     top: 0;
     left: 0;

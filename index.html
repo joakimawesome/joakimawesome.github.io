@@ -10,7 +10,7 @@
 
 
     <body>
-        <header class="parallax" style="background-image: url('images/bunny_butterfly.jpg');">
+        <header class="parallax" style="background-image: url('images/bunny_background_2.png');">
             <h1 id="sticky-h1">Joakim Nguyen</h1>
             <div class="toggle-btn" onclick="toggleNav()">
                 <svg width="30" height="30">
@@ -18,7 +18,8 @@
                 </svg>
             </div>
         </header>
-        
+
+
         <nav id="sticky-nav">
             <div class="logo-container">
                 <img class="logo" src="images/bunny_logo.png" alt="Logo"> <!-- Replace with your logo URL -->
@@ -31,6 +32,7 @@
             </div>
         </nav>
         
+
         <section>
             <h2>Portfolio</h2>
             <div class="portfolio-container">
@@ -119,6 +121,22 @@
         <section>
             <h2>About Me</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non vestibulum mi, id ultricies urna. Quisque auctor, nunc sit amet volutpat imperdiet, elit elit semper velit, eu vehicula eros sapien vel mi. Ut nec erat euismod, finibus nibh sed, blandit mi. Aliquam sit amet urna luctus, semper urna nec, ullamcorper massa. Etiam ut fringilla felis, eu bibendum eros. Donec vel dui in lorem congue venenatis a vitae lorem. Nulla ac elit dolor. Nulla facilisi. Vestibulum mattis est mauris, in laoreet arcu vestibulum non.</p>
+        </section>
+
+        
+        <section>
+            <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/{form_id}" method="post">
+                <fieldset id="fs-frm-inputs">
+                  <label for="full-name">Full Name</label>
+                  <input type="text" name="name" id="full-name" placeholder="First and Last" required="">
+                  <label for="email-address">Email Address</label>
+                  <input type="email" name="_replyto" id="email-address" placeholder="email@domain.tld" required="">
+                  <label for="message">Message</label>
+                  <textarea rows="5" name="message" id="message" placeholder="Questions, comments, inquiries." required="" spellcheck="false" data-ms-editor="true"></textarea>
+                  <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
+                </fieldset>
+                <input type="submit" value="Submit">
+              </form>
         </section>
         
         <footer>
