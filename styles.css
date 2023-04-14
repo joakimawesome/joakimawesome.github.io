@@ -33,6 +33,10 @@ bottom: 0;
 background: #e0f0ff;
 z-index: -1;
 }
+
+#target-home {
+    
+}
  
 
 h1 {
@@ -241,6 +245,49 @@ section p {
         display: none; /* hide the portfolio-item-description on smaller devices */
     }
 }
+
+.form-section { /* Class name for the section containing the form */
+    width: 600px;
+    margin: 0 auto; /* Add this line to center the form section */
+    padding: 20px;
+  }
+
+.form-section section {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    /* border-radius: 3px; */
+  }
+
+  input[type="submit"] {
+    padding: 10px;
+    background-color: #a6c9e2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #7194ad;
+  }
 
 footer {
     background-color: #a6c9e2;
