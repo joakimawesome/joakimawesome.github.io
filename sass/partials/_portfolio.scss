@@ -1,0 +1,110 @@
+.portfolio-container {
+    display: grid;
+    /* grid-column: auto; */
+    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+    grid-gap: 30px;
+}
+
+.portfolio-item {
+    display: grid; /* Change to grid display */
+    grid-template-columns: 1fr 1fr;
+    outline: none;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Title section */
+.portfolio-title {
+    padding: 20px;
+    margin-left: 10%;
+    grid-column: span 2;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Image preview section */
+.portfolio-image-preview {
+    flex: 1;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* fill the entire box with the image */
+    height: 100%; /* Set height to 0 */
+    opacity: 0.6;
+    margin-bottom: 20px;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Image preview image */
+.portfolio-image-preview img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    object-fit: cover; /* Add this property */
+    height: 100%; /* Add this property */
+}
+
+/* Image preview pseudo-element for blur effect */
+.portfolio-image-preview::before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    backdrop-filter: blur(15px); /* Adjust the blur value as needed */
+    z-index: -1;
+    filter: blur(5px); /* for cross-browser compatibility */
+}
+
+.portfolio-item:hover {
+    transform: scale(1.015);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+}
+
+.portfolio-item:hover .portfolio-image-preview img {
+    opacity: 1;
+}
+
+.portfolio-item-description {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.portfolio-item-description h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.portfolio-item-description p {
+    font-size: 1em;
+}
+
+.portfolio-item-description a {
+    color: #000;
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    /* transition: color 0.3s; */
+}
+
+.portfolio-item-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Media query for screens with a maximum width of 768px (such as mobile devices) */
+@media (max-width: 768px) {
+    .portfolio-item {
+        width: 100%; /* Set width to 100% for single item per row on smaller screens */
+        margin-right: 0; /* Remove margin-right on smaller screens to stack items vertically */
+        margin-bottom: 20px; /* Add margin-bottom for spacing between items on smaller screens */
+    }
+
+    .portfolio-item-description {
+        display: none; /* hide the portfolio-item-description on smaller devices */
+    }
+}

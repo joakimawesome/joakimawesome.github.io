@@ -1,0 +1,71 @@
+#target-home {
+    scroll-snap-type: y proximity;
+}
+
+#target-portfolio {
+    scroll-snap-type: y proximity;
+}
+
+#target-about {
+    scroll-snap-type: y proximity;
+}
+
+#target-contact {
+    scroll-snap-type: y proximity;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    height: 100px;
+    background-color: #e0f0ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100; /* add z-index to ensure nav is on top of other content */
+    scroll-padding-top: 100px; /* add scroll-padding-top to create padding space above the scrollable content area */
+}
+
+nav a {
+    color: #666;
+    font-size: 1.2em;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #a6c9e2;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    display: block;
+    padding: 1rem;
+    margin: 0 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 4rem;
+        right: 0;
+        width: 50%;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        z-index: 1;
+    }
+    .nav-links a {
+        margin: 0;
+    }
+    .toggle-btn {
+        display: block;
+    }
+}

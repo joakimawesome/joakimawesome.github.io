@@ -1,0 +1,17 @@
+.form-section { /* Class name for the section containing the form */
+    width: 600px;
+    margin: 0 auto; /* Add this line to center the form section */
+    padding: 20px;
+  }
+
+.form-section section {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
