@@ -1,27 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Joakim Nguyen</title>
-        <script src="script.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/main.css"/>
-    </head>
-
+    <object type="text/html" data="../shared/head.html"></object>
 
     <body>
-        <nav id="sticky-nav">
-            <div class="logo-container">
-                <img class="logo" src="images/bunny_logo.png" alt="Logo"> <!-- Replace with your logo URL -->
-                <h1>Joakim Nguyen</h1>
-            </div>
-            <div class="nav-links" id="nav-links">
-                <a href="#target-home">Home</a>
-                <a href="#target-portfolio">Portfolio</a>
-                <a href="#target-about">About</a>
-                <a href="#target-contact">Contact</a>
-            </div>
-        </nav>
+        <!-- Import nav.html -->
+        <object type="text/html" data="nav.html"></object>
+
 
         <section class="form-section" id="target-contact">
             <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/myyablla" method="post">
@@ -36,8 +20,9 @@
             </form>
         </section>
         
+
         <footer>
             <p>&copy; 2023 Joakim Nguyen. All rights reserved.</p>
-        </footer> 
+        </footer>
     </body>
-</html>    
+</html>
