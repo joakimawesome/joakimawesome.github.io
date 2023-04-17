@@ -2,6 +2,12 @@ html, body {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: #f2f2ff;
+  font-family: Arial, sans-serif;
+  padding: 0px;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -41,6 +47,12 @@ header.parallax:before {
 .logo {
   height: 60px;
   margin-right: 20px;
+}
+
+h1 {
+  color: #fff;
+  font-size: 3em;
+  margin: 0;
 }
 
 #target-home {
@@ -243,6 +255,23 @@ section p {
     display: none; /* hide the portfolio-item-description on smaller devices */
   }
 }
+.project-container {
+  height: auto; /* This will make the section expand to accommodate the images */
+  width: 100%; /* Set width to 100% to span across the page */
+  max-width: 1200px; /* Optionally, set a max-width for the container */
+  margin: 0 auto; /* Center the container horizontally */
+  display: flex; /* Use flexbox for flexible layout */
+  flex-direction: column; /* This will stack the images vertically */
+  height: auto; /* This will make the section expand to accommodate the images */
+  justify-content: center; /* Center the content horizontally */
+  align-items: flex-start; /* This will align the images to the left margin */
+}
+
+.project-container img {
+  margin-right: auto; /* This will push the images to the left margin */
+  max-width: 100%; /* Optional: to ensure images are responsive and do not overflow */
+}
+
 .form-section { /* Class name for the section containing the form */
   width: 600px;
   margin: 0 auto; /* Add this line to center the form section */
@@ -297,12 +326,6 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #7194ad;
-}
-
-body {
-  background-color: #f2f2ff;
-  font-family: Arial, sans-serif;
-  padding: 0px;
 }
 
 /*# sourceMappingURL=main.css.map */
