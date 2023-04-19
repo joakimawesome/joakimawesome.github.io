@@ -3,7 +3,7 @@
 }
 
 #target-portfolio {
-    scroll-snap-type: y proximity;
+    text-align: center;
 }
 
 #target-about {
@@ -17,13 +17,16 @@
 nav {
     position: sticky;
     top: 0;
-    height: 100px;
+    height: 5%;
     background-color: #e0f0ff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100; /* add z-index to ensure nav is on top of other content */
     scroll-padding-top: 100px; /* add scroll-padding-top to create padding space above the scrollable content area */
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 nav a {
@@ -41,6 +44,9 @@ nav a:hover {
 .nav-links {
     display: flex;
     justify-content: flex-end;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 13px;
 }
 
 .nav-links a {

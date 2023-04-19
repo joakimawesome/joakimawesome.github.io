@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-  background-color: #f2f2ff;
+  background-color: #fff;
   font-family: Arial, sans-serif;
   padding: 0px;
 }
@@ -50,7 +50,7 @@ header.parallax:before {
 }
 
 h1 {
-  color: #fff;
+  color: #000000;
   font-size: 3em;
   margin: 0;
 }
@@ -60,7 +60,7 @@ h1 {
 }
 
 #target-portfolio {
-  scroll-snap-type: y proximity;
+  text-align: center;
 }
 
 #target-about {
@@ -74,13 +74,16 @@ h1 {
 nav {
   position: sticky;
   top: 0;
-  height: 100px;
+  height: 5%;
   background-color: #e0f0ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100; /* add z-index to ensure nav is on top of other content */
   scroll-padding-top: 100px; /* add scroll-padding-top to create padding space above the scrollable content area */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 nav a {
@@ -98,6 +101,9 @@ nav a:hover {
 .nav-links {
   display: flex;
   justify-content: flex-end;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 13px;
 }
 
 .nav-links a {
@@ -127,17 +133,17 @@ nav a:hover {
   }
 }
 section {
-  margin: 20px;
-  padding: 20px;
+  margin: 150px;
+  padding: 30px;
   background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  width: 75%;
 }
 
 section h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 500;
   color: #333;
-  font-size: 2em;
-  margin-top: 0;
+  font-size: 3em;
 }
 
 section p {
@@ -183,30 +189,28 @@ section p {
   transition: opacity 0.2s ease-in-out;
 }
 
-/* Image preview image */
-.portfolio-image-preview img {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  object-fit: cover; /* Add this property */
-  height: 100%; /* Add this property */
+/* Image preview blurred background */
+.portfolio-image-preview img.background {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(10px); /* Safari 6.0 - 9.0 */
+  filter: blur(10px);
 }
 
-/* Image preview pseudo-element for blur effect */
-.portfolio-image-preview::before {
-  content: "";
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  right: 0%;
-  bottom: 0%;
-  backdrop-filter: blur(15px); /* Adjust the blur value as needed */
-  z-index: -1;
-  filter: blur(5px); /* for cross-browser compatibility */
+/* Image preview foreground */
+.portfolio-image-preview img.foreground {
+  display: block;
+  max-width: 60%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .portfolio-item:hover {
-  transform: scale(1.015);
+  transform: scale(1.025);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -218,30 +222,6 @@ section p {
   flex: 1;
   padding: 20px;
   background-color: #f5f5f5;
-}
-
-.portfolio-item-description h2 {
-  font-size: 1.5em;
-  margin-top: 0;
-}
-
-.portfolio-item-description p {
-  font-size: 1em;
-}
-
-.portfolio-item-description a {
-  color: #000;
-  display: inline-block;
-  margin-top: 10px;
-  text-decoration: none;
-  /* transition: color 0.3s; */
-}
-
-.portfolio-item-link {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 /* Media query for screens with a maximum width of 768px (such as mobile devices) */
@@ -272,14 +252,24 @@ section p {
   max-width: 100%; /* Optional: to ensure images are responsive and do not overflow */
 }
 
+.about-container {
+  display: flex;
+  align-items: center;
+}
+
+.about-container img {
+  width: 40%;
+  margin-right: 20px;
+}
+
 .form-section { /* Class name for the section containing the form */
   width: 600px;
   margin: 0 auto; /* Add this line to center the form section */
-  padding: 20px;
+  padding: 50px;
 }
 
 .form-section section {
-  padding: 20px;
+  padding: 50px;
   background-color: #f8f8f8;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -326,6 +316,12 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #7194ad;
+}
+
+.separator {
+  width: 75%;
+  margin: 20px auto;
+  border-top: 0.5px solid #d3d3d3;
 }
 
 /*# sourceMappingURL=main.css.map */

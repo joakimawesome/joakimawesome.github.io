@@ -24,7 +24,7 @@
         </nav>
 
         <header class="parallax" style="background-image: url('images/bunny_background_2.png');" id="target-home">
-            <h1>WORK IN PROGRESS</h1>
+            <h1>⚠︎WORK IN PROGRESS⚠︎</h1>
             <div class="toggle-btn" onclick="toggleNav()">
                 <svg width="30" height="30">
                     <path d="M0 4h30v4H0zm0 8h30v4H0zm0 8h30v4H0z" fill="#fff"/>
@@ -34,12 +34,13 @@
 
 
         <section id="target-portfolio">
-            <h2>Portfolio</h2>
+            <h2>My Portfolio</h2>
             <div class="portfolio-container">
                 <a href="projects/project_1.html" class="portfolio-item">
                     <div class="portfolio-title">PROJECT 1</div>
-                    <div class="portfolio-image-preview" style="background-image: url('images/killjoy_bed.jpg');">
-                        <img src="images/killjoy_bed.jpg">
+                    <div class="portfolio-image-preview">
+                        <img class="background" src="images/killjoy_bed.jpg">
+                        <img class="foreground" src="images/killjoy_bed.jpg">
                     </div>
                     <div class="portfolio-item-description">
                         <ol>Lorem ipsum dolor sit met,</ol>
@@ -50,8 +51,9 @@
                 </a>
                 <a href="projects/project_2" class="portfolio-item">
                     <div class="portfolio-title">PROJECT 2</div>
-                    <div class="portfolio-image-preview" style="background-image: url('images/cypher_bed.jpg');">
-                        <img src="images/cypher_bed.jpg">
+                    <div class="portfolio-image-preview">
+                        <img class="background" src="images/cypher_bed.jpg">
+                        <img class="foreground" src="images/cypher_bed.jpg">
                     </div>
                     <div class="portfolio-item-description">
                         <ol>Lorem ipsum dolor sit met,</ol>
@@ -63,7 +65,8 @@
                 <a href="projects/project_3" class="portfolio-item">
                     <div class="portfolio-title">PROJECT 3</div>
                     <div class="portfolio-image-preview" style="background-image: url('images/omen_bed.jpg');">
-                        <img src="images/omen_bed.jpg">
+                        <img class="background" src="images/omen_bed.jpg">
+                        <img class="foreground" src="images/omen_bed.jpg">
                     </div>
                     <div class="portfolio-item-description">
                         <ol>Lorem ipsum dolor sit met,</ol>
@@ -75,7 +78,8 @@
                 <a href="projects/project_4" class="portfolio-item">
                     <div class="portfolio-title">PROJECT 4</div>
                     <div class="portfolio-image-preview" style="background-image: url('images/sova_bed.jpg');">
-                        <img src="images/sova_bed.jpg">
+                        <img class="background" src="images/sova_bed.jpg">
+                        <img class="foreground" src="images/sova_bed.jpg">
                     </div>
                     <div class="portfolio-item-description">
                         <ol>Lorem ipsum dolor sit met,</ol>
@@ -87,7 +91,8 @@
                 <a href="projects/project_5" class="portfolio-item">
                     <div class="portfolio-title">PROJECT 5</div>
                     <div class="portfolio-image-preview" style="background-image: url('images/sage_bed.jpg');">
-                        <img src="images/sage_bed.jpg">
+                        <img class="background" src="images/sage_bed.jpg">
+                        <img class="foreground" src="images/sage_bed.jpg">
                     </div>
                     <div class="portfolio-item-description">
                         <ol>Lorem ipsum dolor sit met,</ol>
@@ -99,7 +104,8 @@
                 <a href="projects/project_6" class="portfolio-item">
                     <div class="portfolio-title">PROJECT 6</div>
                     <div class="portfolio-image-preview" style="background-image: url('images/omen_cat.png');">
-                        <img src="images/omen_cat.png">
+                        <img class="background" src="images/omen_cat.png">
+                        <img class="foreground" src="images/omen_cat.png">
                     </div>
                     <div class="portfolio-item-description">
                         <ol>Lorem ipsum dolor sit met,</ol>
@@ -111,26 +117,41 @@
             </div>
         </section>
         
+
+        <hr class="separator">
+
         
         <section id="target-about">
-            <h2>About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non vestibulum mi, id ultricies urna.</p>
-            <p>Quisque auctor, nunc sit amet volutpat imperdiet, elit elit semper velit, eu vehicula eros sapien vel mi.</p>
-            <p>Ut nec erat euismod, finibus nibh sed, blandit mi. Aliquam sit amet urna luctus, semper urna nec, ullamcorper massa.</p>
-            <p>Etiam ut fringilla felis, eu bibendum eros.</p>
-            <p>Donec vel dui in lorem congue venenatis a vitae lorem.</p>
-            <p>Nulla ac elit dolor. Nulla facilisi.</p>
-            <p>Vestibulum mattis est mauris, in laoreet arcu vestibulum non.</p>
+            <div class="about-container">
+                <img src="images/suji_boba.jpg">
+                <div>
+                    <h2>About Me</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Duis non vestibulum mi, id ultricies urna.</p>
+                    <p>Quisque auctor, nunc sit amet volutpat imperdiet, elit elit semper velit, eu vehicula eros sapien vel mi.</p>
+                    <p>Ut nec erat euismod, finibus nibh sed, blandit mi.</p>
+                    <p>Aliquam sit amet urna luctus, semper urna nec, ullamcorper massa.</p>
+                    <p>Etiam ut fringilla felis, eu bibendum eros.</p>
+                    <p>Donec vel dui in lorem congue venenatis a vitae lorem.</p>
+                    <p>Nulla ac elit dolor. Nulla facilisi.</p>
+                    <p>Vestibulum mattis est mauris, in laoreet arcu vestibulum non.</p>    
+                </div>
+            </div>
         </section>
 
+
+        <hr class="separator">
+
+
         <section class="form-section" id="target-contact">
+            <h2>Contact</h2>
             <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/myyablla" method="post">
                 <label for="full-name">Full Name</label>
                 <input type="text" name="name" id="full-name" placeholder="First and Last" required="">
                 <label for="email-address">Email Address</label>
                 <input type="email" name="_replyto" id="email-address" placeholder="email@domain.com" required="">
                 <label for="message">Message</label>
-                <textarea rows="5" name="message" id="message" placeholder="Questions, comments, inquiries." required="" spellcheck="false" data-ms-editor="true"></textarea>
+                <textarea rows="20" name="message" id="message" placeholder="Questions, comments, inquiries." required="" spellcheck="false" data-ms-editor="true"></textarea>
                 <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
                 <input type="submit" value="Submit">
             </form>
