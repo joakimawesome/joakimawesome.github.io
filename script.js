@@ -31,3 +31,16 @@ filterBtns.forEach(btn => {
         });
     });
 });
+
+// // Check if the screen size is smaller than 768px
+// if (window.matchMedia('(max-width: 768px)').matches) {
+//     // Get the portfolio item description element
+//     const portfolioItemDescription = document.querySelector('.portfolio-item-description');
+  
+//     // Check if the element exists
+//     if (portfolioItemDescription) {
+//       // Remove the element
+//       portfolioItemDescription.remove();
+//     }
+//   }
+  
