@@ -275,7 +275,7 @@ section p {
 }
 
 .form-section { /* Class name for the section containing the form */
-  width: minmax(80%, 600px);
+  width: 600px;
   margin: 0 auto; /* Add this line to center the form section */
   padding: 50px;
 }
@@ -292,6 +292,12 @@ form {
   flex-direction: column;
 }
 
+/* Media query for screens with a maximum width of 768px (such as mobile devices) */
+@media (max-width: 768px) {
+  .form-section {
+    width: 80%;
+  }
+}
 footer {
   background-color: #a6c9e2;
   color: #fff;
