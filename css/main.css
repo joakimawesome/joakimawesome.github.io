@@ -275,13 +275,17 @@ section p {
   margin-right: 20px;
 }
 
-.form-section { /* Class name for the section containing the form */
+.resume-container {
+  margin: 0 auto;
+}
+
+.form-container { /* Class name for the section containing the form */
   width: 600px;
   margin: 0 auto; /* Add this line to center the form section */
   padding: 50px;
 }
 
-.form-section section {
+.form-container section {
   padding: 50px;
   background-color: #f8f8f8;
   border: 1px solid #ccc;
@@ -295,7 +299,7 @@ form {
 
 /* Media query for screens with a maximum width of 768px (such as mobile devices) */
 @media (max-width: 768px) {
-  .form-section {
+  .form-container {
     width: 80%;
   }
 }
@@ -310,6 +314,19 @@ footer {
   display: none;
   float: right;
   cursor: pointer;
+}
+
+.download-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.download-button:hover {
+  background-color: #0062cc;
 }
 
 label {
