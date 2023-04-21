@@ -72,7 +72,7 @@ h1 {
   scroll-snap-type: y proximity;
 }
 
-nav {
+.navbar {
   position: sticky;
   top: 0;
   height: 5%;
@@ -85,9 +85,14 @@ nav {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
+  transition: top 0.3s ease-in-out; /* add a transition effect to smooth out the change */
 }
 
-nav a {
+.navbar.hidden {
+  top: -5%; /* move the nav bar outside the screen when hidden */
+}
+
+.navbar a {
   color: #666;
   font-size: 1.2em;
   margin: 0 10px;
@@ -95,11 +100,11 @@ nav a {
   transition: color 0.3s;
 }
 
-nav a:hover {
+.navbar a:hover {
   color: #a6c9e2;
 }
 
-.nav-links {
+.navbar-links {
   display: flex;
   justify-content: flex-end;
   font-weight: 600;
@@ -107,7 +112,7 @@ nav a:hover {
   font-size: 13px;
 }
 
-.nav-links a {
+.navbar-links a {
   display: block;
   padding: 1rem;
   margin: 0 0.5rem;
@@ -275,15 +280,34 @@ section p {
   margin-right: 20px;
 }
 
-.resume-container {
+.resume-section {
   display: flex;
-  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.resume-header {
+  margin-bottom: 20px;
 }
 
 .resume-pdf {
-  flex: 1;
+  width: 800px;
+  height: 1100px;
 }
 
+@media only screen and (max-width: 767px) {
+  .resume-pdf {
+    width: 100%;
+    height: 1200px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .resume-pdf {
+    height: 1300px;
+  }
+}
 .form-container { /* Class name for the section containing the form */
   width: 600px;
   margin: 0 auto; /* Add this line to center the form section */
