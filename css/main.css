@@ -276,7 +276,12 @@ section p {
 }
 
 .resume-container {
+  display: flex;
   margin: 0 auto;
+}
+
+.resume-pdf {
+  flex: 1;
 }
 
 .form-container { /* Class name for the section containing the form */
@@ -317,15 +322,22 @@ footer {
 }
 
 .download-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
-.download-button:hover {
+.download-button a {
+  display: block;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.download-button a:hover {
   background-color: #0062cc;
 }
 
@@ -358,6 +370,12 @@ input[type=submit]:hover {
   width: 90%;
   margin: 100px auto;
   border-top: 0.5px solid #d3d3d3;
+}
+
+.v-separator {
+  width: 1px;
+  background-color: #ccc;
+  margin: 0 20px;
 }
 
 /*# sourceMappingURL=main.css.map */
