@@ -24,7 +24,27 @@
 
 
         <section class="project-container">
-            <h2>How to use EEG data</h2>
+            <h2>How To Prepare EEG Data</h2>
+            <img src="../images/nap_eeg/eeg map.png" width="50%" height="50%">
+            <p>
+                Applying a highpass filter to EEG (Electroencephalography) signals is a common preprocessing step in signal processing and analysis. 
+                The primary purpose of a highpass filter is to remove low-frequency noise or baseline drift from the EEG signals.
+            </p>
+            <p>
+                Baseline drift is a common artifact that occurs due to electrode movement or other sources of interference, resulting in slow fluctuations in the EEG signal. 
+                These slow fluctuations can mask or obscure important features of the EEG signal, 
+                such as event-related potentials (ERPs) or high-frequency oscillations (HFOs), which are typically of interest in EEG research.
+            </p>
+            <img src="../images/highpass_filter.gif" alt="highpass">
+            <p>
+                By applying a highpass filter, we can effectively remove the low-frequency components of the EEG signal, while preserving the high-frequency components. 
+                This improves the signal-to-noise ratio (SNR) and allows us to better visualize and analyze the high-frequency features of the EEG signa
+            </p>
+            <p>
+                It's important to note that the specific cutoff frequency of the highpass filter depends on the research question and the characteristics of the EEG signal being analyzed. 
+                Too high of a cutoff frequency can result in loss of information, while too low of a cutoff frequency can leave in too much low-frequency noise.
+            </p>
+            <img src="../images/lowpass_filter.gif" alt="highpass">
         </section>
 
 
