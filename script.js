@@ -56,3 +56,5 @@ window.onscroll = function() {
   }
   prevScrollpos = currentScrollPos;
 }
+
+Prism.highlightAll();
