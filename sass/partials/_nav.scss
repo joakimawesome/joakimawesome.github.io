@@ -1,0 +1,83 @@
+#target-home {
+    scroll-snap-type: y proximity;
+}
+
+#target-portfolio {
+    text-align: center;
+}
+
+#target-about {
+    scroll-snap-type: y proximity;
+}
+
+#target-contact {
+    scroll-snap-type: y proximity;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    height: 5%;
+    background-color: #e0f0ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100; /* add z-index to ensure nav is on top of other content */
+    scroll-padding-top: 100px; /* add scroll-padding-top to create padding space above the scrollable content area */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: top 0.3s ease-in-out; /* add a transition effect to smooth out the change */
+}
+  
+.navbar.hidden {
+    top: -5%; /* move the nav bar outside the screen when hidden */
+}
+  
+.navbar a {
+    color: #666;
+    font-size: 1.2em;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+  
+.navbar a:hover {
+    color: #a6c9e2;
+}
+  
+.navbar-links {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 13px;
+}
+  
+.navbar-links a {
+    display: block;
+    padding: 1rem;
+    margin: 0 0.5rem;
+}
+  
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 4rem;
+        right: 0;
+        width: 50%;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        z-index: 1;
+    }
+    .nav-links a {
+        margin: 0;
+    }
+    .toggle-btn {
+        display: block;
+    }
+}
