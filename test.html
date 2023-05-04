@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .image-section {
+                position: relative;
+                width: 50%;
+                height: atuo;
+            }
+            
+            .image-item {
+                position: absolute;
+                top: 0;
+                left: 0;
+                /* width: 100%;
+                height: 100%; */
+                /* object-fit: cover; */
+            }
+            
+            /* Give all images except the first one a z-index of -1 to overlap with the first image */
+            .image-item:not(:first-child) {
+                z-index: -1;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section class="image-section">    
+            <img src="images/main/left-beam.png" class="image-item">
+            <img src="images/main/left-panels.png" class="image-item">
+            <img src="images/main/right-beams.png" class="image-item">
+            <img src="images/main/right-panels.png" class="image-item">
+            <img src="images/main/arrow.png" class="image-item">
+            <img src="images/main/vert-beam-long.png" class="image-item">
+            <img src="images/main/vert-beam-short.png" class="image-item">
+            <img src="images/main/lone-beams.png" class="image-item">
+        </section>
+    </body>
+</html>
