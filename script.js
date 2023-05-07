@@ -58,3 +58,12 @@ window.onscroll = function() {
 }
 
 Prism.highlightAll();
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) { // change 500 to the desired scroll position
+        document.querySelectorAll('.image-item').forEach(function(item, index) {
+            item.style.animationDelay = (index * 0.1) + 's';
+            item.classList.add('animated');
+        });
+    }
+});

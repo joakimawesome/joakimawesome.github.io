@@ -21,7 +21,7 @@ header {
 header.parallax {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: top bottom;
   background-attachment: fixed;
   height: 100vh;
   transition: background-position-y 0.05s ease; /* Add smooth transition */
@@ -50,13 +50,67 @@ header.parallax:before {
 }
 
 h1 {
-  color: #000000;
+  color: #ffffff;
   font-size: 3em;
   margin: 0;
 }
 
-.image-section {
+.page {
+  width: 100vw;
+  height: 100vh;
+  perspective: 1px;
+  perspective-origin: center center;
+  overflow-x: hidden;
+}
+
+.page h1 {
+  text-align: center;
+  font-size: 7rem;
+  color: white;
+  text-shadow: 0 0 5px rgb(65, 65, 65);
+}
+
+.overflow {
+  position: absolute;
+  width: 100vw;
+  height: 80vh;
+  top: 100vh;
+}
+
+#parallax {
+  transform-style: preserve-3d;
+  height: 120vh;
+}
+
+.keyart_layer {
+  background-position: center center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#keyart-0 {
+  background-image: url("../images/main/background-8.png");
+  transform: translate3d(0, -138px, -1.3px) scale(2.3);
+}
+
+#keyart-1 {
+  background-image: url("../images/main/middle-3.png");
+  transform: translate3d(0, -47px, -0.7px) scale(1.7);
+}
+
+#keyart-2 {
+  background-image: url("../images/main/hand.png");
+  transform: translate3d(50px, 575px, -0.2px) scale(1);
+}
+
+.image-stack {
   position: relative;
+  width: 100%;
+  height: auto;
 }
 
 .image-item {
@@ -65,11 +119,99 @@ h1 {
   left: 0;
 }
 
-/* Give all images except the first one a z-index of -1 to overlap with the first image */
-.image-item:not(:first-child) {
-  z-index: -1;
+/* right beam */
+.image-item:nth-child(1) {
+  animation: slide-R-p30 3s ease-in-out forwards;
+  z-index: 8;
 }
 
+/* right panel */
+.image-item:nth-child(2) {
+  animation: slide-R-p30 5s ease-in-out forwards;
+  z-index: 7;
+}
+
+/* arrow */
+.image-item:nth-child(3) {
+  animation: slide-down 6s ease-in-out forwards;
+  z-index: 6;
+}
+
+/* vert beam long */
+.image-item:nth-child(4) {
+  animation: slide-up 3s ease-in-out forwards;
+  z-index: 5;
+}
+
+/* vert beam short */
+.image-item:nth-child(5) {
+  animation: slide-down 5s ease-in-out forwards;
+  z-index: 4;
+}
+
+/* lone beams */
+.image-item:nth-child(6) {
+  animation: slide-R-n30 5s ease-in-out forwards;
+  z-index: 3;
+}
+
+/* left beam */
+.image-item:nth-child(7) {
+  animation: slide-L-n30 5s ease-in-out forwards;
+  z-index: 2;
+}
+
+/* left panel */
+.image-item:nth-child(8) {
+  animation: slide-L-n30 3s ease-in-out forwards;
+  z-index: 1;
+}
+
+@keyframes slide-R-p30 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, -55.735%);
+    opacity: 0;
+  }
+}
+@keyframes slide-R-n30 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 55.735%);
+    opacity: 0;
+  }
+}
+@keyframes slide-L-n30 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 55.735%);
+    opacity: 0;
+  }
+}
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+@keyframes slide-down {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
 #target-home {
   scroll-snap-type: y proximity;
 }
@@ -90,7 +232,7 @@ h1 {
   position: sticky;
   top: 0;
   height: 5%;
-  background-color: #e0f0ff;
+  background-color: #000000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -115,7 +257,7 @@ h1 {
 }
 
 .navbar a:hover {
-  color: #a6c9e2;
+  color: #ffffff;
 }
 
 .navbar-links {
@@ -347,7 +489,7 @@ form {
   }
 }
 footer {
-  background-color: #a6c9e2;
+  background-color: #000000;
   color: #fff;
   padding: 10px;
   text-align: center;
@@ -394,14 +536,14 @@ textarea {
 
 input[type=submit] {
   padding: 10px;
-  background-color: #a6c9e2;
+  background-color: #aaaaaa;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 input[type=submit]:hover {
-  background-color: #7194ad;
+  background-color: #7c7c7c;
 }
 
 .separator {

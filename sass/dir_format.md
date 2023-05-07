@@ -16,3 +16,5 @@ scss/
 |    |--- _mixins.scss   // SCSS mixins for common styling patterns
 |    |--- _functions.scss// SCSS functions for dynamic styling
 |    |--- ...           // Other utility styles, e.g., helper classes
+
+Command: sass sass/main.scss css/main.css
