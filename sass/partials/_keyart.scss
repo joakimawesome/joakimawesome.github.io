@@ -10,6 +10,7 @@
     font-size: 7rem;
     color: white;
     text-shadow: 0 0 5px rgb(65, 65, 65);;
+    z-index: 1;
 }
 .overflow {
     position:absolute;
@@ -38,9 +39,9 @@
 }
 #keyart-1 {
     background-image: url('../images/main/middle-3.png');
-    transform:translate3d(0,-47px,-.7px) scale(1.7);
+    transform:translate3d(0,-47px,-1px) scale(1.7);
 }
 #keyart-2 {
     background-image: url('../images/main/hand.png');
-    transform:translate3d(50px,575px,-.2px) scale(1);
+    transform:translate3d(50px,575px,-.5px) scale(1);
 }

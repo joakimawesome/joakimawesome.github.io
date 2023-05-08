@@ -13,7 +13,7 @@ header {
   display: block;
   align-items: center;
   background-size: cover;
-  padding: 20px;
+  padding: 0px;
   position: relative;
   margin: 0px;
 }
@@ -68,6 +68,7 @@ h1 {
   font-size: 7rem;
   color: white;
   text-shadow: 0 0 5px rgb(65, 65, 65);
+  z-index: 1;
 }
 
 .overflow {
@@ -99,12 +100,12 @@ h1 {
 
 #keyart-1 {
   background-image: url("../images/main/middle-3.png");
-  transform: translate3d(0, -47px, -0.7px) scale(1.7);
+  transform: translate3d(0, -47px, -1px) scale(1.7);
 }
 
 #keyart-2 {
   background-image: url("../images/main/hand.png");
-  transform: translate3d(50px, 575px, -0.2px) scale(1);
+  transform: translate3d(50px, 575px, -0.5px) scale(1);
 }
 
 .image-stack {
@@ -212,22 +213,6 @@ h1 {
     opacity: 0;
   }
 }
-#target-home {
-  scroll-snap-type: y proximity;
-}
-
-#target-portfolio {
-  text-align: center;
-}
-
-#target-about {
-  scroll-snap-type: y proximity;
-}
-
-#target-contact {
-  scroll-snap-type: y proximity;
-}
-
 .navbar {
   position: sticky;
   top: 0;
@@ -294,6 +279,22 @@ h1 {
     display: block;
   }
 }
+#target-home {
+  scroll-snap-type: y proximity;
+}
+
+#target-portfolio {
+  text-align: center;
+}
+
+#target-about {
+  scroll-snap-type: y proximity;
+}
+
+#target-contact {
+  scroll-snap-type: y proximity;
+}
+
 section {
   margin: auto;
   width: 65%;
