@@ -94,17 +94,17 @@ h1 {
 }
 
 #keyart-0 {
-  background-image: url("../images/main/background-8.png");
+  background-image: url("../images/main/background-8.avif");
   transform: translate3d(0, -138px, -1.3px) scale(2.3);
 }
 
 #keyart-1 {
-  background-image: url("../images/main/middle-3.png");
+  background-image: url("../images/main/middle-3.avif");
   transform: translate3d(0, -47px, -1px) scale(1.7);
 }
 
 #keyart-2 {
-  background-image: url("../images/main/hand.png");
+  background-image: url("../images/main/hand.avif");
   transform: translate3d(50px, 575px, -0.5px) scale(1);
 }
 
