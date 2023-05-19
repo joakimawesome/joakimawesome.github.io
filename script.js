@@ -67,3 +67,15 @@ window.addEventListener('scroll', function() {
         });
     }
 });
+
+function startGIFs() {
+    var gif1 = document.getElementById('gif1');
+    var gif2 = document.getElementById('gif2');
+    var gif3 = document.getElementById('gif3');
+    var gif4 = document.getElementById('gif4');
+
+    gif1.src = gif1.src;
+    gif2.src = gif2.src;
+    gif3.src = gif3.src;
+    gif4.src = gif4.src;
+}
