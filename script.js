@@ -68,26 +68,31 @@ window.addEventListener('scroll', function() {
     }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const gif_eeg_hp = document.getElementById("gif_eeg_hp");
-    const gif_hp     = document.getElementById("gif_hp");
-    const gif_eeg_lp = document.getElementById("gif_eeg_lp");
-    const gif_lp     = document.getElementById("gif_lp");
-  
-    window.addEventListener("scroll", () => {
-      const isInViewport = (elementRect) => elementRect.top >= 0 && elementRect.left >= 0 &&
-        elementRect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        elementRect.right <= (window.innerWidth || document.documentElement.clientWidth);
-  
-      if (isInViewport(gif_eeg_hp.getBoundingClientRect()) && isInViewport(gif_hp.getBoundingClientRect())) {
-        gif_eeg_hp.src = gif_eeg_hp.src;
-        gif_hp.src     = gif_hp.src;
-      }
+function preloadGIFs() {
+    var gifImages = [
+        document.getElementById("gif_eeg_hp"),
+        document.getElementById("gif_hp"),
+        document.getElementById("gif_eeg_lp"),
+        document.getElementById("gif_lp")
+    ];
 
-      if (isInViewport(gif_eeg_lp.getBoundingClientRect()) && isInViewport(gif_lp.getBoundingClientRect())) {
-        gif_eeg_lp.src = gif_eeg_lp.src;
-        gif_lp.src     = gif_lp.src;
-      }  
-    });
-  });
+    var loadedGIFs = 0;
+
+    function imageLoaded() {
+        loadedGIFs++;
+        if (loadedGIFs === gifImages.length) {
+            // All GIFs have been loaded
+            // Display the GIFs or start the synchronized animation here
+            console.log("All GIFs have been loaded!");
+      } 
+    }
+
+    for (var i = 0; i < gifImages.length; i++) {
+        var image = new Image();
+        image.onload = imageLoaded;
+        image.src = gifImages[i].src;
+    }
+}
+
+window.onload = preloadGIFs;
   
