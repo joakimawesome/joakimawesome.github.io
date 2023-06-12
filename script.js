@@ -68,14 +68,26 @@ window.addEventListener('scroll', function() {
     }
 });
 
-function startGIFs() {
-    var gif1 = document.getElementById('gif1');
-    var gif2 = document.getElementById('gif2');
-    var gif3 = document.getElementById('gif3');
-    var gif4 = document.getElementById('gif4');
+document.addEventListener("DOMContentLoaded", () => {
+    const gif_eeg_hp = document.getElementById("gif_eeg_hp");
+    const gif_hp     = document.getElementById("gif_hp");
+    const gif_eeg_lp = document.getElementById("gif_eeg_lp");
+    const gif_lp     = document.getElementById("gif_lp");
+  
+    window.addEventListener("scroll", () => {
+      const isInViewport = (elementRect) => elementRect.top >= 0 && elementRect.left >= 0 &&
+        elementRect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        elementRect.right <= (window.innerWidth || document.documentElement.clientWidth);
+  
+      if (isInViewport(gif_eeg_hp.getBoundingClientRect()) && isInViewport(gif_hp.getBoundingClientRect())) {
+        gif_eeg_hp.src = gif_eeg_hp.src;
+        gif_hp.src     = gif_hp.src;
+      }
 
-    gif1.src = gif1.src;
-    gif2.src = gif2.src;
-    gif3.src = gif3.src;
-    gif4.src = gif4.src;
-}
+      if (isInViewport(gif_eeg_lp.getBoundingClientRect()) && isInViewport(gif_lp.getBoundingClientRect())) {
+        gif_eeg_lp.src = gif_eeg_lp.src;
+        gif_lp.src     = gif_lp.src;
+      }  
+    });
+  });
+  
