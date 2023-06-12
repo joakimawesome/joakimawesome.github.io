@@ -68,31 +68,17 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// Function to preload GIF animations
 function preloadGIFs() {
-    var gifImages = [
-        document.getElementById("gif_eeg_hp"),
-        document.getElementById("gif_hp"),
-        document.getElementById("gif_eeg_lp"),
-        document.getElementById("gif_lp")
-    ];
+    var gifs = document.querySelectorAll("img[id^='gif_']");
 
-    var loadedGIFs = 0;
-
-    function imageLoaded() {
-        loadedGIFs++;
-        if (loadedGIFs === gifImages.length) {
-            // All GIFs have been loaded
-            // Display the GIFs or start the synchronized animation here
-            console.log("All GIFs have been loaded!");
-      } 
+    for (var i = 0; i < gifs.length; i++) {
+        var gif = gifs[i];
+        var src = gif.getAttribute("src");
+        var img = new Image();
+        img.src = src;
+    }
     }
 
-    for (var i = 0; i < gifImages.length; i++) {
-        var image = new Image();
-        image.onload = imageLoaded;
-        image.src = gifImages[i].src;
-    }
-}
-
+// Trigger the preloadGIFs function when the page finishes loading
 window.onload = preloadGIFs;
-  
