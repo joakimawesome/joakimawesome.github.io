@@ -68,14 +68,17 @@ window.addEventListener('scroll', function() {
     }
 });
 
-function startGIFs() {
-    var gif1 = document.getElementById('gif1');
-    var gif2 = document.getElementById('gif2');
-    var gif3 = document.getElementById('gif3');
-    var gif4 = document.getElementById('gif4');
+// Function to preload GIF animations
+function preloadGIFs() {
+    var gifs = document.querySelectorAll("img[id^='gif_']");
 
-    gif1.src = gif1.src;
-    gif2.src = gif2.src;
-    gif3.src = gif3.src;
-    gif4.src = gif4.src;
-}
+    for (var i = 0; i < gifs.length; i++) {
+        var gif = gifs[i];
+        var src = gif.getAttribute("src");
+        var img = new Image();
+        img.src = src;
+    }
+    }
+
+// Trigger the preloadGIFs function when the page finishes loading
+window.onload = preloadGIFs;
