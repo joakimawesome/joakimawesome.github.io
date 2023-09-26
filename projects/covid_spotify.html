@@ -50,7 +50,7 @@
             </p>
             <h3>Goals</h3>
             <p>
-                <li>Obtain Data: Daily Top 200 songs from 2017 to 2022 & COVID-19 Cases/Deaths</li>
+                <li>Obtain Data: Daily Top 200 songs between 2017 to 2022 & COVID-19 Cases/Deaths</li>
                 <li>Transform Data: Daily Top 200 into daily-averaged Audio Features</li>
                 <li>Visualize & Analysize:</li>
             </p>
@@ -172,44 +172,21 @@
                     vizElement.parentNode.insertBefore(scriptElement, vizElement);
                 </script>
             </p>
+            
             <p>
-                <a href="https://github.com/GoogleCloudPlatform/covid-19-open-data/blob/main/docs/table-epidemiology.md">COVID-19 Data</a>
-            </p>
-
-            <p>
-                Looking at the music data and COVID-19 data with just our eyes, there are dramatic shifts occurring during winter season for both. However, these are seasonal changes that are easily explanable:<br>
-                musical tastes in the United States transition to festive Christmas music, and by Christmas day, we observe many of the audio features spike.
-
+                Looking at the music data with just our eyes, there are dramatic shifts occurring during winter season for both. The observed changes in audio features are as follows:
+                
+                <img src="../images/spotify_covid/aud_feat_trends.png">
                 <h4><strong>Positive Spikes:</strong></h4>
-                <li><strong>Acousticness</strong>
-                    suggests that the music is more likely to be acoustic in nature (not containing electronically synthesized audio).
-                </li>
-                <li><strong>Instrumentalness:</strong>
-                    indicates that there's been a surge in tracks without vocals or with minimal vocal content. 
-                </li>
-                <li><strong>Mode:</strong>
-                    indicates a trend towards songs in the major (happier) key.
-                </li>
-                <li><strong>Valence:</strong>
-                    means that the tracks might be slightly more positive or cheerful.
-                </li>
-
-                <h4><strong>Negative Spikes:</strong></h4>
-                <li><strong>Loudness:</strong>
-                    suggests that the tracks are becoming quieter.
-                </li>
-                <li><strong>Speechiness:</strong>
-                    indicates that there's been a reduction in spoken words or rap-style tracks.
-                </li>
-                <li><strong>Energy:</strong>
-                    suggests tracks are a bit less intense or lively.
-                </li>
             </p>
             <p>
                 <h4><strong>Potential Explanations</strong></h4>
             </p>
         </section>
-
+        
+        <p>
+            <a href="https://github.com/GoogleCloudPlatform/covid-19-open-data/blob/main/docs/table-epidemiology.md">COVID-19 Data</a>
+        </p>
 
         <hr class="separator">
 
