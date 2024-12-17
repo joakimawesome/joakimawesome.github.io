@@ -1,46 +1,20 @@
+/* Header Section */
 header {
-    display: block;
-    align-items: center;
-    background-size: cover;
-    padding: 0px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
     position: relative;
-    // height: 300px;
-    margin: 0px;
+    overflow: hidden;
 }
 
-header.parallax {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top bottom;
-    background-attachment: fixed;
-    height: 100vh;
-    transition: background-position-y 0.05s ease; /* Add smooth transition */
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-header.parallax:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #e0f0ff;
-    z-index: -1;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    height: 60px;
-    margin-right: 20px;
-}
-
-h1 {
-    color: #ffffff;
-    font-size: 3em;
-    margin: 0;
+header p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
 }

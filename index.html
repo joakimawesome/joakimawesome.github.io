@@ -1,255 +1,81 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Joakim Nguyen - Portfolio</title>
-        <link rel="stylesheet" href="css/main.css"/>
-        <link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32">
-        <link rel="icon" href="images/favicon-16x16.png" type="image/png" sizes="16x16">
-        <script src="script.js"></script>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joakim Nguyen | Portfolio</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 
 
-    <body>
-        <nav class="navbar">
-            <div class="logo-container">
-                <a href="https://joakimawesome.github.io">
-                    <img class="logo" src="images/filler/bunny_logo.png" alt="Logo">
-                </a>
-                <h1>Joakim Nguyen</h1>
-            </div>
-            <div class="navbar-links">
-                <a href="https://joakimawesome.github.io">Home</a>
-                <a href="#target-portfolio">Portfolio</a>
-                <a href="resume.html">Resume</a>
-                <a href="#target-about">About</a>
-                <a href="#target-contact">Contact</a>
-            </div>
-            <div class="toggle-btn" onclick="toggleNav()">
-                <svg width="30" height="30">
-                    <path d="M0 4h30v4H0zm0 8h30v4H0zm0 8h30v4H0z" fill="#fff"/>
-                </svg>
-            </div>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Your Name</h1>
+        <p>Data Scientist & Machine Learning Engineer</p>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <p>Welcome to my portfolio! I specialize in Data Science and Machine Learning, developing cutting-edge solutions for real-world challenges. My focus areas include predictive modeling, natural language processing, and deep learning frameworks to extract actionable insights from data.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2 class="section-title">Projects</h2>
         
-        <header>
-            <div class="page">
-                <!-- <div class="keyart" id="parallax">
-                    <div class="keyart_layer" id="keyart-0"></div>
-                    <div class="keyart_layer" id="keyart-1"></div>
-                    <div class="keyart_layer" id="keyart-2"></div>
-                </div> -->
-                <h1>My Data Driven Portfolio</h1>
-                <style>
-                    body {
-                        background-image: url('./images/main/construction.JPG');
-                        background-repeat: no-repeat;
-                        background-size: contain;
-                    }
-                </style>
+        <!-- Filter Buttons -->
+        <div class="filters">
+            <button class="filter-btn" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+            <button class="filter-btn" data-filter="signal-processing">Signal Processing</button>
+            <button class="filter-btn" data-filter="deep-learning">Deep Learning</button>
+        </div>
+        
+        <div class="projects">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>Heart Rate Variability Analysis</h3>
+                <p>Engineered a robust pipeline to extract and analyze HRV features using time-frequency analysis from polysomnography data.</p>
             </div>
-        </header>
-        
-            <!-- <div class="image-stack">
-                <div class="image-item">
-                    <img src="images/main/right-beams.png">
-                </div>
-                <div class="image-item">
-                    <img src="images/main/right-panels.png">
-                </div>
-                <div class="image-item">
-                    <img src="images/main/arrow.png">
-                </div>
-                <div class="image-item">
-                    <img src="images/main/vert-beam-long.png">
-                </div>
-                <div class="image-item">
-                    <img src="images/main/vert-beam-short.png">
-                </div>
-                <div class="image-item">
-                    <img src="images/main/lone-beams.png">
-                </div>
-                <div class="image-item">
-                    <img src="images/main/left-beam.png">
-                </div>
-                <div class="image-item">
-                    <img src="images/main/left-panels.png">
-                </div>
-            </div> -->
-        
-        <section id="target-portfolio">
-            <h2>Projects</h2>
-            <div class="portfolio-container">
-                <a href="projects/covid_spotify.html" class="portfolio-item">
-                    <div class="portfolio-title">COVID-19 Lockdowns vs. Music Trends</div>
-                    <div class="portfolio-image-preview">
-                        <img class="background" src="images/spotify_covid/covid_dance.png">
-                        <img class="foreground" src="images/spotify_covid/covid_dance.png">
-                    </div>
-                    <div class="portfolio-item-description">
-                        <!-- <ol>Lorem ipsum dolor sit amet,</ol>
-                        <ol>consectetur adipiscing elit.</ol>
-                        <ol>Duis non vestibulum mi,</ol>
-                        <ol>id ultricies urna.</ol> -->
-                    </div>
-                </a>
-                <a href="projects/bycycle.html" class="portfolio-item">
-                    <div class="portfolio-title">LISC for Literature Analysis</div>
-                    <div class="portfolio-image-preview">
-                        <img class="background" src="images/nap_eeg_clf/word_cloud.png">
-                        <img class="foreground" src="images/nap_eeg_clf/word_cloud.png">
-                    </div>
-                    <div class="portfolio-item-description">
-                        <!-- <ol>Lorem ipsum dolor sit amet,</ol>
-                        <ol>consectetur adipiscing elit.</ol>
-                        <ol>Duis non vestibulum mi,</ol>
-                        <ol>id ultricies urna.</ol> -->
-                    </div>
-                </a>
-                <a href="projects/deeplearn_eeg.html" class="portfolio-item">
-                    <div class="portfolio-title">Deep Learning with EEG</div>
-                    <div class="portfolio-image-preview">
-                        <img class="background" src="images/deep_learn_eeg/cnn_in.png">
-                        <img class="foreground" src="images/deep_learn_eeg/cnn_in.png">
-                    </div>
-                    <div class="portfolio-item-description">
-                        <!-- <ol>Lorem ipsum dolor sit amet,</ol>
-                        <ol>consectetur adipiscing elit.</ol>
-                        <ol>Duis non vestibulum mi,</ol>
-                        <ol>id ultricies urna.</ol> -->
-                    </div>
-                </a>
-                <a href="projects/liquid_biopsy.html" class="portfolio-item">
-                    <div class="portfolio-title">Liquid Biopsy for Cancer Screening</div>
-                    <div class="portfolio-image-preview">
-                        <img class="background" src="images/liquid_biopsy/3_gene_comparison.png">
-                        <img class="foreground" src="images/liquid_biopsy/3_gene_comparison.png">
-                    </div>
-                    <div class="portfolio-item-description">
-                        <!-- <ol>Lorem ipsum dolor sit amet,</ol>
-                        <ol>consectetur adipiscing elit.</ol>
-                        <ol>Duis non vestibulum mi,</ol>
-                        <ol>id ultricies urna.</ol> -->
-                    </div>
-                </a>
-                <a href="projects/nairobi_bus.html" class="portfolio-item">
-                    <div class="portfolio-title">Data Visualization: A Look Into Nairobi Transportation</div>
-                    <div class="portfolio-image-preview">
-                        <img class="background" src="images/nairobi/nairobi_travel_map.png">
-                        <img class="foreground" src="images/nairobi/nairobi_travel_map.png">
-                    </div>
-                    <div class="portfolio-item-description">
-                        <!-- <ol>Lorem ipsum dolor sit amet,</ol>
-                        <ol>consectetur adipiscing elit.</ol>
-                        <ol>Duis non vestibulum mi,</ol>
-                        <ol>id ultricies urna.</ol> -->
-                    </div>
-                </a>
-                <a href="projects/pred_kcomp_spind.html" class="portfolio-item">
-                    <div class="portfolio-title">Machine Learning: Classification of Brain Events</div>
-                    <div class="portfolio-image-preview">
-                        <img class="background" src="images/spind_kcomp/class raw.png">
-                        <img class="foreground" src="images/spind_kcomp/class raw.png">
-                    </div>
-                    <div class="portfolio-item-description">
-                        <!-- <ol>Lorem ipsum dolor sit amet,</ol>
-                        <ol>consectetur adipiscing elit.</ol>
-                        <ol>Duis non vestibulum mi,</ol>
-                        <ol>id ultricies urna.</ol> -->
-                    </div>
-                </a>
-                <a href="projects/pred_workload_eeg.html" class="portfolio-item">
-                    <div class="portfolio-title">Can the Sleeping Brain Predict What the Awake Brain Did?</div>
-                    <div class="portfolio-image-preview">
-                        <img class="background" src="images/nap_eeg_clf/power_spec.png">
-                        <img class="foreground" src="images/nap_eeg_clf/power_spec.png">
-                    </div>
-                    <div class="portfolio-item-description">
-                        <!-- <ol>Lorem ipsum dolor sit amet,</ol>
-                        <ol>consectetur adipiscing elit.</ol>
-                        <ol>Duis non vestibulum mi,</ol>
-                        <ol>id ultricies urna.</ol> -->
-                    </div>
-                </a>
-                <a href="projects/spotify_genre_clf.html" class="portfolio-item">
-                    <div class="portfolio-title">Machine Learning: Song Clustering & Classifying</div>
-                    <div class="portfolio-image-preview">
-                        <img class="background" src="images/spotify_covid/clusters.png">
-                        <img class="foreground" src="images/spotify_covid/clusters.png">
-                    </div>
-                    <div class="portfolio-item-description">
-                        <!-- <ol>Lorem ipsum dolor sit amet,</ol>
-                        <ol>consectetur adipiscing elit.</ol>
-                        <ol>Duis non vestibulum mi,</ol>
-                        <ol>id ultricies urna.</ol> -->
-                    </div>
-                </a>
-                <a href="projects/transform_eeg.html" class="portfolio-item">
-                    <div class="portfolio-title">How To Prepare EEG Data</div>
-                    <div class="portfolio-image-preview">
-                        <img class="background" src="images/nap_eeg/plot_h1.000000.png">
-                        <img class="foreground" src="images/nap_eeg/plot_h1.000000.png">
-                    </div>
-                    <div class="portfolio-item-description">
-                        <!-- <ol>Lorem ipsum dolor sit amet,</ol>
-                        <ol>consectetur adipiscing elit.</ol>
-                        <ol>Duis non vestibulum mi,</ol>
-                        <ol>id ultricies urna.</ol> -->
-                    </div>
-                </a>
+            <!-- Project 2 -->
+            <div class="project-card">
+                <h3>Oxygen Saturation Prediction</h3>
+                <p>Developed machine learning models to predict oxygen levels using wearable device data streams.</p>
             </div>
-        </section>
-        
-
-        <hr class="separator">
-
-        
-        <section id="target-about">
-            <div class="about-container">
-                <img src="images/main/portrait landscape.png">
-                <div>
-                    <h2>About Me</h2>
-                    <p>
-                        Healthcare, data science, and programming are at the center of my career interests.
-                        For most of my education, I set myself on the pre-med track, but I realized I would have a lot more fun coding.
-                        I pursued my undergraduate studies in Cognitive Science at the University of California in San Diego, specializing in Machine Learning and Neural Computation. 
-                        There are a few things that sets a good data scientist apart from a bad one:
-                    </p>
-                    <p>
-                        Understanding of the application of the data science process.
-                        I ask why I do everything I do every step of the way and it make sense. 
-                    </p>
-                    <p>
-                        I get my hands dirty and sift through the documentation and API to build a thorough understanding of my actions.
-                    </p>
-                    <p>
-                        One man's trash is another man's treasure. One man's garbage data is another man's raw data.
-                    </p>
-                </div>
+            <!-- Project 3 -->
+            <div class="project-card">
+                <h3>ML Workflow Automation</h3>
+                <p>Designed an automated ML pipeline leveraging Hydra for configurations and MLflow for tracking experiments and results.</p>
             </div>
-        </section>
+            <!-- Project 4 -->
+            <div class="project-card">
+                <h3>REM vs NREM Classification</h3>
+                <p>Built a neural network classifier to accurately distinguish between REM and NREM sleep stages.</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2 class="section-title">Contact</h2>
+        <p>If you'd like to collaborate or learn more about my work, connect with me below:</p>
+        <p>Email: <a href="mailto:joakim.nguyen99@gmail.com">joakim.nguyen99@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/joakimnguyen">Your LinkedIn Profile</a></p>
+    </section>
 
-        <hr class="separator">
-    
-
-        <section class="form-container" id="target-contact">
-            <h2>Contact</h2>
-            <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/myyablla" method="post">
-                <label for="full-name">Full Name</label>
-                <input type="text" name="name" id="full-name" placeholder="First and Last" required="">
-                <label for="email-address">Email Address</label>
-                <input type="email" name="_replyto" id="email-address" required="">
-                <label for="message">Message</label>
-                <textarea rows="20" name="message" id="message" placeholder="Questions, comments, inquiries." required="" spellcheck="false" data-ms-editor="true"></textarea>
-                <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
-                <input type="submit" value="Submit">
-            </form>
-        </section>
-        
-        <footer>
-            <p>&copy; 2023 Joakim Nguyen. All rights reserved.</p>
-        </footer> 
-    </body>
-</html>    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Joakim Nguyen</p>
+    </footer>
+</body>
+</html>

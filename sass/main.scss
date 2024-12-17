@@ -1,20 +1,29 @@
 // main.scss
 
+// @import 'utils/variables';
+// @import 'utils/mixins';
+// @import 'utils/functions';
+// @import 'utils/placeholders';
+// @import 'utils/animations';
+// @import 'utils/typography';
+// @import 'utils/grid';
+// @import 'utils/spacing';
+// @import 'utils/visibility';
+// @import 'utils/position';
+// @import 'utils/float';
+// @import 'utils/overflow';
+// @import 'utils/tables';
+// @import 'utils/borders';
+// @import 'utils/colors';
+
 @import 'partials/base';
 @import 'partials/header';
-@import 'partials/keyart';
-@import 'partials/img-stack';
 @import 'partials/nav';
-@import 'partials/section';
-@import 'partials/portfolio';
-@import 'partials/project';
-@import 'partials/about';
-@import 'partials/resume';
-@import 'partials/form';
+@import 'partials/containers';
+@import 'partials/projects';
+// @import 'partials/home';
+// @import 'partials/about';
+@import 'partials/contact';
 @import 'partials/footer';
 
 @import 'components/buttons';
-@import 'components/forms';
-@import 'components/separator';
-
-@import 'utilities/variables';
