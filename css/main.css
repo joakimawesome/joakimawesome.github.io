@@ -14,7 +14,7 @@ body {
 
 /* Header Section */
 header {
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  background: linear-gradient(135deg, #64b6ac, #c0fdfb);
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;
@@ -51,6 +51,7 @@ nav ul li a {
 
 nav ul li a:hover {
   background-color: rgba(255, 255, 255, 0.5);
+  color: #64b6ac;
 }
 
 /* Container */
@@ -72,7 +73,7 @@ nav ul li a:hover {
   content: "";
   width: 60px;
   height: 4px;
-  background-color: #6e8efb;
+  background-color: #64b6ac;
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -101,7 +102,7 @@ nav ul li a:hover {
 
 .project-card h3 {
   margin: 1.5rem 1rem 0.5rem;
-  color: #6e8efb;
+  color: #64b6ac;
 }
 
 .project-card p {
@@ -113,7 +114,7 @@ nav ul li a:hover {
 .project-card a {
   display: inline-block;
   margin: 1rem;
-  color: #a777e3;
+  color: #64b6ac;
   text-decoration: none;
   font-weight: 600;
 }
@@ -125,7 +126,7 @@ nav ul li a:hover {
 /* Contact Section */
 #contact {
   text-align: center;
-  background: #6e8efb;
+  background: #64b6ac;
   color: #fff;
   padding: 2rem 1rem;
   border-radius: 10px;
@@ -145,13 +146,13 @@ nav ul li a:hover {
 footer {
   text-align: center;
   padding: 1rem;
-  background: #2c3e50;
+  background: #b09e99;
   color: #fff;
   font-size: 0.9rem;
 }
 
 footer a {
-  color: #6e8efb;
+  color: #64b6ac;
   text-decoration: none;
 }
 
@@ -164,8 +165,8 @@ footer a {
 }
 
 .filter-btn {
-  background-color: #6e8efb;
-  color: #fff;
+  background-color: #fad4c0;
+  color: #333;
   padding: 0.5rem 1.5rem;
   border: none;
   border-radius: 25px;
@@ -175,7 +176,8 @@ footer a {
 }
 
 .filter-btn.active, .filter-btn:hover {
-  background-color: #a777e3;
+  background-color: #b09e99;
+  color: #fee9e1;
 }
 
 /*# sourceMappingURL=main.css.map */

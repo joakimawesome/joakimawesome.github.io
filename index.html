@@ -6,6 +6,7 @@
     <title>Joakim Nguyen | Portfolio</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="js/main.js" defer></script>
 </head>
 
 
@@ -35,33 +36,61 @@
         
         <!-- Filter Buttons -->
         <div class="filters">
-            <button class="filter-btn" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
-            <button class="filter-btn" data-filter="signal-processing">Signal Processing</button>
-            <button class="filter-btn" data-filter="deep-learning">Deep Learning</button>
+            <button class="filter-btn" data-filter="all">all</button>
+            <button class="filter-btn" data-filter="machine-learning">machine learning</button>
+            <button class="filter-btn" data-filter="signal-processing">signal processing</button>
+            <button class="filter-btn" data-filter="deep-learning">deep learning</button>
+            <button class="filter-btn" data-filter="LLMs">LLM</button>
+            <button class="filter-btn" data-filter="medical">medical</button>
+            <button class="filter-btn" data-filter="data science">data science</button>
         </div>
         
         <div class="projects">
             <!-- Project 1 -->
-            <div class="project-card">
+            <a href="#" class="project-card" data-tags="signal-processing machine-learning medical">
                 <h3>Heart Rate Variability Analysis</h3>
                 <p>Engineered a robust pipeline to extract and analyze HRV features using time-frequency analysis from polysomnography data.</p>
-            </div>
+            </a>
             <!-- Project 2 -->
-            <div class="project-card">
-                <h3>Oxygen Saturation Prediction</h3>
-                <p>Developed machine learning models to predict oxygen levels using wearable device data streams.</p>
-            </div>
+            <a href="#" class="project-card" data-tags="machine-learning medical">
+                <h3>Actigraphy Prediction</h3>
+                <p>Developed algorithms and machine learning models to predict oxygen levels using wearable device data streams.</p>
+            </a>
             <!-- Project 3 -->
-            <div class="project-card">
+            <a href="#" class="project-card" data-tags="machine-learning">
                 <h3>ML Workflow Automation</h3>
                 <p>Designed an automated ML pipeline leveraging Hydra for configurations and MLflow for tracking experiments and results.</p>
-            </div>
+            </a>
             <!-- Project 4 -->
-            <div class="project-card">
+            <a href="#" class="project-card" data-tags="signal-processing machine-learning medical">
                 <h3>REM vs NREM Classification</h3>
                 <p>Built a neural network classifier to accurately distinguish between REM and NREM sleep stages.</p>
-            </div>
+            </a>
+            <!-- Project 5 -->
+            <a href="#" class="project-card" data-tags="signal-processing medical">
+                <h3>EEG Signal Processing</h3>
+                <p>Implemented signal processing techniques to filter and analyze EEG data for seizure detection.</p>
+            </a> 
+            <!-- Project 6 -->
+            <a href="#" class="project-card" data-tags="LLM medical">
+                <h3>LLM Healthcare Agents</h3>
+                <p>Using AutoGEN and MemGPT to develop intelligent healthcare agents capable of simulating in medical diagnostics and patient care.</p>
+            </a>
+            <!-- Project 7 -->
+            <a href="#" class="project-card" data-tags="deep-learning medical">
+                <h3>Disease Progression VAE</h3>
+                <p>Developed a Variational Autoencoder (VAE) model to analyze and predict disease progression from longitudinal patient data.</p>
+            </a>
+            <!-- Project 8 -->
+            <a href="#" class="project-card" data-tags="medical data-science">
+                <h3>MIMIC-III Visuals</h3>
+                <p>Created visualizations for the MIMIC-III clinical database to explore patient data and outcomes.</p>
+            </a>
+            <!-- Project 9 -->
+            <a href="#" class="project-card" data-tags="data-science">
+                <h3>Spotify Recommendation Map</h3>
+                <p>Developed a recommendation system using Spotify's API to create a map of song recommendations</p>
+            </a>
         </div>
     </section>
 
