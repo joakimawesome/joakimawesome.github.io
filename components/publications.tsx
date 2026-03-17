@@ -5,19 +5,47 @@ import { FileText, ExternalLink } from 'lucide-react';
 
 const publications = [
   {
+    title: "Automated Thematic Analysis for Clinical Qualitative Data: Iterative Codebook Refinement with Full Provenance",
+    status: "arXiv preprint",
+    role: "2nd author",
+    topics: [],
+    link: "https://doi.org/10.48550/arXiv.2603.08989"
+  },  
+  {
+    title: "PathMoE: Interpretable Multimodal Interaction Experts for Pediatric Brain Tumor Classification",
+    status: "arXiv preprint",
+    role: "Team Lead",
+    topics: ["Pathology", "Mixture of Experts", "Multimodality", "Interpretability", "Cell Graph Network"],
+    link: "https://doi.org/10.48550/arXiv.2603.01547"
+  },
+  {
+    title: "Clinically-Informed Modeling for Pediatric Brain Tumor Classification from Whole-Slide Histopathology Images",
+    status: "arXiv preprint",
+    role: "1st author",
+    topics: ["Pathology", "Multiple Instance Learning", "Contrastive Learning"],
+    link: "#"
+  },
+  {
     title: "Auto-TA: Towards Scalable Automated Thematic Analysis via Multi-Agent LLMs with RL",
     status: "arXiv preprint",
     role: "2nd author",
     topics: ["LLM-driven qualitative analysis", "multi-agent collaboration", "reinforcement learning"],
-    link: "#"
+    link: "https://doi.org/10.48550/arXiv.2506.23998"
   },
   {
-    title: "Multimodal Models for Pediatric Brain Tumor Classification",
-    status: "In Preparation (MICCAI)",
-    role: "Lead Researcher",
-    topics: ["WSIs", "Graph Features", "Multimodal Fusion", "Computational Pathology"],
-    link: "#"
-  }
+    title: "Position: Thematic Analysis of Unstructured Clinical Transcripts with Large Language Models",
+    status: "arXiv preprint",
+    role: "2nd author",
+    topics: [],
+    link: "https://doi.org/10.48550/arXiv.2509.14597"
+  },  
+  {
+    title: "SFT-TA: Supervised Fine-Tuned Agents in Multi-Agent LLMs for Automated Inductive Thematic Analysis",
+    status: "arXiv preprint",
+    role: "2nd author",
+    topics: [],
+    link: "https://doi.org/10.48550/arXiv.2509.17167"
+  },    
 ];
 
 export default function Publications() {

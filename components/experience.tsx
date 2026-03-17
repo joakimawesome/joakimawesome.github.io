@@ -65,9 +65,14 @@ export default function Experience() {
         const x = e.clientX - containerRect.left;
         const width = containerRect.width;
         
-        // Calculate percentage of mouse position across the container
-        // Clamp between 0 and 1 so it doesn't scroll past the edges if mouse goes outside horizontally
-        const percentage = Math.max(0, Math.min(1, x / width));
+        // Apply a margin so the user doesn't have to go all the way to the edge
+        const margin = Math.min(width * 0.15, 150); // 15% or 150px, whichever is smaller
+        const adjustedWidth = width - (margin * 2);
+        const adjustedX = x - margin;
+        
+        // Calculate percentage of mouse position across the adjusted container width
+        // Clamp between 0 and 1
+        const percentage = Math.max(0, Math.min(1, adjustedX / adjustedWidth));
         
         // Calculate max possible scroll
         const maxScroll = container.scrollWidth - container.clientWidth;

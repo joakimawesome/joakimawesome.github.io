@@ -7,30 +7,23 @@ import Image from 'next/image';
 
 const projects = [
   {
-    title: "Pediatric Brain Tumor Histopathology AI",
+    title: "Pediatric Brain Tumor",
     description: "Lead researcher analyzing whole-slide pathology images. Exploring tumor subtype classification, attention heatmaps, and multimodal fusion.",
-    tags: ["WSI Segmentation", "Pathology Foundation Models", "Interpretability"],
+    tags: ["Computational Pathology", "Whole Slide Images", "Pathology Foundation Models", "Interpretability"],
     seed: "microscope",
     link: "#"
   },
   {
-    title: "Auto-TA: Automated Thematic Analysis",
+    title: "Thematica",
     description: "Multi-agent LLM system for qualitative research automation. Features Coder, Sub-Themer, Themer, and Reviewer agents for analyzing clinical interviews.",
-    tags: ["LangChain", "LangGraph", "Multi-Agent LLMs"],
+    tags: ["LangChain", "LangGraph", "Multi-Agent LLMs", "Hydra"],
     seed: "network",
     link: "#"
   },
   {
-    title: "DocTAMA",
-    description: "LLM-based thematic analysis pipeline with automated coding of transcripts, theme generation, and evaluation metrics.",
-    tags: ["MLflow", "Experiment Tracking", "LLMs"],
-    seed: "document",
-    link: "#"
-  },
-  {
-    title: "Pediatric-Brain-Tumor Repository",
+    title: "Pediatric Brain Tumor",
     description: "Pipeline for pathology experiments including WSI segmentation, patch extraction, and feature extraction with PFMs.",
-    tags: ["Classification", "PFMs", "WSI"],
+    tags: ["Computational Pathology", "Pathology Foundation Models", "Whole Slide Images"],
     seed: "biology",
     link: "#"
   }
