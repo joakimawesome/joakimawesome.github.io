@@ -7,9 +7,9 @@ import Image from 'next/image';
 
 const projects = [
   {
-    title: "Pediatric Brain Tumor",
+    title: "Pediatric Histopathology",
     description: "Lead researcher analyzing whole-slide pathology images. Exploring tumor subtype classification, attention heatmaps, and multimodal fusion.",
-    tags: ["Computational Pathology", "Whole Slide Images", "Pathology Foundation Models", "Interpretability"],
+    tags: ["Computational Pathology", "Whole Slide Images", "Pathology Foundation Models", "Tumor Classification", "Deep Learning"],
     seed: "microscope",
     link: "#"
   },
@@ -21,10 +21,24 @@ const projects = [
     link: "#"
   },
   {
-    title: "Pediatric Brain Tumor",
-    description: "Pipeline for pathology experiments including WSI segmentation, patch extraction, and feature extraction with PFMs.",
-    tags: ["Computational Pathology", "Pathology Foundation Models", "Whole Slide Images"],
-    seed: "biology",
+    title: "Private Equity LLM Agents",
+    description: "",
+    tags: ["Healthcare/Finance", "Muti-Agent LLMs", "OpenAI Platform", "Azure Cloud"],
+    seed: "neuroscience",
+    link: "#"
+  },
+  {
+    title: "Sleep EEG",
+    description: "Signal processing techniques to filter and analyze EEG data for sleep pattern recognition.",
+    tags: ["Electroencephalography", "Sleep Research", "Signal Processing", "Experiment Tracking", "Time-series Analysis"],
+    seed: "neuroscience",
+    link: "#"
+  },
+  {
+    title: "Music Analysis via Spotify",
+    description: "",
+    tags: ["Unsupervised Machine Learning", "Time-series Analysis"],
+    seed: "music",
     link: "#"
   }
 ];

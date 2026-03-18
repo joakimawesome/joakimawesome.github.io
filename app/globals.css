@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+/* Normalize components inside the chat bubble wrapper */
+.chat-component-wrapper section {
+  padding: 2rem !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+.chat-component-wrapper > section > div:first-child {
+  margin-bottom: 2rem !important;
+}

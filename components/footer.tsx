@@ -24,7 +24,7 @@ export default function Footer() {
           </a>
         </div>
         
-        <div className="text-sm text-zinc-600 text-center md:text-right">
+        <div className="text-sm text-zinc-600 text-center md:text-right" suppressHydrationWarning>
           &copy; {new Date().getFullYear()} Joakim H. Nguyen.<br/>All rights reserved.
         </div>
       </div>
