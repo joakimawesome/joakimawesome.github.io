@@ -16,11 +16,11 @@ export default function Hero() {
           <span className="font-mono text-sm tracking-wider text-indigo-400 uppercase">AI Researcher & Engineer</span>
         </div>
         
-        <h1 className="font-serif text-5xl sm:text-7xl font-medium tracking-tight text-zinc-100 mb-6 leading-[1.1]">
+        <h1 className="font-serif text-3xl sm:text-5xl font-medium tracking-tight text-zinc-100 mb-3 leading-[1.1]">
           Joakim H. Nguyen
         </h1>
         
-        <p className="text-xl text-zinc-400 max-w-2xl mb-10 leading-relaxed">
+        <p className="text-base text-zinc-400 max-w-xl mb-6 leading-relaxed">
           M.S. in Artificial Intelligence at UT Austin. Bridging cognitive science and machine learning to advance computational pathology and healthcare applications.
         </p>
 

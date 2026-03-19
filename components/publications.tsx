@@ -50,10 +50,10 @@ const publications = [
 
 export default function Publications() {
   return (
-    <section id="publications" className="py-24 border-t border-zinc-800/50">
-      <div className="mb-16">
-        <h2 className="font-serif text-3xl sm:text-4xl text-zinc-100 mb-4">Publications & Papers</h2>
-        <p className="text-zinc-400 max-w-2xl">Current work in preparation and preprints.</p>
+    <section id="publications" className="py-2 border-t border-zinc-800/50">
+      <div className="mb-6">
+        <h2 className="font-serif text-xl sm:text-2xl text-zinc-100 mb-2">Publications & Papers</h2>
+        <p className="text-sm text-zinc-400 max-w-2xl">Current work in preparation and preprints.</p>
       </div>
 
       <div className="space-y-6">
@@ -64,7 +64,7 @@ export default function Publications() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="flex flex-col sm:flex-row gap-6 p-6 rounded-2xl bg-zinc-900/30 border border-zinc-800/80 hover:bg-zinc-900/50 transition-colors"
+            className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:bg-zinc-900/50 transition-colors"
           >
             <div className="flex-shrink-0 pt-1">
               <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400">
@@ -80,7 +80,7 @@ export default function Publications() {
                 <span className="text-sm text-zinc-500 font-medium">{pub.role}</span>
               </div>
               
-              <h3 className="text-xl font-medium text-zinc-100 mb-3 leading-snug">
+              <h3 className="text-lg font-medium text-zinc-100 mb-2 leading-snug">
                 {pub.title}
               </h3>
               
