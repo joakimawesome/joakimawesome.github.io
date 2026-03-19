@@ -70,5 +70,20 @@ export const chatNodes: Record<string, ChatNode> = {
       { label: "View Projects", action: "projects" },
       { label: "Back to Home", action: "welcome" }
     ]
+  },
+  unknown: {
+    id: 'unknown',
+    thinkingSteps: [
+      "Parsing intent...",
+      "Command not recognized.",
+      "Aborting operation."
+    ],
+    componentName: null,
+    text: "I'm sorry, I don't understand that command. Please try asking about my experience, projects, or skills.",
+    suggestions: [
+      { label: "Show Experience", action: "experience" },
+      { label: "View Projects", action: "projects" },
+      { label: "View Skills", action: "skills" }
+    ]
   }
 };

@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Terminal, User, Cpu, ChevronRight, CheckCircle2, Loader2 } from 'lucide-react';
+import { Terminal, User, Cpu, ChevronRight, CheckCircle2, Loader2, Send } from 'lucide-react';
 import { chatNodes, ChatNode, SuggestedPrompt } from '@/lib/chat-data';
 
 // Import all portfolio components
@@ -57,12 +57,13 @@ export default function Chat() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [activeThinking, setActiveThinking] = useState<string[]>([]);
   const [suggestions, setSuggestions] = useState<SuggestedPrompt[]>([]);
+  const [inputText, setInputText] = useState('');
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Scroll to bottom whenever messages or thinking steps change
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [messages, activeThinking, suggestions]);
 
   useEffect(() => {
@@ -122,6 +123,27 @@ export default function Chat() {
   const handleSuggestionClick = (suggestion: SuggestedPrompt) => {
     if (isGenerating) return;
     triggerNode(suggestion.action, suggestion.label);
+  };
+
+  const handleFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (isGenerating || !inputText.trim()) return;
+    
+    const lowerInput = inputText.toLowerCase();
+    let matchedNode = 'unknown';
+    
+    if (lowerInput.includes('experience') || lowerInput.includes('job') || lowerInput.includes('work') || lowerInput.includes('career') || lowerInput.includes('resume')) {
+      matchedNode = 'experience';
+    } else if (lowerInput.includes('project') || lowerInput.includes('research') || lowerInput.includes('portfolio')) {
+      matchedNode = 'projects';
+    } else if (lowerInput.includes('skill') || lowerInput.includes('tech') || lowerInput.includes('tool') || lowerInput.includes('stack')) {
+      matchedNode = 'skills';
+    } else if (lowerInput.includes('home') || lowerInput.includes('hello') || lowerInput.includes('hi') || lowerInput.includes('welcome')) {
+      matchedNode = 'welcome';
+    }
+    
+    triggerNode(matchedNode, inputText.trim());
+    setInputText('');
   };
 
   const renderAiContent = (msg: Message, isComplete: boolean) => {
@@ -209,40 +231,63 @@ export default function Chat() {
             </div>
           </motion.div>
         )}
-        <div ref={messagesEndRef} className="h-4" />
       </div>
 
       <div className="mt-auto relative z-20">
         <div className="absolute top-0 left-0 right-0 h-10 -translate-y-full bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none"></div>
         
-        <div className="bg-zinc-900/80 backdrop-blur-md rounded-2xl border border-zinc-800/80 p-4 sm:p-6 shadow-2xl">
-          {!isGenerating && suggestions.length > 0 ? (
+        <form 
+          onSubmit={handleFormSubmit}
+          className="bg-zinc-900/80 backdrop-blur-md rounded-2xl border border-zinc-800/80 p-4 shadow-2xl flex flex-col gap-3"
+        >
+          {!isGenerating && suggestions.length > 0 && (
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex gap-3 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              className="flex gap-2 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             >
               {suggestions.map((suggestion, idx) => (
                 <button
                   key={idx}
+                  type="button"
                   onClick={() => handleSuggestionClick(suggestion)}
-                  className="shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full bg-zinc-950 hover:bg-zinc-800 border border-zinc-800 hover:border-indigo-500/30 text-zinc-300 text-sm font-medium transition-all group shadow-sm hover:shadow-[0_0_15px_rgba(99,102,241,0.1)]"
+                  className="shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700/50 hover:border-indigo-500/30 text-zinc-300 text-xs font-medium transition-all group"
                 >
                   {suggestion.label}
-                  <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-indigo-400 transition-colors" />
+                  <ChevronRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-indigo-400 transition-colors" />
                 </button>
               ))}
             </motion.div>
-          ) : (
-             <div className="h-[52px] flex items-center px-4">
-              <span className="text-zinc-600 font-mono text-sm inline-flex items-center gap-2">
-                {isGenerating ? "Agent is processing..." : "Awaiting input..."}
-                {isGenerating && <span className="inline-block w-2 h-4 bg-zinc-600 animate-pulse"></span>}
-              </span>
-            </div>
           )}
-        </div>
+          
+          <div className="flex gap-2 relative items-center">
+            {isGenerating && (
+              <div className="absolute left-4 flex items-center gap-2 pointer-events-none text-zinc-500 font-mono text-sm">
+                 <Loader2 className="w-4 h-4 animate-spin text-indigo-400" />
+                 <span>Agent is processing...</span>
+              </div>
+            )}
+            <input 
+              type="text" 
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              disabled={isGenerating}
+              placeholder={isGenerating ? "" : "Type a message or command..."}
+              className={`flex-1 bg-zinc-950 border border-zinc-800 focus:border-indigo-500/50 rounded-xl px-4 py-3.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:outline-none transition-colors ${isGenerating ? 'opacity-50' : ''}`}
+            />
+            <button 
+              type="submit"
+              disabled={isGenerating || !inputText.trim()}
+              className="bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl px-4 py-3.5 flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <Send className="w-4 h-4" />
+            </button>
+          </div>
+        </form>
       </div>
+      
+      {/* Scroll anchor placed below the input box so block: 'end' keeps the input visible */}
+      <div ref={messagesEndRef} className="h-px bg-transparent mt-4" />
     </div>
   );
 }
