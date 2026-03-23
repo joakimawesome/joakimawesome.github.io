@@ -174,7 +174,7 @@ export default function Chat() {
 
   return (
     <div className="w-full max-w-5xl mx-auto min-h-[80vh] flex flex-col pt-12 pb-6 px-4 sm:px-6 relative">
-      <div className="flex items-center gap-3 mb-8 border-b border-zinc-800/50 pb-4">
+      <div className="flex items-center gap-3 mb-12 md:mb-16 border-b border-zinc-800/50 pb-4">
         <Terminal className="w-6 h-6 text-indigo-400" />
         <h1 className="font-mono text-lg font-medium text-zinc-100 tracking-wider">
           JHN_AGENT_CORE v2.0.0
@@ -185,7 +185,7 @@ export default function Chat() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto mb-6 flex flex-col gap-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="flex-1 overflow-y-auto mb-6 flex flex-col gap-12 md:gap-16 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         <AnimatePresence>
           {messages.map((msg) => (
             <motion.div
@@ -207,7 +207,7 @@ export default function Chat() {
               <div
                 className={`flex-1 ${
                   msg.role === 'user'
-                    ? 'px-5 py-4 rounded-3xl max-w-[85%] sm:max-w-[75%] font-mono text-sm leading-relaxed whitespace-pre-wrap bg-zinc-800/80 text-zinc-200 rounded-tr-sm'
+                    ? 'px-6 py-5 md:px-8 md:py-6 rounded-3xl max-w-[85%] sm:max-w-[75%] font-mono text-sm leading-relaxed whitespace-pre-wrap bg-zinc-800/80 text-zinc-200 rounded-tr-sm'
                     : 'w-full' /* AI container takes full width for components */
                 }`}
               >
