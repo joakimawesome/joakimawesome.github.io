@@ -109,10 +109,10 @@ export default function Experience() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="experience" className="py-2 relative">
-      <div className="mb-6">
-        <h2 className="font-serif text-xl sm:text-2xl text-zinc-100 mb-2">Experience & Roles</h2>
-        <p className="text-sm text-zinc-400 max-w-2xl">A blend of academic research, technical leadership, and industry engineering.</p>
+    <section ref={sectionRef} id="experience" className="py-16 md:py-24 relative">
+      <div className="mb-10 md:mb-16">
+        <h2 className="font-serif text-2xl sm:text-3xl text-zinc-100 mb-3">Experience & Roles</h2>
+        <p className="text-base text-zinc-400 max-w-2xl">A blend of academic research, technical leadership, and industry engineering.</p>
       </div>
 
       <div className="relative group/slider cursor-ew-resize">

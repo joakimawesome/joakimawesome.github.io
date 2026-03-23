@@ -229,13 +229,13 @@ function SkillCard({ skillGroup, idx }: { skillGroup: any, idx: number }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-2 border-t border-zinc-800/50">
-      <div className="mb-6">
-        <h2 className="font-serif text-xl sm:text-2xl text-zinc-100 mb-2">Technical Arsenal</h2>
-        <p className="text-sm text-zinc-400 max-w-2xl">Tools, frameworks, and methodologies powering my research and engineering.</p>
+    <section id="skills" className="py-16 md:py-24 border-t border-zinc-800/50">
+      <div className="mb-10 md:mb-16">
+        <h2 className="font-serif text-2xl sm:text-3xl text-zinc-100 mb-3">Technical Arsenal</h2>
+        <p className="text-base text-zinc-400 max-w-2xl">Tools, frameworks, and methodologies powering my research and engineering.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[minmax(180px,auto)] relative group/grid">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 auto-rows-[minmax(180px,auto)] relative group/grid">
         {skills.map((skillGroup, idx) => (
           <SkillCard 
             key={idx} 

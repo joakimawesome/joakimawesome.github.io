@@ -50,13 +50,13 @@ const publications = [
 
 export default function Publications() {
   return (
-    <section id="publications" className="py-2 border-t border-zinc-800/50">
-      <div className="mb-6">
-        <h2 className="font-serif text-xl sm:text-2xl text-zinc-100 mb-2">Publications & Papers</h2>
-        <p className="text-sm text-zinc-400 max-w-2xl">Current work in preparation and preprints.</p>
+    <section id="publications" className="py-16 md:py-24 border-t border-zinc-800/50">
+      <div className="mb-10 md:mb-16">
+        <h2 className="font-serif text-2xl sm:text-3xl text-zinc-100 mb-3">Publications & Papers</h2>
+        <p className="text-base text-zinc-400 max-w-2xl">Current work in preparation and preprints.</p>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-8">
         {publications.map((pub, idx) => (
           <motion.div
             key={idx}
