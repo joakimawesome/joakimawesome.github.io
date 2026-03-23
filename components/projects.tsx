@@ -47,13 +47,13 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState(0);
 
   return (
-    <section id="projects" className="py-24 border-t border-zinc-800/50">
-      <div className="mb-16">
-        <h2 className="font-serif text-3xl sm:text-4xl text-zinc-100 mb-4">Research & Projects</h2>
-        <p className="text-zinc-400 max-w-2xl">Key initiatives spanning computational pathology and qualitative NLP pipelines.</p>
+    <section id="projects" className="py-16 md:py-24">
+      <div className="mb-10 md:mb-16">
+        <h2 className="font-serif text-2xl sm:text-3xl text-zinc-100 mb-3">Research & Projects</h2>
+        <p className="text-base text-zinc-400 max-w-2xl">Key initiatives spanning computational pathology and qualitative NLP pipelines.</p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 relative items-start">
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 relative items-start">
         
         {/* Left: Sticky Details Pane */}
         <div className="w-full lg:w-5/12 lg:sticky lg:top-32 order-2 lg:order-1">
@@ -66,7 +66,7 @@ export default function Projects() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="flex flex-col"
             >
-              <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden bg-zinc-900 mb-8 border border-zinc-800/50 shadow-2xl">
+              <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md">
                 <Image 
                   src={`https://picsum.photos/seed/${projects[activeProject].seed}/800/600`} 
                   alt={projects[activeProject].title} 
@@ -86,23 +86,31 @@ export default function Projects() {
                 </a>
               </div>
               
-              <h3 className="text-2xl font-medium text-zinc-100 mb-4 leading-tight">
+              <h3 className="text-lg sm:text-xl font-medium text-zinc-100 mb-2 leading-tight">
                 {projects[activeProject].title}
               </h3>
               
-              <p className="text-zinc-400 leading-relaxed mb-8 text-lg">
+              <p className="text-zinc-400 leading-relaxed mb-4 text-sm">
                 {projects[activeProject].description}
               </p>
               
-              <div className="flex flex-wrap gap-2">
-                {projects[activeProject].tags.map((tag, tagIdx) => (
-                  <span 
-                    key={tagIdx} 
-                    className="px-3 py-1.5 text-[11px] uppercase tracking-wider font-mono rounded-md bg-zinc-900/50 border border-zinc-800 text-zinc-300"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="relative overflow-hidden w-full group/marquee pointer-events-none rounded-md mask-image-linear-to-r">
+                <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-zinc-950 to-transparent z-10"></div>
+                <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-zinc-950 to-transparent z-10"></div>
+                <motion.div 
+                  className="flex gap-2 w-max"
+                  animate={{ x: ["0%", "calc(-50% - 0.25rem)"] }}
+                  transition={{ ease: "linear", duration: 15, repeat: Infinity }}
+                >
+                  {[...projects[activeProject].tags, ...projects[activeProject].tags].map((tag, tagIdx) => (
+                    <span 
+                      key={tagIdx} 
+                      className="px-3 py-1.5 text-[11px] uppercase tracking-wider font-mono rounded-md bg-zinc-900/50 border border-zinc-800 text-zinc-300 whitespace-nowrap"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </motion.div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -116,7 +124,7 @@ export default function Projects() {
                 key={idx}
                 onMouseEnter={() => setActiveProject(idx)}
                 onClick={() => setActiveProject(idx)}
-                className={`group py-8 border-b border-zinc-800/50 cursor-pointer transition-all duration-500 ${
+                className={`group py-4 border-b border-zinc-800/50 cursor-pointer transition-all duration-500 ${
                   activeProject === idx ? 'opacity-100' : 'opacity-40 hover:opacity-70'
                 }`}
               >
@@ -125,8 +133,8 @@ export default function Projects() {
                     0{idx + 1}
                   </span>
                   <h3 
-                    className={`text-2xl sm:text-3xl lg:text-4xl font-serif transition-all duration-500 flex-grow ${
-                      activeProject === idx ? 'text-indigo-400 translate-x-2 sm:translate-x-6' : 'text-zinc-100'
+                    className={`text-lg sm:text-xl lg:text-2xl font-serif transition-all duration-500 flex-grow ${
+                      activeProject === idx ? 'text-indigo-400 translate-x-2 sm:translate-x-4' : 'text-zinc-100'
                     }`}
                   >
                     {project.title}

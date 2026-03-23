@@ -109,10 +109,10 @@ export default function Experience() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="experience" className="py-24 border-t border-zinc-800/50 relative">
-      <div className="mb-16">
-        <h2 className="font-serif text-3xl sm:text-4xl text-zinc-100 mb-4">Experience & Roles</h2>
-        <p className="text-zinc-400 max-w-2xl">A blend of academic research, technical leadership, and industry engineering.</p>
+    <section ref={sectionRef} id="experience" className="py-16 md:py-24 relative">
+      <div className="mb-10 md:mb-16">
+        <h2 className="font-serif text-2xl sm:text-3xl text-zinc-100 mb-3">Experience & Roles</h2>
+        <p className="text-base text-zinc-400 max-w-2xl">A blend of academic research, technical leadership, and industry engineering.</p>
       </div>
 
       <div className="relative group/slider cursor-ew-resize">
@@ -128,7 +128,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="min-w-[320px] md:min-w-[400px] max-w-[400px] flex-shrink-0 relative flex flex-col cursor-default"
+              className="min-w-[260px] md:min-w-[320px] max-w-[320px] flex-shrink-0 relative flex flex-col cursor-default"
             >
               {/* Timeline Line & Dot */}
               <div className="flex items-center mb-8 relative">
@@ -141,13 +141,13 @@ export default function Experience() {
                 {exp.date}
               </div>
               
-              <div className="group bg-zinc-900/40 border border-zinc-800/60 p-6 rounded-3xl h-[280px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5">
+              <div className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[200px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5">
                 
                 {/* Header (Always visible) */}
                 <div className="relative z-10 flex justify-between items-start">
                   <div>
-                    <h3 className="text-xl font-medium text-zinc-100 mb-1">{exp.title}</h3>
-                    <p className="text-zinc-500 font-medium">{exp.company}</p>
+                    <h3 className="text-lg font-medium text-zinc-100 mb-1">{exp.title}</h3>
+                    <p className="text-xs text-zinc-500 font-medium">{exp.company}</p>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-zinc-950/80 border border-zinc-800/80 flex items-center justify-center text-zinc-500 group-hover:bg-indigo-500/20 group-hover:text-indigo-400 group-hover:border-indigo-500/30 transition-all duration-500 shrink-0 ml-4">
                     <Plus className="w-4 h-4 transform group-hover:rotate-45 transition-transform duration-500" />
@@ -164,7 +164,7 @@ export default function Experience() {
                 </div>
 
                 {/* Description (Hidden by default, slides up and fades in on hover) */}
-                <div className="absolute inset-x-6 bottom-6 top-24 pt-2 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-75 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                <div className="absolute inset-x-4 bottom-4 top-16 pt-2 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-75 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                   <p className="text-zinc-300 leading-relaxed text-sm">
                     {exp.description}
                   </p>
