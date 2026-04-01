@@ -66,25 +66,27 @@ export default function Projects() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="flex flex-col"
             >
-              <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md">
+              {/* Clickable image area */}
+              <a
+                href={projects[activeProject].link}
+                className="group/card relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md block cursor-pointer"
+              >
                 <Image 
                   src={`https://picsum.photos/seed/${projects[activeProject].seed}/800/600`} 
                   alt={projects[activeProject].title} 
                   fill 
-                  className="object-cover opacity-80" 
+                  className="object-cover opacity-80 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-500" 
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent" />
                 
-                {/* Floating View Button */}
-                <a 
-                  href={projects[activeProject].link}
-                  className="absolute bottom-6 right-6 w-12 h-12 bg-zinc-100 text-zinc-950 rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
-                  aria-label="View Project"
-                >
-                  <ArrowUpRight className="w-5 h-5" />
-                </a>
-              </div>
+                {/* Centered overlay prompt */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
+                  <span className="bg-zinc-100 text-zinc-950 px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-xl">
+                    View Project <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </a>
               
               <h3 className="text-lg sm:text-xl font-medium text-zinc-100 mb-2 leading-tight">
                 {projects[activeProject].title}
@@ -94,7 +96,7 @@ export default function Projects() {
                 {projects[activeProject].description}
               </p>
               
-              <div className="relative overflow-hidden w-full group/marquee pointer-events-none rounded-md mask-image-linear-to-r">
+              <div className="relative overflow-hidden w-full group/marquee pointer-events-none rounded-md mask-image-linear-to-r mb-5">
                 <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-zinc-950 to-transparent z-10"></div>
                 <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-zinc-950 to-transparent z-10"></div>
                 <motion.div 
@@ -112,6 +114,16 @@ export default function Projects() {
                   ))}
                 </motion.div>
               </div>
+
+              {/* Prominent View Project button */}
+              {projects[activeProject].link !== '#' && (
+                <a
+                  href={projects[activeProject].link}
+                  className="inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-sm font-medium hover:bg-indigo-500/20 hover:border-indigo-400/50 hover:text-indigo-300 transition-all duration-300"
+                >
+                  View Project <ArrowUpRight className="w-4 h-4" />
+                </a>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
