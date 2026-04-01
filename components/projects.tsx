@@ -11,14 +11,14 @@ const projects = [
     description: "Lead researcher analyzing whole-slide pathology images. Exploring tumor subtype classification, attention heatmaps, and multimodal fusion.",
     tags: ["Computational Pathology", "Whole Slide Images", "Pathology Foundation Models", "Tumor Classification", "Deep Learning"],
     seed: "microscope",
-    link: "#"
+    link: "/projects/pediatric-histopathology"
   },
   {
     title: "Thematica",
     description: "Multi-agent LLM system for qualitative research automation. Features Coder, Sub-Themer, Themer, and Reviewer agents for analyzing clinical interviews.",
     tags: ["LangChain", "LangGraph", "Multi-Agent LLMs", "Hydra"],
     seed: "network",
-    link: "#"
+    link: "/projects/thematica"
   },
   {
     title: "Private Equity LLM Agents",

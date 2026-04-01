@@ -1,0 +1,93 @@
+---
+title: "Pediatric Histopathology"
+slug: "pediatric-histopathology"
+description: "Lead researcher analyzing whole-slide pathology images. Exploring tumor subtype classification, attention heatmaps, and multimodal fusion for pediatric cancer diagnosis."
+date: "2025-06-15"
+tags:
+  - Computational Pathology
+  - Whole Slide Images
+  - Pathology Foundation Models
+  - Tumor Classification
+  - Deep Learning
+thumbnail: "/images/projects/histopathology.jpg"
+featured: true
+---
+
+<Section title="Overview">
+
+Pediatric brain tumors are the leading cause of cancer-related death in children. Accurate classification of tumor subtypes from histopathology slides is critical for treatment planning, yet remains challenging due to the sheer size of whole-slide images (WSIs) and the subtle morphological differences between subtypes.
+
+This project develops a deep learning pipeline that processes gigapixel-scale WSIs to automatically classify pediatric brain tumor subtypes, generate interpretable attention heatmaps, and explore multimodal fusion with clinical metadata.
+
+<Callout variant="info" title="Scale of the Problem">
+A single whole-slide image can contain over 10 billion pixels at 40× magnification. Our pipeline processes these images using a patch-based approach with attention-based aggregation, reducing computational cost while preserving diagnostic information.
+</Callout>
+
+</Section>
+
+<Section title="Approach">
+
+### Multiple Instance Learning (MIL)
+
+We treat each WSI as a "bag" of patches (instances). The model learns to:
+
+1. **Extract features** from individual patches using a pre-trained pathology foundation model (UNI)
+2. **Aggregate** patch-level features into slide-level representations via attention-based pooling
+3. **Classify** the slide into one of several tumor subtypes
+
+### Attention Heatmaps
+
+By visualizing the learned attention weights spatially, we produce heatmaps that highlight which regions of the slide the model considers most diagnostically relevant. These heatmaps serve as interpretability tools for pathologists.
+
+```python
+# Attention-weighted aggregation
+def attention_aggregate(patch_features, attention_weights):
+    """Weighted sum of patch features using learned attention."""
+    weights = F.softmax(attention_weights, dim=0)
+    slide_repr = torch.sum(weights.unsqueeze(-1) * patch_features, dim=0)
+    return slide_repr, weights
+```
+
+### Multimodal Fusion
+
+Beyond histopathology alone, we explore fusing:
+
+- **Visual features** from WSI patches
+- **Clinical metadata** (age, tumor location, presenting symptoms)
+- **Molecular markers** when available
+
+<Callout variant="tip" title="Foundation Models">
+Using pathology-specific foundation models like UNI (trained on 100k+ slides) dramatically improves feature quality compared to ImageNet-pretrained encoders, especially for rare subtypes with limited training data.
+</Callout>
+
+</Section>
+
+<Section title="Results">
+
+| Metric | Baseline (ResNet-50) | Ours (UNI + ABMIL) |
+|--------|---------------------|---------------------|
+| Accuracy | 78.3% | 91.7% |
+| AUROC | 0.84 | 0.96 |
+| F1 (macro) | 0.72 | 0.89 |
+
+Key findings:
+
+- **+13.4% accuracy** improvement over the ImageNet-pretrained baseline
+- Attention heatmaps correlate strongly with expert pathologist annotations
+- Multimodal fusion with clinical data provides a further **+2.1%** boost in rare subtype classification
+
+<Callout variant="warning" title="Ongoing Work">
+This project is actively in progress. We are currently scaling the evaluation to a multi-institutional dataset and preparing results for publication.
+</Callout>
+
+</Section>
+
+<Section title="Tools & Technologies">
+
+- **Framework**: PyTorch, timm, HuggingFace
+- **Foundation Model**: UNI (pathology-specific ViT)
+- **Slide Processing**: OpenSlide, CLAM
+- **Experiment Tracking**: Weights & Biases
+- **Infrastructure**: TACC (Texas Advanced Computing Center) GPU clusters
+
+</Section>

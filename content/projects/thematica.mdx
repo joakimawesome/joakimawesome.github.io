@@ -1,0 +1,80 @@
+---
+title: "Thematica"
+slug: "thematica"
+description: "Multi-agent LLM system for qualitative research automation. Features Coder, Sub-Themer, Themer, and Reviewer agents for analyzing clinical interviews."
+date: "2025-04-10"
+tags:
+  - LangChain
+  - LangGraph
+  - Multi-Agent LLMs
+  - Hydra
+thumbnail: "/images/projects/thematica.jpg"
+featured: true
+---
+
+<Section title="Overview">
+
+Qualitative research in healthcare—particularly thematic analysis of clinical interviews—is a rigorous but incredibly time-consuming process. A single study can involve hundreds of hours of manual coding, theme identification, and iterative refinement.
+
+**Thematica** is a multi-agent LLM system that automates the full thematic analysis pipeline, from raw interview transcripts to structured codebooks and thematic maps—while maintaining the methodological rigor expected in academic research.
+
+<Callout variant="info" title="What is Thematic Analysis?">
+Thematic analysis is a method for identifying, analyzing, and reporting patterns (themes) within qualitative data. It involves six phases: familiarization, generating initial codes, searching for themes, reviewing themes, defining themes, and producing the report.
+</Callout>
+
+</Section>
+
+<Section title="Architecture">
+
+### Multi-Agent Design
+
+Thematica uses a graph-based multi-agent architecture built with **LangGraph**, where each agent specializes in a distinct phase of the analysis:
+
+1. **Coder Agent** — Reads interview transcripts and generates initial codes with supporting quotes
+2. **Sub-Themer Agent** — Groups codes into candidate sub-themes based on semantic similarity
+3. **Themer Agent** — Synthesizes sub-themes into overarching themes with clear definitions
+4. **Reviewer Agent** — Evaluates thematic coherence, identifies gaps, and triggers refinement loops
+
+```python
+# LangGraph workflow definition
+workflow = StateGraph(ThematicState)
+workflow.add_node("coder", coder_agent)
+workflow.add_node("sub_themer", sub_themer_agent)
+workflow.add_node("themer", themer_agent)
+workflow.add_node("reviewer", reviewer_agent)
+
+workflow.add_edge("coder", "sub_themer")
+workflow.add_edge("sub_themer", "themer")
+workflow.add_edge("themer", "reviewer")
+workflow.add_conditional_edges("reviewer", should_refine)
+```
+
+### Configuration with Hydra
+
+All pipeline parameters—model selection, prompts, chunking strategies, and evaluation criteria—are managed through **Hydra** configuration files, enabling reproducible experiments and easy ablation studies.
+
+<Callout variant="tip" title="Why Multi-Agent?">
+Breaking the analysis into specialized agents mirrors how human research teams work: coders, thematic analysts, and senior reviewers each bring focused expertise. This decomposition also makes each step independently evaluable and debuggable.
+</Callout>
+
+</Section>
+
+<Section title="Results">
+
+Early evaluation on a dataset of pediatric clinical interviews shows:
+
+- **85%+ inter-rater agreement** between Thematica and human expert coders
+- **10× faster** processing compared to manual analysis
+- Generated themes are rated as "coherent and clinically relevant" by domain experts
+
+</Section>
+
+<Section title="Tools & Technologies">
+
+- **LLM Orchestration**: LangChain, LangGraph
+- **Configuration**: Hydra (OmegaConf)
+- **Models**: GPT-4o, Claude 3.5 Sonnet
+- **Evaluation**: Custom inter-rater reliability metrics
+- **Data**: De-identified clinical interview transcripts
+
+</Section>
