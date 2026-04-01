@@ -1,20 +1,45 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Personal Portfolio
 
-# Run and deploy your AI Studio app
+Welcome to the repository for my personal portfolio website! This site showcases my projects, publications, and professional experience.
 
-This contains everything you need to run your app locally.
+## 🔗 Live Site
+[https://joakimawesome.github.io](https://joakimawesome.github.io)
 
-View your app in AI Studio: https://ai.studio/apps/c6bc2914-6b32-4fe4-b2f3-97726352fb9f
+## Features
+- **Custom Projects System**: Detailed pages for my projects powered by MDX.
+- **Publications List**: A comprehensive list of my papers and publications with direct DOI and PDF links.
+- **Responsive Design**: Fully responsive layout optimized for mobile, tablet, and desktop devices.
+- **Modern UI/UX**: Clean aesthetics using Tailwind CSS and smooth animations with Framer Motion.
 
-## Run Locally
+## Tech Stack
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Content**: [MDX](https://mdxjs.com/) & `next-mdx-remote`
+- **Deployment**: Static Site Generation for GitHub Pages
 
-**Prerequisites:**  Node.js
+## Running Locally
 
+To run this project on your local machine, follow these steps:
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/joakimawesome/joakimawesome.github.io.git
+   cd joakimawesome.github.io
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to view the site.
+
+## 📝 License
+
+This project is open-source and available under the [MIT License](LICENSE).
