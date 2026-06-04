@@ -123,6 +123,7 @@ function PhysicsTags({ items }: { items: string[] }) {
 
       mouse.element.removeEventListener("mousewheel", (mouse as any).mousewheel);
       mouse.element.removeEventListener("DOMMouseScroll", (mouse as any).mousewheel);
+      mouse.element.removeEventListener("wheel", (mouse as any).mousewheel);
 
       Matter.World.add(world, mouseConstraint);
 

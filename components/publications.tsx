@@ -9,42 +9,48 @@ const publications = [
     status: "arXiv preprint",
     role: "2nd author",
     topics: [],
-    link: "https://doi.org/10.48550/arXiv.2603.08989"
+    doi: "https://doi.org/10.48550/arXiv.2603.08989",
+    pdf: "https://arxiv.org/pdf/2603.08989"
   },  
   {
     title: "PathMoE: Interpretable Multimodal Interaction Experts for Pediatric Brain Tumor Classification",
     status: "arXiv preprint",
     role: "Team Lead",
     topics: ["Pathology", "Mixture of Experts", "Multimodality", "Interpretability", "Cell Graph Network"],
-    link: "https://doi.org/10.48550/arXiv.2603.01547"
+    doi: "https://doi.org/10.48550/arXiv.2603.01547",
+    pdf: "https://arxiv.org/pdf/2603.01547"
   },
   {
     title: "Clinically-Informed Modeling for Pediatric Brain Tumor Classification from Whole-Slide Histopathology Images",
     status: "arXiv preprint",
     role: "1st author",
     topics: ["Pathology", "Multiple Instance Learning", "Contrastive Learning"],
-    link: "#"
+    doi: "#",
+    pdf: "#"
   },
   {
     title: "Auto-TA: Towards Scalable Automated Thematic Analysis via Multi-Agent LLMs with RL",
     status: "arXiv preprint",
     role: "2nd author",
     topics: ["LLM-driven qualitative analysis", "multi-agent collaboration", "reinforcement learning"],
-    link: "https://doi.org/10.48550/arXiv.2506.23998"
+    doi: "https://doi.org/10.48550/arXiv.2506.23998",
+    pdf: "https://arxiv.org/pdf/2506.23998"
   },
   {
     title: "Position: Thematic Analysis of Unstructured Clinical Transcripts with Large Language Models",
     status: "arXiv preprint",
     role: "2nd author",
     topics: [],
-    link: "https://doi.org/10.48550/arXiv.2509.14597"
+    doi: "https://doi.org/10.48550/arXiv.2509.14597",
+    pdf: "https://arxiv.org/pdf/2509.14597"
   },  
   {
     title: "SFT-TA: Supervised Fine-Tuned Agents in Multi-Agent LLMs for Automated Inductive Thematic Analysis",
     status: "arXiv preprint",
     role: "2nd author",
     topics: [],
-    link: "https://doi.org/10.48550/arXiv.2509.17167"
+    doi: "https://doi.org/10.48550/arXiv.2509.17167",
+    pdf: "https://arxiv.org/pdf/2509.17167"
   },    
 ];
 
@@ -92,9 +98,23 @@ export default function Publications() {
                 ))}
               </div>
               
-              <a href={pub.link} className="inline-flex items-center gap-2 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors">
-                Read Paper <ExternalLink className="w-4 h-4" />
-              </a>
+              <div className="flex flex-wrap gap-4 items-center">
+                {pub.doi && pub.doi !== "#" && (
+                  <a href={pub.doi} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors">
+                    DOI <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                {pub.pdf && pub.pdf !== "#" && (
+                  <a href={pub.pdf} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-rose-400 hover:text-rose-300 transition-colors">
+                    PDF <FileText className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                {(!pub.doi || pub.doi === "#") && (!pub.pdf || pub.pdf === "#") && (
+                  <span className="text-sm font-medium text-zinc-500">
+                    Not yet available
+                  </span>
+                )}
+              </div>
             </div>
           </motion.div>
         ))}

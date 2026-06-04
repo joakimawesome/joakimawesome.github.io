@@ -1,4 +1,30 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ── MDX prose styles ──────────────────────────────────────────── */
+.prose-custom {
+  @apply text-zinc-400 leading-relaxed;
+}
+
+.prose-custom p {
+  @apply mb-5 text-[15px] leading-[1.8];
+}
+
+.prose-custom strong {
+  @apply text-zinc-200 font-semibold;
+}
+
+.prose-custom img {
+  @apply rounded-xl border border-zinc-800/50 w-full h-auto;
+}
+
+.prose-custom li {
+  @apply text-[15px];
+}
+
+.prose-custom li::marker {
+  @apply text-zinc-600;
+}
 
 /* Normalize components inside the chat bubble wrapper */
 .chat-component-wrapper section {

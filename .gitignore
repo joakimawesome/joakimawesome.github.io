@@ -1,9 +1,18 @@
+# dependencies
 node_modules/
+
+# next.js build output
 .next/
-coverage/
-.DS_Store
-*.log
+out/
+
+# env files
 .env*
 !.env.example
-.github
+
+# OS files
+.DS_Store
+
+# misc
+coverage/
+*.log
 assets
