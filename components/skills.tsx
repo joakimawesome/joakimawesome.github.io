@@ -2,33 +2,51 @@
 
 import { useRef, MouseEvent, useEffect, useState } from 'react';
 import { motion, useMotionTemplate, useMotionValue } from 'motion/react';
-import { BrainCircuit, Code2, Microscope, Server } from 'lucide-react';
+import { BrainCircuit, Code2, Microscope, Server, Heart, Bot, BarChart3 } from 'lucide-react';
 import Matter from 'matter-js';
 
 const skills = [
   {
     category: "Machine Learning & AI",
     icon: <BrainCircuit className="w-6 h-6 text-indigo-400" />,
-    items: ["Deep Learning", "Computer Vision", "Multimodal AI", "Reinforcement Learning", "Qualitative NLP Pipelines"],
-    className: "md:col-span-2 md:row-span-2 bg-zinc-900/50"
+    items: ["Deep Learning", "Computer Vision", "Multimodal AI", "Reinforcement Learning", "NLP"],
+    className: "md:col-span-2 bg-zinc-900/50"
   },
   {
     category: "Computational Pathology",
     icon: <Microscope className="w-6 h-6 text-emerald-400" />,
-    items: ["WSI Processing", "TRIDENT Pipeline", "HistoCartography", "Hover-Net", "StarDist"],
-    className: "md:col-span-1 md:row-span-2 bg-zinc-900/50"
+    items: ["WSI Processing", "TRIDENT Pipeline", "HistoCartography", "Hover-Net", "StarDist", "Medical Imaging"],
+    className: "md:col-span-1 bg-zinc-900/50"
+  },
+  {
+    category: "LLMs & Agents",
+    icon: <Bot className="w-6 h-6 text-fuchsia-400" />,
+    items: ["LangChain", "AutoGen", "OpenAI Agents SDK", "RAG", "Vector Databases", "Multi-Agent Orchestration", "Prompt Engineering"],
+    className: "md:col-span-1 bg-zinc-900/50"
+  },
+  {
+    category: "Healthcare Biosignals",
+    icon: <Heart className="w-6 h-6 text-rose-400" />,
+    items: ["HRV Modeling", "EEG Signal Processing", "ECG Analysis", "PPG Sensors", "Mental Health AI"],
+    className: "md:col-span-1 bg-zinc-900/50"
+  },
+  {
+    category: "Infrastructure & Cloud",
+    icon: <Server className="w-6 h-6 text-amber-400" />,
+    items: ["Git / GitHub", "Azure Cloud", "GCP", "HPC Clusters (TACC Vista)", "SLURM", "Linux/Unix"],
+    className: "md:col-span-1 bg-zinc-900/50"
   },
   {
     category: "Programming",
     icon: <Code2 className="w-6 h-6 text-sky-400" />,
-    items: ["Python", "PyTorch", "scikit-learn", "LangChain", "LangGraph", "Hydra", "MLflow"],
-    className: "md:col-span-2 md:row-span-1 bg-zinc-900/50"
+    items: ["Python", "PyTorch", "scikit-learn", "Java", "SQL", "C++"],
+    className: "md:col-span-1 bg-zinc-900/50"
   },
   {
-    category: "Infrastructure",
-    icon: <Server className="w-6 h-6 text-amber-400" />,
-    items: ["Git / GitHub", "HPC Clusters (TACC Vista)", "SLURM", "GPU Training Pipelines"],
-    className: "md:col-span-1 md:row-span-1 bg-zinc-900/50"
+    category: "Data Science & MLOps",
+    icon: <BarChart3 className="w-6 h-6 text-teal-400" />,
+    items: ["Pandas", "NumPy", "Matplotlib / Seaborn", "Plotly", "Tableau", "Docker", "Streamlit", "MLflow", "Hydra"],
+    className: "md:col-span-2 bg-zinc-900/50"
   }
 ];
 

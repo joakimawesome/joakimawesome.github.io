@@ -8,30 +8,51 @@ const experiences = [
   {
     title: "Graduate Researcher",
     company: "AI Health Lab, UT Austin",
-    date: "Present",
-    description: "Leading the pediatric brain tumor histopathology AI project under Ying Ding. Focusing on vision foundation models for pathology, whole-slide image analysis, and multimodal AI methods for medical data.",
-    tags: ["Computational Pathology", "Vision Foundation Models", "Multimodal AI"]
+    date: "Mar 2025 – Present",
+    description: "Lead the pediatric brain tumor research initiative, overseeing project development, coordinating multidisciplinary teams, and driving milestones to advance AI/ML for pediatric oncology. Developed production-ready multi-agent LLM framework for automated thematic analysis of clinical interviews using LangChain; built scalable, modular codebase for reproducibility and auditability.",
+    tags: ["Pediatric Oncology", "Multi-Agent LLMs", "Computational Pathology"]
   },
   {
-    title: "Teaching Assistant",
-    company: "AI in Healthcare, UT Austin",
-    date: "Present",
-    description: "Supporting instruction and helping students with ML/AI concepts. Assisting with course materials and evaluation for the AI in Healthcare course.",
-    tags: ["Mentorship", "AI Education", "Healthcare"]
+    title: "Learning Facilitator",
+    company: "AI in Healthcare (Graduate Course), UT Austin",
+    date: "Jan 2025 – May 2026",
+    description: "Led facilitation for 400+ graduate students. Provided direct mentorship, grading, and course material development. Enhanced platform infrastructure through backend troubleshooting and automation, improving scalability and UX for large-scale course delivery.",
+    tags: ["AI Education", "Mentorship", "Backend Automation"]
+  },
+  {
+    title: "AI Consultant",
+    company: "HealthQuest Capital, Austin, TX",
+    date: "Oct 2025 – Mar 2026",
+    description: "Architected and deployed agentic LLM workflows on Azure for automated document triage and portfolio analysis in private equity data room operations using OpenAI Agents SDK and Streamlit.",
+    tags: ["Agentic Workflows", "Azure Cloud", "Data Rooms"]
   },
   {
     title: "Machine Learning Engineer",
-    company: "NanoMood Tech",
-    date: "Previous",
-    description: "Worked on ML systems for a UCSD-affiliated startup. Collaborated closely with CEO and CTO to structure the ML codebase, organize GitHub-based development processes, and balance engineering workloads.",
-    tags: ["ML Engineering", "Startup", "GitHub Workflows"]
+    company: "NanoMood Tech, San Diego, CA",
+    date: "Jan 2024 – Sep 2024",
+    description: "Developed robust, scalable ML framework for sleep state classification using HRV biosignals with MLflow. Optimized predictive models, achieving 70–95% accuracy. Developed theoretical framework for multimodal AI combining ML models with LLMs; submitted as a grant proposal for healthcare applications.",
+    tags: ["ML Engineering", "Biosignal Processing", "Multimodal AI"]
+  },
+  {
+    title: "Data Science & AI Intern",
+    company: "Axaitech, Cape Town, South South Africa",
+    date: "Jun 2022 – Aug 2022",
+    description: "Trained and validated predictive analytics models using bus ticket data from Nairobi and temporally corresponding Uber data. Partnered with CEO and CTO to interpret liquid biopsy data, contributing to potential breakthroughs in classifying and screening for 7 distinct cancer types using advanced ML techniques.",
+    tags: ["Predictive Analytics", "Liquid Biopsy", "Cancer Classification"]
+  },
+  {
+    title: "Private Tutor",
+    company: "San Diego, CA",
+    date: "Aug 2019 – May 2023",
+    description: "Provided long-term academic tutoring across STEM subjects; developed communication and pedagogical skills over nearly 4 years.",
+    tags: ["STEM Tutoring", "Pedagogy", "Communication"]
   },
   {
     title: "B.S. Cognitive Science",
     company: "UC San Diego",
-    date: "Previous",
-    description: "Machine Learning & Neural Computation specialization. Originally on a pre-med track, giving exposure to medicine and healthcare which shaped current AI focus.",
-    tags: ["Cognitive Science", "Pre-med", "Neural Computation"]
+    date: "Sep 2018 – Dec 2022",
+    description: "Specialization in Machine Learning & Neural Computation. GPA: 3.5. Originally on a pre-med track, giving exposure to medicine and healthcare which shaped current AI focus.",
+    tags: ["Cognitive Science", "Machine Learning", "Neural Computation"]
   }
 ];
 

@@ -30,15 +30,15 @@ export default function Hero() {
           </a>
           
           <div className="flex items-center gap-4">
-            <a href="#" className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors rounded-full hover:bg-zinc-800/50">
+            <a href="https://github.com/joakimawesome" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors rounded-full hover:bg-zinc-800/50">
               <Github className="w-5 h-5" />
               <span className="sr-only">GitHub</span>
             </a>
-            <a href="#" className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors rounded-full hover:bg-zinc-800/50">
+            <a href="https://linkedin.com/in/joakimnguyen" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors rounded-full hover:bg-zinc-800/50">
               <Linkedin className="w-5 h-5" />
               <span className="sr-only">LinkedIn</span>
             </a>
-            <a href="#" className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors rounded-full hover:bg-zinc-800/50">
+            <a href="mailto:joakim.nguyen99@gmail.com" className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors rounded-full hover:bg-zinc-800/50">
               <Mail className="w-5 h-5" />
               <span className="sr-only">Email</span>
             </a>

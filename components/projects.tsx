@@ -8,41 +8,51 @@ import Image from 'next/image';
 import thematicagImg from '@/assets/projects/thematica.jpg';
 import peLlmAgentsImg from '@/assets/projects/pe-llm-agents.jpg';
 import pathologyImg from '@/assets/projects/computational-pathology-summary-fig.jpg';
+import clinicalAgentsImg from '@/assets/projects/clinical-agents.png';
+import sleepStateImg from '@/assets/nap_eeg_clf/power_spec.png';
+import spotifyCovidImg from '@/assets/spotify_covid/clusters.png';
 
 const projects = [
   {
-    title: "Pediatric Histopathology",
-    description: "Lead researcher analyzing whole-slide pathology images. Exploring tumor subtype classification, attention heatmaps, and multimodal fusion.",
-    tags: ["Computational Pathology", "Whole Slide Images", "Pathology Foundation Models", "Tumor Classification", "Deep Learning"],
+    title: "Pediatric Brain Tumor Classification",
+    description: "Lead researcher applying vision foundation models to pediatric brain tumor histopathology from whole-slide images, emphasizing clinical relevance and interpretability.",
+    tags: ["Computational Pathology", "Vision Foundation Models", "Medical Imaging", "Deep Learning"],
     image: pathologyImg,
-    link: "/projects/pediatric-histopathology"
+    link: "https://arxiv.org/abs/2604.21060"
   },
   {
-    title: "Thematica",
-    description: "Multi-agent LLM system for qualitative research automation. Features Coder, Sub-Themer, Themer, and Reviewer agents for analyzing clinical interviews.",
-    tags: ["LangChain", "LangGraph", "Multi-Agent LLMs", "Hydra"],
+    title: "LLM Thematic Analysis Pipeline (Auto-TA)",
+    description: "Designed LangChain/LangGraph-based multi-agent workflows for automated inductive qualitative coding and thematic synthesis on clinical interview transcripts.",
+    tags: ["LangChain", "LangGraph", "Multi-Agent LLMs", "NLP", "Qualitative Coding"],
     image: thematicagImg,
-    link: "/projects/thematica"
+    link: "https://doi.org/10.48550/arXiv.2506.23998"
   },
   {
-    title: "Private Equity LLM Agents",
-    description: "",
-    tags: ["Healthcare/Finance", "Muti-Agent LLMs", "OpenAI Platform", "Azure Cloud"],
+    title: "DataRoom AI",
+    description: "Agentic LLM system for automated document triage and portfolio analysis in private equity data room operations; built on Azure using OpenAI Agents SDK and Streamlit.",
+    tags: ["Azure Cloud", "OpenAI Agents SDK", "Streamlit", "Agentic Workflows"],
     image: peLlmAgentsImg,
     link: "#"
   },
   {
-    title: "Sleep EEG",
-    description: "Signal processing techniques to filter and analyze EEG data for sleep pattern recognition.",
-    tags: ["Electroencephalography", "Sleep Research", "Signal Processing", "Experiment Tracking", "Time-series Analysis"],
-    image: "https://picsum.photos/seed/neuroscience/800/600",
+    title: "Clinical Agents",
+    description: "Prototyped clinical decision-making simulations using AutoGen and Letta to model a clinic conversation among a physician, nurse, patient, and electronic medical record agent, exploring multi-agent interactions and clinical outcomes back when this area of research was completely novel.",
+    tags: ["AutoGen", "Letta", "Multi-Agent Systems", "Clinical Simulations", "AI Ethics"],
+    image: clinicalAgentsImg,
     link: "#"
   },
   {
-    title: "Music Analysis via Spotify",
-    description: "",
-    tags: ["Unsupervised Machine Learning", "Time-series Analysis"],
-    image: "https://picsum.photos/seed/music/800/600",
+    title: "Sleep State Prediction Pipeline",
+    description: "Developed an MLflow-based framework for sleep state classification using HRV biosignals, optimizing predictive models to achieve 70–95% accuracy for wearable applications.",
+    tags: ["HRV Biosignals", "MLflow", "scikit-learn", "Signal Processing", "Predictive Modeling"],
+    image: sleepStateImg,
+    link: "#"
+  },
+  {
+    title: "Spotify/COVID Insights",
+    description: "Built a data pipeline with the Spotify Web API to analyze listening patterns, linking user data with COVID-19 social trends and developing clustering-based recommendation prototypes.",
+    tags: ["Spotify Web API", "Data Pipelines", "Unsupervised Clustering", "Social Trends Analysis"],
+    image: spotifyCovidImg,
     link: "#"
   }
 ];
