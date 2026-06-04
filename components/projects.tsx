@@ -5,40 +5,44 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 
+import thematicagImg from '@/assets/projects/thematica.jpg';
+import peLlmAgentsImg from '@/assets/projects/pe-llm-agents.jpg';
+import pathologyImg from '@/assets/projects/computational-pathology-summary-fig.jpg';
+
 const projects = [
   {
     title: "Pediatric Histopathology",
     description: "Lead researcher analyzing whole-slide pathology images. Exploring tumor subtype classification, attention heatmaps, and multimodal fusion.",
     tags: ["Computational Pathology", "Whole Slide Images", "Pathology Foundation Models", "Tumor Classification", "Deep Learning"],
-    seed: "microscope",
+    image: pathologyImg,
     link: "#"
   },
   {
     title: "Thematica",
     description: "Multi-agent LLM system for qualitative research automation. Features Coder, Sub-Themer, Themer, and Reviewer agents for analyzing clinical interviews.",
     tags: ["LangChain", "LangGraph", "Multi-Agent LLMs", "Hydra"],
-    seed: "network",
+    image: thematicagImg,
     link: "#"
   },
   {
     title: "Private Equity LLM Agents",
     description: "",
     tags: ["Healthcare/Finance", "Muti-Agent LLMs", "OpenAI Platform", "Azure Cloud"],
-    seed: "neuroscience",
+    image: peLlmAgentsImg,
     link: "#"
   },
   {
     title: "Sleep EEG",
     description: "Signal processing techniques to filter and analyze EEG data for sleep pattern recognition.",
     tags: ["Electroencephalography", "Sleep Research", "Signal Processing", "Experiment Tracking", "Time-series Analysis"],
-    seed: "neuroscience",
+    image: "https://picsum.photos/seed/neuroscience/800/600",
     link: "#"
   },
   {
     title: "Music Analysis via Spotify",
     description: "",
     tags: ["Unsupervised Machine Learning", "Time-series Analysis"],
-    seed: "music",
+    image: "https://picsum.photos/seed/music/800/600",
     link: "#"
   }
 ];
@@ -68,7 +72,7 @@ export default function Projects() {
             >
               <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md">
                 <Image 
-                  src={`https://picsum.photos/seed/${projects[activeProject].seed}/800/600`} 
+                  src={projects[activeProject].image} 
                   alt={projects[activeProject].title} 
                   fill 
                   className="object-cover opacity-80" 
