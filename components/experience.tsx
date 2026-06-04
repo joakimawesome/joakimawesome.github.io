@@ -70,14 +70,18 @@ export default function Experience() {
       const container = scrollRef.current;
       if (!section || !container) return;
 
-      const rect = section.getBoundingClientRect();
       const containerRect = container.getBoundingClientRect();
       
-      // Check if mouse is within the vertical bounds of the section
-      if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+      // Check if mouse is within the bounds of the slider container itself
+      if (
+        e.clientY >= containerRect.top &&
+        e.clientY <= containerRect.bottom &&
+        e.clientX >= containerRect.left &&
+        e.clientX <= containerRect.right
+      ) {
         if (!isHovering.current) {
           isHovering.current = true;
-          // Sync current scroll to avoid jumping when mouse enters the section vertically
+          // Sync current scroll to avoid jumping when mouse enters the slider
           currentScroll.current = container.scrollLeft;
           targetScroll.current = container.scrollLeft;
         }
@@ -162,7 +166,7 @@ export default function Experience() {
                 {exp.date}
               </div>
               
-              <div className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[200px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5">
+              <div className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[230px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5">
                 
                 {/* Header (Always visible) */}
                 <div className="relative z-10 flex justify-between items-start">

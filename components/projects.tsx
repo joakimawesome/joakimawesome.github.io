@@ -81,26 +81,43 @@ export default function Projects() {
               className="flex flex-col"
             >
               {/* Clickable image area */}
-              <a
-                href={projects[activeProject].link}
-                className="group/card relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md block cursor-pointer"
-              >
-                <Image 
-                  src={projects[activeProject].image} 
-                  alt={projects[activeProject].title} 
-                  fill 
-                  className="object-cover opacity-80 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-500" 
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent" />
-                
-                {/* Centered overlay prompt */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
-                  <span className="bg-zinc-100 text-zinc-950 px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-xl">
-                    View Project <ArrowUpRight className="w-4 h-4" />
-                  </span>
+              {projects[activeProject].link !== "#" ? (
+                <a
+                  href={projects[activeProject].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/card relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md block cursor-pointer"
+                >
+                  <Image 
+                    src={projects[activeProject].image} 
+                    alt={projects[activeProject].title} 
+                    fill 
+                    className="object-cover opacity-80 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-500" 
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent" />
+                  
+                  {/* Centered overlay prompt */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
+                    <span className="bg-zinc-100 text-zinc-950 px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-xl">
+                      View Project <ArrowUpRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </a>
+              ) : (
+                <div
+                  className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md block"
+                >
+                  <Image 
+                    src={projects[activeProject].image} 
+                    alt={projects[activeProject].title} 
+                    fill 
+                    className="object-cover opacity-80" 
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent" />
                 </div>
-              </a>
+              )}
               
               <h3 className="text-lg sm:text-xl font-medium text-zinc-100 mb-2 leading-tight">
                 {projects[activeProject].title}
