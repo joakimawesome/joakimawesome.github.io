@@ -18,18 +18,18 @@ const projects = [
     description: "Lead researcher applying vision foundation models to pediatric brain tumor histopathology from whole-slide images, emphasizing clinical relevance and interpretability.",
     tags: ["Computational Pathology", "Vision Foundation Models", "Medical Imaging", "Deep Learning"],
     image: pathologyImg,
-    link: "https://arxiv.org/abs/2604.21060"
+    link: "/projects/pediatric-histopathology"
   },
   {
     title: "LLM Thematic Analysis Pipeline (Auto-TA)",
     description: "Designed LangChain/LangGraph-based multi-agent workflows for automated inductive qualitative coding and thematic synthesis on clinical interview transcripts.",
     tags: ["LangChain", "LangGraph", "Multi-Agent LLMs", "NLP", "Qualitative Coding"],
     image: thematicagImg,
-    link: "https://doi.org/10.48550/arXiv.2506.23998"
+    link: "/projects/thematica"
   },
   {
     title: "DataRoom AI",
-    description: "Agentic LLM system for automated document triage and portfolio analysis in private equity data room operations; built on Azure using OpenAI Agents SDK and Streamlit.",
+    description: "AI-powered due diligence platform with a multi-agent pipeline that autonomously researches companies across market, competitive, IP, financial, and sentiment dimensions — delivering structured reports with full execution traceability.",
     tags: ["Azure Cloud", "OpenAI Agents SDK", "Streamlit", "Agentic Workflows"],
     image: peLlmAgentsImg,
     link: "#"
