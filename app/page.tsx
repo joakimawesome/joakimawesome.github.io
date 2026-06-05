@@ -1,3 +1,5 @@
+'use client';
+
 import Nav from '@/components/nav';
 import Hero from '@/components/hero';
 import Experience from '@/components/experience';
@@ -5,8 +7,12 @@ import Projects from '@/components/projects';
 import Publications from '@/components/publications';
 import Skills from '@/components/skills';
 import Footer from '@/components/footer';
+import FocusSection from '@/components/focus-section';
+import { useActiveSection } from '@/hooks/useActiveSection';
 
 export default function Home() {
+  const activeSection = useActiveSection(['hero', 'experience', 'projects', 'publications', 'skills', 'contact']);
+
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-300 font-sans selection:bg-indigo-500/30 relative">
       {/* Subtle technical background grid */}
@@ -16,12 +22,26 @@ export default function Home() {
       <div className="relative z-10">
         <Nav />
         
-        <main className="max-w-7xl mx-auto px-6 md:px-12">
-          <Hero />
-          <Experience />
-          <Projects />
-          <Publications />
-          <Skills />
+        <main className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-8">
+          <FocusSection id="hero" isActive={activeSection === 'hero'}>
+            <Hero />
+          </FocusSection>
+
+          <FocusSection id="experience" isActive={activeSection === 'experience'}>
+            <Experience />
+          </FocusSection>
+
+          <FocusSection id="projects" isActive={activeSection === 'projects'}>
+            <Projects />
+          </FocusSection>
+
+          <FocusSection id="publications" isActive={activeSection === 'publications'}>
+            <Publications />
+          </FocusSection>
+
+          <FocusSection id="skills" isActive={activeSection === 'skills'}>
+            <Skills />
+          </FocusSection>
         </main>
         
         <Footer />
