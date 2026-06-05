@@ -21,7 +21,7 @@ export default function Hero() {
         </h1>
         
         <p className="text-base text-zinc-400 max-w-xl mb-6 leading-relaxed">
-          M.S. in <strong className="font-medium text-zinc-200">Artificial Intelligence</strong> at UT Austin and B.S. in <strong className="font-medium text-zinc-200">Cognitive Science</strong> (specialization in <strong className="font-medium text-zinc-200">Machine Learning</strong> &amp; <strong className="font-medium text-zinc-200">Neural Computation</strong>) from UC San Diego. With a <strong className="font-medium text-zinc-200">pre-med background</strong>, I bridge <strong className="font-medium text-zinc-200">cognitive science</strong> and <strong className="font-medium text-zinc-200">machine learning</strong> to advance healthcare applications.
+          M.S. in <strong className="font-medium text-zinc-200">Artificial Intelligence</strong> at UT Austin and B.S. in <strong className="font-medium text-zinc-200">Cognitive Science</strong> (specialization in <strong className="font-medium text-zinc-200">Machine Learning</strong> &amp; <strong className="font-medium text-zinc-200">Neural Computation</strong>) from UC San Diego. With a <strong className="font-medium text-zinc-200">pre-med background</strong>, I bridge cognitive science and machine learning to advance healthcare applications.
         </p>
 
         <div className="flex flex-wrap items-center gap-6">
