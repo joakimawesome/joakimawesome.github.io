@@ -70,14 +70,31 @@ export default function Experience() {
       const container = scrollRef.current;
       if (!section || !container) return;
 
-      const rect = section.getBoundingClientRect();
       const containerRect = container.getBoundingClientRect();
       
-      // Check if mouse is within the vertical bounds of the section
-      if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+      // Find the vertical position of the cards to limit scrolling to the timeline area above them
+      const firstCard = container.querySelector('[data-timeline-card]');
+      let isInTimelineRegion = false;
+      
+      if (firstCard) {
+        const cardRect = firstCard.getBoundingClientRect();
+        isInTimelineRegion =
+          e.clientY >= containerRect.top &&
+          e.clientY < cardRect.top &&
+          e.clientX >= containerRect.left &&
+          e.clientX <= containerRect.right;
+      } else {
+        isInTimelineRegion =
+          e.clientY >= containerRect.top &&
+          e.clientY <= containerRect.bottom &&
+          e.clientX >= containerRect.left &&
+          e.clientX <= containerRect.right;
+      }
+
+      if (isInTimelineRegion) {
         if (!isHovering.current) {
           isHovering.current = true;
-          // Sync current scroll to avoid jumping when mouse enters the section vertically
+          // Sync current scroll to avoid jumping when mouse enters the slider
           currentScroll.current = container.scrollLeft;
           targetScroll.current = container.scrollLeft;
         }
@@ -149,7 +166,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="min-w-[260px] md:min-w-[320px] max-w-[320px] flex-shrink-0 relative flex flex-col cursor-default"
+              className="min-w-[260px] md:min-w-[320px] max-w-[320px] flex-shrink-0 relative flex flex-col"
             >
               {/* Timeline Line & Dot */}
               <div className="flex items-center mb-8 relative">
@@ -162,7 +179,10 @@ export default function Experience() {
                 {exp.date}
               </div>
               
-              <div className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[200px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5">
+              <div 
+                data-timeline-card
+                className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[200px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5 cursor-default"
+              >
                 
                 {/* Header (Always visible) */}
                 <div className="relative z-10 flex justify-between items-start">
