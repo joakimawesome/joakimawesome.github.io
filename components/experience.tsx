@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Plus } from 'lucide-react';
 
@@ -8,42 +8,54 @@ const experiences = [
   {
     title: "Graduate Researcher",
     company: "AI Health Lab, UT Austin",
+    shortCompany: "AI Health Lab",
     date: "Mar 2025 – Present",
+    year: "2025",
     description: "Lead the pediatric brain tumor research initiative, overseeing project development, coordinating multidisciplinary teams, and driving milestones to advance AI/ML for pediatric oncology. Developed production-ready multi-agent LLM framework for automated thematic analysis of clinical interviews using LangChain; built scalable, modular codebase for reproducibility and auditability.",
     tags: ["Pediatric Oncology", "Multi-Agent LLMs", "Computational Pathology"]
   },
   {
     title: "Learning Facilitator",
     company: "AI in Healthcare (Graduate Course), UT Austin",
+    shortCompany: "UT Austin (TA)",
     date: "Jan 2025 – May 2026",
+    year: "2025",
     description: "Led facilitation for 400+ graduate students. Provided direct mentorship, grading, and course material development. Enhanced platform infrastructure through backend troubleshooting and automation, improving scalability and UX for large-scale course delivery.",
     tags: ["AI Education", "Mentorship", "Backend Automation"]
   },
   {
     title: "AI Consultant",
     company: "HealthQuest Capital, Austin, TX",
+    shortCompany: "HealthQuest",
     date: "Oct 2025 – Mar 2026",
+    year: "2025",
     description: "Architected and deployed agentic LLM workflows on Azure for automated document triage and portfolio analysis in private equity data room operations using OpenAI Agents SDK and Streamlit.",
     tags: ["Agentic Workflows", "Azure Cloud", "Data Rooms"]
   },
   {
     title: "Machine Learning Engineer",
     company: "NanoMood Tech, San Diego, CA",
+    shortCompany: "NanoMood",
     date: "Jan 2024 – Sep 2024",
+    year: "2024",
     description: "Developed robust, scalable ML framework for sleep state classification using HRV biosignals with MLflow. Optimized predictive models, achieving 70–95% accuracy. Developed theoretical framework for multimodal AI combining ML models with LLMs; submitted as a grant proposal for healthcare applications.",
     tags: ["ML Engineering", "Biosignal Processing", "Multimodal AI"]
   },
   {
     title: "Data Science & AI Intern",
     company: "Axaitech, Cape Town, South South Africa",
+    shortCompany: "Axaitech",
     date: "Jun 2022 – Aug 2022",
+    year: "2022",
     description: "Trained and validated predictive analytics models using bus ticket data from Nairobi and temporally corresponding Uber data. Partnered with CEO and CTO to interpret liquid biopsy data, contributing to potential breakthroughs in classifying and screening for 7 distinct cancer types using advanced ML techniques.",
     tags: ["Predictive Analytics", "Liquid Biopsy", "Cancer Classification"]
   },
   {
     title: "Private Tutor",
     company: "San Diego, CA",
+    shortCompany: "Tutor",
     date: "Aug 2019 – May 2023",
+    year: "2019",
     description: "Provided long-term academic tutoring across STEM subjects; developed communication and pedagogical skills over nearly 4 years.",
     tags: ["STEM Tutoring", "Pedagogy", "Communication"]
   }
@@ -56,6 +68,70 @@ export default function Experience() {
   const targetScroll = useRef(0);
   const currentScroll = useRef(0);
   const isHovering = useRef(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const scrollToCard = (index: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const cards = container.querySelectorAll('[data-timeline-card]');
+    const card = cards[index];
+    if (!card) return;
+
+    const cardRect = card.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    // Card position relative to container's left edge
+    const relativeLeft = container.scrollLeft + cardRect.left - containerRect.left;
+    
+    // Center the card in the viewport
+    const target = relativeLeft - (containerRect.width - cardRect.width) / 2;
+
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    const clampedTarget = Math.max(0, Math.min(maxScroll, target));
+
+    // Update targeting refs
+    targetScroll.current = clampedTarget;
+    currentScroll.current = clampedTarget;
+    setActiveIndex(index);
+
+    container.scrollTo({
+      left: clampedTarget,
+      behavior: 'smooth'
+    });
+  };
+
+  const handleScroll = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    // Sync refs if user scrolled via other means (touch/trackpad)
+    if (!isHovering.current) {
+      currentScroll.current = container.scrollLeft;
+      targetScroll.current = container.scrollLeft;
+    }
+
+    // Determine the active card closest to the container's center
+    const cards = container.querySelectorAll('[data-timeline-card]');
+    let closestIndex = 0;
+    let minDistance = Infinity;
+    const containerRect = container.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+
+    cards.forEach((card, idx) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const distance = Math.abs(cardCenter - containerCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = idx;
+      }
+    });
+
+    if (closestIndex !== activeIndex) {
+      setActiveIndex(closestIndex);
+    }
+  };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -65,26 +141,14 @@ export default function Experience() {
 
       const containerRect = container.getBoundingClientRect();
       
-      // Find the vertical position of the cards to limit scrolling to the timeline area above them
-      const firstCard = container.querySelector('[data-timeline-card]');
-      let isInTimelineRegion = false;
-      
-      if (firstCard) {
-        const cardRect = firstCard.getBoundingClientRect();
-        isInTimelineRegion =
-          e.clientY >= containerRect.top &&
-          e.clientY < cardRect.top &&
-          e.clientX >= containerRect.left &&
-          e.clientX <= containerRect.right;
-      } else {
-        isInTimelineRegion =
-          e.clientY >= containerRect.top &&
-          e.clientY <= containerRect.bottom &&
-          e.clientX >= containerRect.left &&
-          e.clientX <= containerRect.right;
-      }
+      // Track mouse scrolling when within the bounds of the timeline and cards
+      const isInSliderRegion =
+        e.clientY >= containerRect.top &&
+        e.clientY <= containerRect.bottom &&
+        e.clientX >= containerRect.left &&
+        e.clientX <= containerRect.right;
 
-      if (isInTimelineRegion) {
+      if (isInSliderRegion) {
         if (!isHovering.current) {
           isHovering.current = true;
           // Sync current scroll to avoid jumping when mouse enters the slider
@@ -146,11 +210,67 @@ export default function Experience() {
         <p className="text-base text-zinc-400 max-w-2xl">A blend of academic research, technical leadership, and industry engineering.</p>
       </div>
 
-      <div className="relative group/slider cursor-ew-resize">
+      {/* Silhouette Timeline Map Navigator */}
+      <div className="flex flex-col items-center mb-10 w-full select-none">
+        <div className="relative flex items-center justify-between w-full max-w-3xl px-4 sm:px-12">
+          {experiences.map((exp, idx) => {
+            const isActive = idx === activeIndex;
+            return (
+              <button
+                key={idx}
+                onClick={() => scrollToCard(idx)}
+                className="group/mini relative flex flex-col items-center focus:outline-none rounded-lg p-1 transition-all duration-300"
+                aria-label={`Go to ${exp.title} at ${exp.company}`}
+              >
+                {/* Silhouette Card */}
+                <div 
+                  className={`w-10 h-6 sm:w-16 sm:h-10 md:w-20 md:h-12 rounded-md border flex flex-col p-1 sm:p-1.5 transition-all duration-500 relative overflow-hidden bg-zinc-900/30 cursor-pointer ${
+                    isActive 
+                      ? 'border-indigo-500 bg-indigo-500/10 shadow-[0_0_15px_rgba(99,102,241,0.25)] scale-105 sm:scale-110' 
+                      : 'border-zinc-800/80 hover:border-zinc-500/50 hover:bg-zinc-800/30'
+                  }`}
+                >
+                  {/* Tiny Skeleton lines representing card text */}
+                  <div className={`h-0.5 sm:h-1 w-[70%] rounded-full transition-colors duration-500 mb-0.5 sm:mb-1 ${
+                    isActive ? 'bg-indigo-400' : 'bg-zinc-700/60 group-hover/mini:bg-zinc-600'
+                  }`}></div>
+                  <div className={`h-0.5 w-[50%] rounded-full transition-colors duration-500 mb-0.5 sm:mb-2 ${
+                    isActive ? 'bg-indigo-500/50' : 'bg-zinc-800/80'
+                  }`}></div>
+                  <div className={`h-0.5 w-[85%] rounded-full transition-colors duration-500 ${
+                    isActive ? 'bg-indigo-500/20' : 'bg-zinc-800/40'
+                  }`}></div>
+                  
+                  {/* Glass/Glow Effect */}
+                  <div className={`absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-0 transition-opacity duration-500 ${
+                    isActive ? 'opacity-100' : ''
+                  }`} />
+                </div>
+
+                {/* Date/Year Label */}
+                <span className={`text-[9px] sm:text-xs font-mono font-medium mt-2 transition-colors duration-500 ${
+                  isActive ? 'text-indigo-400 font-semibold' : 'text-zinc-600 group-hover/mini:text-zinc-400'
+                }`}>
+                  {exp.year}
+                </span>
+
+                {/* Tooltip on Hover */}
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 rounded-lg bg-zinc-900/95 border border-zinc-800 text-[10px] font-mono text-zinc-300 font-medium whitespace-nowrap opacity-0 pointer-events-none group-hover/mini:opacity-100 transition-opacity duration-300 shadow-xl z-50 backdrop-blur-sm">
+                  <div className="text-zinc-100 font-medium">{exp.shortCompany}</div>
+                  <div className="text-zinc-500 text-[9px]">{exp.title}</div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="relative group/slider cursor-none">
         {/* Scroll Container */}
         <div 
           ref={scrollRef}
-          className="flex gap-6 overflow-hidden pb-8 pt-4 px-4 -mx-4 items-start [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          onScroll={handleScroll}
+          className="flex gap-6 overflow-x-auto pb-8 pt-4 px-4 -mx-4 items-start [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {experiences.map((exp, idx) => (
             <motion.div 
@@ -163,18 +283,28 @@ export default function Experience() {
             >
               {/* Timeline Line & Dot */}
               <div className="flex items-center mb-8 relative">
-                <div className="w-4 h-4 rounded-full bg-zinc-950 border-2 border-indigo-500 z-10 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+                <div className={`w-4 h-4 rounded-full bg-zinc-950 border-2 transition-all duration-500 z-10 ${
+                  idx === activeIndex
+                    ? 'border-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)] scale-110'
+                    : 'border-zinc-700'
+                }`}></div>
                 {/* Connecting line */}
                 <div className={`h-px bg-zinc-800 flex-grow -ml-2 ${idx === experiences.length - 1 ? 'bg-gradient-to-r from-zinc-800 to-transparent' : ''}`}></div>
               </div>
 
-              <div className="text-sm font-mono text-indigo-400 mb-4 px-2">
+              <div className={`text-sm font-mono mb-4 px-2 transition-colors duration-500 ${
+                idx === activeIndex ? 'text-indigo-400' : 'text-zinc-500'
+              }`}>
                 {exp.date}
               </div>
               
               <div 
                 data-timeline-card
-                className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[230px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5 cursor-default"
+                className={`group bg-zinc-900/40 border p-4 rounded-2xl h-[230px] flex flex-col hover:bg-zinc-900/80 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5 ${
+                  idx === activeIndex
+                    ? 'border-indigo-500/50 shadow-indigo-500/5'
+                    : 'border-zinc-800/60 hover:border-indigo-500/30'
+                }`}
               >
                 
                 {/* Header (Always visible) */}
