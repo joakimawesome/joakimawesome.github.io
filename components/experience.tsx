@@ -72,26 +72,14 @@ export default function Experience() {
 
       const containerRect = container.getBoundingClientRect();
       
-      // Find the vertical position of the cards to limit scrolling to the timeline area above them
-      const firstCard = container.querySelector('[data-timeline-card]');
-      let isInTimelineRegion = false;
-      
-      if (firstCard) {
-        const cardRect = firstCard.getBoundingClientRect();
-        isInTimelineRegion =
-          e.clientY >= containerRect.top &&
-          e.clientY < cardRect.top &&
-          e.clientX >= containerRect.left &&
-          e.clientX <= containerRect.right;
-      } else {
-        isInTimelineRegion =
-          e.clientY >= containerRect.top &&
-          e.clientY <= containerRect.bottom &&
-          e.clientX >= containerRect.left &&
-          e.clientX <= containerRect.right;
-      }
+      // Track mouse scrolling when within the bounds of the timeline and cards
+      const isInSliderRegion =
+        e.clientY >= containerRect.top &&
+        e.clientY <= containerRect.bottom &&
+        e.clientX >= containerRect.left &&
+        e.clientX <= containerRect.right;
 
-      if (isInTimelineRegion) {
+      if (isInSliderRegion) {
         if (!isHovering.current) {
           isHovering.current = true;
           // Sync current scroll to avoid jumping when mouse enters the slider
@@ -153,7 +141,7 @@ export default function Experience() {
         <p className="text-base text-zinc-400 max-w-2xl">A blend of academic research, technical leadership, and industry engineering.</p>
       </div>
 
-      <div className="relative group/slider cursor-ew-resize">
+      <div className="relative group/slider cursor-none">
         {/* Scroll Container */}
         <div 
           ref={scrollRef}
@@ -181,7 +169,7 @@ export default function Experience() {
               
               <div 
                 data-timeline-card
-                className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[200px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5 cursor-default"
+                className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[200px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5"
               >
                 
                 {/* Header (Always visible) */}
