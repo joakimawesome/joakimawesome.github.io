@@ -46,13 +46,6 @@ const experiences = [
     date: "Aug 2019 – May 2023",
     description: "Provided long-term academic tutoring across STEM subjects; developed communication and pedagogical skills over nearly 4 years.",
     tags: ["STEM Tutoring", "Pedagogy", "Communication"]
-  },
-  {
-    title: "B.S. Cognitive Science",
-    company: "UC San Diego",
-    date: "Sep 2018 – Dec 2022",
-    description: "Specialization in Machine Learning & Neural Computation. GPA: 3.5. Originally on a pre-med track, giving exposure to medicine and healthcare which shaped current AI focus.",
-    tags: ["Cognitive Science", "Machine Learning", "Neural Computation"]
   }
 ];
 
@@ -72,13 +65,26 @@ export default function Experience() {
 
       const containerRect = container.getBoundingClientRect();
       
-      // Check if mouse is within the bounds of the slider container itself
-      if (
-        e.clientY >= containerRect.top &&
-        e.clientY <= containerRect.bottom &&
-        e.clientX >= containerRect.left &&
-        e.clientX <= containerRect.right
-      ) {
+      // Find the vertical position of the cards to limit scrolling to the timeline area above them
+      const firstCard = container.querySelector('[data-timeline-card]');
+      let isInTimelineRegion = false;
+      
+      if (firstCard) {
+        const cardRect = firstCard.getBoundingClientRect();
+        isInTimelineRegion =
+          e.clientY >= containerRect.top &&
+          e.clientY < cardRect.top &&
+          e.clientX >= containerRect.left &&
+          e.clientX <= containerRect.right;
+      } else {
+        isInTimelineRegion =
+          e.clientY >= containerRect.top &&
+          e.clientY <= containerRect.bottom &&
+          e.clientX >= containerRect.left &&
+          e.clientX <= containerRect.right;
+      }
+
+      if (isInTimelineRegion) {
         if (!isHovering.current) {
           isHovering.current = true;
           // Sync current scroll to avoid jumping when mouse enters the slider
@@ -153,7 +159,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="min-w-[260px] md:min-w-[320px] max-w-[320px] flex-shrink-0 relative flex flex-col cursor-default"
+              className="min-w-[260px] md:min-w-[320px] max-w-[320px] flex-shrink-0 relative flex flex-col"
             >
               {/* Timeline Line & Dot */}
               <div className="flex items-center mb-8 relative">
@@ -166,7 +172,10 @@ export default function Experience() {
                 {exp.date}
               </div>
               
-              <div className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[230px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5">
+              <div 
+                data-timeline-card
+                className="group bg-zinc-900/40 border border-zinc-800/60 p-4 rounded-2xl h-[230px] flex flex-col hover:bg-zinc-900/80 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5 cursor-default"
+              >
                 
                 {/* Header (Always visible) */}
                 <div className="relative z-10 flex justify-between items-start">

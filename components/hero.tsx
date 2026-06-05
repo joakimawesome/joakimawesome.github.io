@@ -21,7 +21,7 @@ export default function Hero() {
         </h1>
         
         <p className="text-base text-zinc-400 max-w-xl mb-6 leading-relaxed">
-          M.S. in Artificial Intelligence at UT Austin. Bridging cognitive science and machine learning to advance computational pathology and healthcare applications.
+          M.S. in Artificial Intelligence at UT Austin and B.S. in Cognitive Science (specialization in Machine Learning & Neural Computation) from UC San Diego. With a pre-med background, I bridge cognitive science and machine learning to advance computational pathology and healthcare applications.
         </p>
 
         <div className="flex flex-wrap items-center gap-6">
