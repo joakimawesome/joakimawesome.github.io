@@ -14,9 +14,26 @@ featured: true
 
 <Section title="Overview">
 
+<ProjectImage 
+  src="/assets/projects/thematica.jpg" 
+  alt="Thematica Analysis Engine Pipeline" 
+  caption="Thematic analysis workflow: from raw unstructured data sources and AI de-identification to the iterative Human-AI Analysis Loop and actionable insight exports." 
+/>
+
 Qualitative research in healthcare—particularly thematic analysis of clinical interviews—is a rigorous but incredibly time-consuming process. A single study can involve hundreds of hours of manual coding, theme identification, and iterative refinement.
 
 **Thematica** is a multi-agent LLM system that automates the full thematic analysis pipeline, from raw interview transcripts to structured codebooks and thematic maps—while maintaining the methodological rigor expected in academic research.
+
+### The End-to-End Workflow
+
+Unlike simple text summaries, Thematica structures qualitative analysis into a secure, grounded pipeline:
+
+1. **Ingestion & De-identification**: Messy text documents and audio recordings (with video planned for future support) are funneled through a **Smart Prep & Privacy** phase. The system applies **AI De-identification & Cleaning** to strip Protected Health Information (PHI) before processing, producing secure anonymized transcripts.
+2. **The Analysis Loop**: Once ingested, the core engine processes transcripts using a cyclic Human-AI loop:
+   * **AI-Assisted Coding** and semantic grouping (Theme Building / Subthemes).
+   * **Quote Grounding (Truth Check)**: Every extracted insight is hyperlinked directly back to specific transcript segments to ensure empirical grounding and prevent LLM hallucinations.
+   * **Human Curation & Refinement**: Researchers can edit, tag, and organize themes on a collaborative interface, combining AI speed with expert human domain knowledge.
+3. **Actionable Insights & Export**: The system generates visual analysis reports (donut charts, coverage statistics, audit trails) and exports the results in PDF, Excel, and **REFI-QDA** (the standard XML exchange format for QDA software like NVivo and ATLAS.ti).
 
 <Callout variant="info" title="What is Thematic Analysis?">
 Thematic analysis is a method for identifying, analyzing, and reporting patterns (themes) within qualitative data. It involves six phases: familiarization, generating initial codes, searching for themes, reviewing themes, defining themes, and producing the report.

@@ -15,9 +15,17 @@ featured: true
 
 <Section title="Overview">
 
+<ProjectImage 
+  src="/assets/projects/computational-pathology-summary-fig.jpg" 
+  alt="Computational Pathology Research Pipeline" 
+  caption="The modern computational pathology pipeline: from biopsy sampling and digitization to AI-driven clinical applications." 
+/>
+
 Pediatric brain tumors are the leading cause of cancer-related death in children. Accurate classification of tumor subtypes from histopathology slides is critical for treatment planning, yet remains challenging due to the sheer size of whole-slide images (WSIs) and the subtle morphological differences between subtypes.
 
-This project develops a deep learning pipeline that processes gigapixel-scale WSIs to automatically classify pediatric brain tumor subtypes, generate interpretable attention heatmaps, and explore multimodal fusion with clinical metadata.
+This project develops a deep learning pipeline that processes gigapixel-scale WSIs to automatically classify pediatric brain tumor subtypes, generate interpretable attention heatmaps, and explore multimodal fusion with clinical metadata. 
+
+Beyond structural profiling (detection, segmentation, and classification), modern computational pathology encompasses a broader pipeline. It begins with the physical **biopsy sampling** (e.g., ultrasound-guided needle biopsies) to acquire abnormal tissue and digitize it into WSIs. Once AI techniques extract visual features from these slides, the representations can be leveraged for diverse clinical applications including **biomarker discovery** (identifying specific cell types and spatial distributions), predicting **treatment response** (whether a tumor will respond to a specific therapy), and forecasting long-term **survival prediction** (e.g., modeling survival probabilities over time).
 
 <Callout variant="info" title="Scale of the Problem">
 A single whole-slide image can contain over 10 billion pixels at 40× magnification. Our pipeline processes these images using a patch-based approach with attention-based aggregation, reducing computational cost while preserving diagnostic information.
