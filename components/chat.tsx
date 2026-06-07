@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Terminal, User, Cpu, ChevronRight, CheckCircle2, Loader2, Send } from 'lucide-react';
-import { chatNodes, ChatNode, SuggestedPrompt } from '@/lib/chat-data';
+import { chatNodes, SuggestedPrompt } from '@/lib/chat-data';
 
 // Import all portfolio components
 import Hero from '@/components/hero';
@@ -60,6 +60,8 @@ export default function Chat() {
   const [inputText, setInputText] = useState('');
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     // Scroll to bottom whenever messages or thinking steps change
@@ -68,6 +70,11 @@ export default function Chat() {
 
   useEffect(() => {
     triggerNode('welcome');
+    return () => {
+      // Cleanup on unmount (prevents StrictMode double-fire)
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -88,6 +95,10 @@ export default function Chat() {
     const node = chatNodes[nodeId];
     if (!node) return;
 
+    // Clear any in-flight timers from a previous triggerNode call
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
     setSuggestions([]);
     setIsGenerating(true);
     setActiveThinking([node.thinkingSteps[0]]);
@@ -99,8 +110,10 @@ export default function Chat() {
         stepIndex++;
       } else {
         clearInterval(interval);
+        intervalRef.current = null;
         // Small delay before rendering final component for a realistic feel
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
+          timeoutRef.current = null;
           setMessages((prev) => [
             ...prev,
             {
@@ -116,8 +129,10 @@ export default function Chat() {
           setActiveThinking([]);
           setSuggestions(node.suggestions);
         }, 300);
+        timeoutRef.current = timeout;
       }
     }, 400); // 400ms per thinking step
+    intervalRef.current = interval;
   };
 
   const handleSuggestionClick = (suggestion: SuggestedPrompt) => {
@@ -146,18 +161,18 @@ export default function Chat() {
     setInputText('');
   };
 
-  const renderAiContent = (msg: Message, isComplete: boolean) => {
+  const renderAiContent = (msg: Message) => {
     const ComponentToRender = msg.componentName ? COMPONENT_MAP[msg.componentName] : null;
 
     return (
       <div className="flex flex-col w-full">
-        <ThinkingProcess steps={msg.thinkingSteps || []} isComplete={isComplete} />
+        <ThinkingProcess steps={msg.thinkingSteps || []} isComplete={true} />
         
-        {isComplete && msg.text && (
+        {msg.text && (
           <p className="text-zinc-300 font-mono text-sm mb-4">{msg.text}</p>
         )}
 
-        {isComplete && ComponentToRender && (
+        {ComponentToRender && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -211,7 +226,7 @@ export default function Chat() {
                     : 'w-full' /* AI container takes full width for components */
                 }`}
               >
-                {msg.role === 'user' ? msg.content : renderAiContent(msg, true)}
+                {msg.role === 'user' ? msg.content : renderAiContent(msg)}
               </div>
             </motion.div>
           ))}
@@ -231,6 +246,9 @@ export default function Chat() {
             </div>
           </motion.div>
         )}
+
+        {/* Scroll anchor — must be inside the scrollable container */}
+        <div ref={messagesEndRef} className="h-px shrink-0" />
       </div>
 
       <div className="mt-auto relative z-20 shrink-0">
@@ -285,9 +303,7 @@ export default function Chat() {
           </div>
         </form>
       </div>
-      
-      {/* Scroll anchor placed below the input box so block: 'end' keeps the input visible */}
-      <div ref={messagesEndRef} className="h-px bg-transparent mt-4" />
+
     </div>
   );
 }
