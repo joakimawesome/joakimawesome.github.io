@@ -26,19 +26,6 @@ export default function FocusSection({ id, isActive, children }: FocusSectionPro
         }`}
       />
 
-      {/* Sleek, minimalistic metadata badge */}
-      {isActive && id !== 'hero' && (
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute -top-3 right-0 flex items-center justify-center pointer-events-none select-none bg-zinc-950/80 backdrop-blur-sm p-2 rounded-full border border-indigo-500/20 shadow-sm"
-        >
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-500"></span>
-          </span>
-        </motion.div>
-      )}
 
       {children}
     </div>
