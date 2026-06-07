@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import { useRouter } from 'next/navigation';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { Sparkles, User } from 'lucide-react';
 
@@ -11,7 +12,17 @@ interface NavProps {
 }
 
 export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) {
+  const router = useRouter();
   const activeSection = useActiveSection(['hero', 'experience', 'projects', 'publications', 'skills', 'contact']);
+
+  const handleChatToggle = () => {
+    if (onToggleChatMode) {
+      onToggleChatMode(!isChatMode);
+    } else {
+      localStorage.setItem('portfolio-chat-mode', 'true');
+      router.push('/');
+    }
+  };
 
   const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     if (isChatMode && onToggleChatMode) {
@@ -91,9 +102,9 @@ export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) 
         
         <div className="flex items-center gap-4 sm:gap-6">
           <button
-            onClick={() => onToggleChatMode?.(!isChatMode)}
+            onClick={handleChatToggle}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border transition-all duration-300 shadow-sm hover:shadow-[0_0_15px_rgba(99,102,241,0.15)] focus:outline-none cursor-pointer select-none bg-zinc-900/40 hover:bg-zinc-800/80 border-zinc-800/80 hover:border-indigo-500/30 text-zinc-300"
-            aria-label="Toggle AI Agent mode"
+            aria-label="Talk to Joakim"
           >
             {isChatMode ? (
               <>
@@ -107,7 +118,7 @@ export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) 
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
                 </span>
                 <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                <span>AI Agent</span>
+                <span>Talk to Joakim</span>
               </>
             )}
           </button>

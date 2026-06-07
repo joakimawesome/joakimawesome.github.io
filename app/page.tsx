@@ -49,7 +49,7 @@ export default function Home() {
             <>
               <main className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-8">
                 <FocusSection id="hero" isActive={activeSection === 'hero'}>
-                  <Hero />
+                  <Hero onTalkToJoakim={() => handleToggleChatMode(true)} />
                 </FocusSection>
 
                 <FocusSection id="experience" isActive={activeSection === 'experience'}>
@@ -68,7 +68,7 @@ export default function Home() {
                   <Skills />
                 </FocusSection>
               </main>
-              <Footer />
+              <Footer onTalkToJoakim={() => handleToggleChatMode(true)} />
             </>
           )
         )}
