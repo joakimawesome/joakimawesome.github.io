@@ -15,4 +15,4 @@ out/
 # misc
 coverage/
 *.log
-assets
+/assets
