@@ -88,7 +88,7 @@ export default function Experience() {
 
     // Card position relative to container's left edge
     const relativeLeft = container.scrollLeft + cardRect.left - containerRect.left;
-    
+
     // Center the card in the viewport
     const target = relativeLeft - (containerRect.width - cardRect.width) / 2;
 
@@ -252,34 +252,28 @@ export default function Experience() {
                 aria-label={`Go to ${exp.title} at ${exp.company}`}
               >
                 {/* Silhouette Card */}
-                <div 
-                  className={`w-10 h-6 sm:w-16 sm:h-10 md:w-20 md:h-12 rounded-md border flex flex-col p-1 sm:p-1.5 transition-all duration-500 relative overflow-hidden bg-zinc-900/30 cursor-pointer ${
-                    isActive 
-                      ? 'border-indigo-500 bg-indigo-500/10 shadow-[0_0_15px_rgba(99,102,241,0.25)] scale-105 sm:scale-110' 
+                <div
+                  className={`w-10 h-6 sm:w-16 sm:h-10 md:w-20 md:h-12 rounded-md border flex flex-col p-1 sm:p-1.5 transition-all duration-500 relative overflow-hidden bg-zinc-900/30 cursor-pointer ${isActive
+                      ? 'border-indigo-500 bg-indigo-500/10 shadow-[0_0_15px_rgba(99,102,241,0.25)] scale-105 sm:scale-110'
                       : 'border-zinc-800/80 hover:border-zinc-500/50 hover:bg-zinc-800/30'
-                  }`}
+                    }`}
                 >
                   {/* Tiny Skeleton lines representing card text */}
-                  <div className={`h-0.5 sm:h-1 w-[70%] rounded-full transition-colors duration-500 mb-0.5 sm:mb-1 ${
-                    isActive ? 'bg-indigo-400' : 'bg-zinc-700/60 group-hover/mini:bg-zinc-600'
-                  }`}></div>
-                  <div className={`h-0.5 w-[50%] rounded-full transition-colors duration-500 mb-0.5 sm:mb-2 ${
-                    isActive ? 'bg-indigo-500/50' : 'bg-zinc-800/80'
-                  }`}></div>
-                  <div className={`h-0.5 w-[85%] rounded-full transition-colors duration-500 ${
-                    isActive ? 'bg-indigo-500/20' : 'bg-zinc-800/40'
-                  }`}></div>
-                  
+                  <div className={`h-0.5 sm:h-1 w-[70%] rounded-full transition-colors duration-500 mb-0.5 sm:mb-1 ${isActive ? 'bg-indigo-400' : 'bg-zinc-700/60 group-hover/mini:bg-zinc-600'
+                    }`}></div>
+                  <div className={`h-0.5 w-[50%] rounded-full transition-colors duration-500 mb-0.5 sm:mb-2 ${isActive ? 'bg-indigo-500/50' : 'bg-zinc-800/80'
+                    }`}></div>
+                  <div className={`h-0.5 w-[85%] rounded-full transition-colors duration-500 ${isActive ? 'bg-indigo-500/20' : 'bg-zinc-800/40'
+                    }`}></div>
+
                   {/* Glass/Glow Effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-0 transition-opacity duration-500 ${
-                    isActive ? 'opacity-100' : ''
-                  }`} />
+                  <div className={`absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-0 transition-opacity duration-500 ${isActive ? 'opacity-100' : ''
+                    }`} />
                 </div>
 
                 {/* Date/Year Label */}
-                <span className={`text-[9px] sm:text-xs font-mono font-medium mt-2 transition-colors duration-500 ${
-                  isActive ? 'text-indigo-400 font-semibold' : 'text-zinc-600 group-hover/mini:text-zinc-400'
-                }`}>
+                <span className={`text-[9px] sm:text-xs font-mono font-medium mt-2 transition-colors duration-500 ${isActive ? 'text-indigo-400 font-semibold' : 'text-zinc-600 group-hover/mini:text-zinc-400'
+                  }`}>
                   {exp.year}
                 </span>
 
@@ -299,14 +293,14 @@ export default function Experience() {
           <div className="absolute top-[24px] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-50 flex items-center justify-center">
             {/* Outer Pulsing Glow */}
             <div className="absolute w-6 h-6 rounded-full border border-indigo-500/30 bg-indigo-500/5 animate-ping duration-1000" />
-            
+
             {/* Center Lock Ring */}
             <div className="w-4 h-4 rounded-full border border-indigo-400 bg-zinc-950/90 shadow-[0_0_10px_rgba(99,102,241,0.6)] flex items-center justify-center z-10">
               <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
             </div>
-            
+
             {/* Left/Right Directional Trail */}
-            <div 
+            <div
               style={{
                 width: `${Math.abs(mouseDisplacement) * 120}px`,
                 transform: `scaleX(${mouseDisplacement < 0 ? -1 : 1})`,
@@ -314,10 +308,10 @@ export default function Experience() {
               }}
               className="absolute left-1/2 h-[2px] bg-gradient-to-r from-indigo-500 to-transparent opacity-80"
             />
-            
+
             {/* Small glowing head at the end of the trail */}
             {Math.abs(mouseDisplacement) > 0.05 && (
-              <div 
+              <div
                 style={{
                   transform: `translateX(${mouseDisplacement * 120}px)`,
                 }}
@@ -327,7 +321,7 @@ export default function Experience() {
           </div>
         )}
         {/* Scroll Container */}
-        <div 
+        <div
           ref={scrollRef}
           onScroll={handleScroll}
           className="flex gap-6 overflow-x-auto pb-8 pt-4 px-4 -mx-4 items-start [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
@@ -336,7 +330,7 @@ export default function Experience() {
           <div className="w-[calc(50%-154px)] md:w-[calc(50%-184px)] flex-shrink-0" />
 
           {experiences.map((exp, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -346,30 +340,27 @@ export default function Experience() {
             >
               {/* Timeline Line & Dot */}
               <div className="flex items-center mb-8 relative">
-                <div className={`w-4 h-4 rounded-full bg-zinc-950 border-2 transition-all duration-500 z-10 ${
-                  idx === activeIndex
+                <div className={`w-4 h-4 rounded-full bg-zinc-950 border-2 transition-all duration-500 z-10 ${idx === activeIndex
                     ? 'border-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)] scale-110'
                     : 'border-zinc-700'
-                }`}></div>
+                  }`}></div>
                 {/* Connecting line */}
                 <div className={`h-px bg-zinc-800 flex-grow -ml-2 ${idx === experiences.length - 1 ? 'bg-gradient-to-r from-zinc-800 to-transparent' : ''}`}></div>
               </div>
 
-              <div className={`text-sm font-mono mb-4 px-2 transition-colors duration-500 ${
-                idx === activeIndex ? 'text-indigo-400' : 'text-zinc-500'
-              }`}>
+              <div className={`text-sm font-mono mb-4 px-2 transition-colors duration-500 ${idx === activeIndex ? 'text-indigo-400' : 'text-zinc-500'
+                }`}>
                 {exp.date}
               </div>
-              
-              <div 
+
+              <div
                 data-timeline-card
-                className={`group bg-zinc-900/40 border p-4 rounded-2xl h-[230px] flex flex-col hover:bg-zinc-900/80 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5 cursor-default ${
-                  idx === activeIndex
+                className={`group bg-zinc-900/40 border p-4 rounded-2xl h-[230px] flex flex-col hover:bg-zinc-900/80 transition-all duration-500 relative overflow-hidden shadow-lg hover:shadow-indigo-500/5 cursor-default ${idx === activeIndex
                     ? 'border-indigo-500/50 shadow-indigo-500/5'
                     : 'border-zinc-800/60 hover:border-indigo-500/30'
-                }`}
+                  }`}
               >
-                
+
                 {/* Header (Always visible) */}
                 <div className="relative z-10 flex justify-between items-start">
                   <div>
@@ -380,7 +371,7 @@ export default function Experience() {
                     <Plus className="w-4 h-4 transform group-hover:rotate-45 transition-transform duration-500" />
                   </div>
                 </div>
-                
+
                 {/* Tags (Visible by default, fades out and slides down on hover) */}
                 <div className="flex flex-wrap gap-2 mt-auto transition-all duration-500 group-hover:translate-y-8 group-hover:opacity-0">
                   {exp.tags.map((tag, tagIdx) => (
