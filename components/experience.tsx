@@ -140,12 +140,11 @@ export default function Experience() {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      const section = sectionRef.current;
       const container = scrollRef.current;
-      if (!section || !container) return;
+      if (!container) return;
 
       const containerRect = container.getBoundingClientRect();
-      
+
       // Keep scrolling active anywhere along the horizontal axis within the vertical timeline band
       const isInTimelineRegion =
         e.clientY >= containerRect.top &&
@@ -161,11 +160,22 @@ export default function Experience() {
         }
 
         const centerX = containerRect.left + containerRect.width / 2;
-        const maxDisplacement = containerRect.width / 2;
         const displacement = e.clientX - centerX;
 
+        // Dead zone: half a card width on either side of center
+        const cards = container.querySelectorAll('[data-timeline-card]');
+        const cardWidth = cards.length > 0 ? cards[0].getBoundingClientRect().width : 320;
+        const deadZone = cardWidth / 2;
+
+        // Subtract dead zone from absolute displacement, clamp to 0 minimum
+        const absDisplacement = Math.max(0, Math.abs(displacement) - deadZone);
+        const maxDisplacement = containerRect.width / 2 - deadZone;
+        const sign = displacement < 0 ? -1 : 1;
+
         // Clamp normalized displacement between -1 and 1
-        const normalized = Math.max(-1, Math.min(1, displacement / maxDisplacement));
+        const normalized = maxDisplacement > 0
+          ? Math.max(-1, Math.min(1, (sign * absDisplacement) / maxDisplacement))
+          : 0;
         mouseDisplacementRef.current = normalized;
         setMouseDisplacement(normalized);
       } else {
