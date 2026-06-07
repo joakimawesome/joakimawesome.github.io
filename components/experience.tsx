@@ -43,7 +43,7 @@ const experiences = [
   },
   {
     title: "Data Science & AI Intern",
-    company: "Axaitech, Cape Town, South South Africa",
+    company: "Axaitech, Cape Town, South Africa",
     shortCompany: "Axaitech",
     date: "Jun 2022 – Aug 2022",
     year: "2022",
