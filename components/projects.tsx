@@ -18,18 +18,18 @@ const projects = [
     description: "Lead researcher applying vision foundation models to pediatric brain tumor histopathology from whole-slide images, emphasizing clinical relevance and interpretability.",
     tags: ["Computational Pathology", "Vision Foundation Models", "Medical Imaging", "Deep Learning"],
     image: pathologyImg,
-    link: "https://arxiv.org/abs/2604.21060"
+    link: "/projects/pediatric-histopathology"
   },
   {
     title: "LLM Thematic Analysis Pipeline (Auto-TA)",
     description: "Designed LangChain/LangGraph-based multi-agent workflows for automated inductive qualitative coding and thematic synthesis on clinical interview transcripts.",
     tags: ["LangChain", "LangGraph", "Multi-Agent LLMs", "NLP", "Qualitative Coding"],
     image: thematicagImg,
-    link: "https://doi.org/10.48550/arXiv.2506.23998"
+    link: "/projects/thematica"
   },
   {
     title: "DataRoom AI",
-    description: "Agentic LLM system for automated document triage and portfolio analysis in private equity data room operations; built on Azure using OpenAI Agents SDK and Streamlit.",
+    description: "AI-powered due diligence platform with a multi-agent pipeline that autonomously researches companies across market, competitive, IP, financial, and sentiment dimensions — delivering structured reports with full execution traceability.",
     tags: ["Azure Cloud", "OpenAI Agents SDK", "Streamlit", "Agentic Workflows"],
     image: peLlmAgentsImg,
     link: "#"
@@ -81,26 +81,43 @@ export default function Projects() {
               className="flex flex-col"
             >
               {/* Clickable image area */}
-              <a
-                href={projects[activeProject].link}
-                className="group/card relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md block cursor-pointer"
-              >
-                <Image 
-                  src={projects[activeProject].image} 
-                  alt={projects[activeProject].title} 
-                  fill 
-                  className="object-cover opacity-80 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-500" 
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent" />
-                
-                {/* Centered overlay prompt */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
-                  <span className="bg-zinc-100 text-zinc-950 px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-xl">
-                    View Project <ArrowUpRight className="w-4 h-4" />
-                  </span>
+              {projects[activeProject].link !== "#" ? (
+                <a
+                  href={projects[activeProject].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/card relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md block cursor-pointer"
+                >
+                  <Image 
+                    src={projects[activeProject].image} 
+                    alt={projects[activeProject].title} 
+                    fill 
+                    className="object-cover opacity-80 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-500" 
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent" />
+                  
+                  {/* Centered overlay prompt */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
+                    <span className="bg-zinc-100 text-zinc-950 px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-xl">
+                      View Project <ArrowUpRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </a>
+              ) : (
+                <div
+                  className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-900 mb-4 border border-zinc-800/50 shadow-md block"
+                >
+                  <Image 
+                    src={projects[activeProject].image} 
+                    alt={projects[activeProject].title} 
+                    fill 
+                    className="object-cover opacity-80" 
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent" />
                 </div>
-              </a>
+              )}
               
               <h3 className="text-lg sm:text-xl font-medium text-zinc-100 mb-2 leading-tight">
                 {projects[activeProject].title}

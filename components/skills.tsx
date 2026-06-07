@@ -53,9 +53,26 @@ const skills = [
 function PhysicsTags({ items }: { items: string[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [bodies, setBodies] = useState<{ id: number; text: string; x: number; y: number; angle: number; width: number; height: number }[]>([]);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    const handleResize = () => {
+      if (containerRef.current) {
+        const { width, height } = containerRef.current.getBoundingClientRect();
+        setDimensions({ width, height });
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!containerRef.current || dimensions.width === 0 || dimensions.height === 0) return;
     const container = containerRef.current;
     
     let engine: Matter.Engine;
@@ -67,7 +84,7 @@ function PhysicsTags({ items }: { items: string[] }) {
     let isUnmounted = false;
 
     const initPhysics = () => {
-      const { width, height } = container.getBoundingClientRect();
+      const { width, height } = dimensions;
       if (width === 0 || height === 0) return;
 
       engine = Matter.Engine.create({
@@ -178,7 +195,7 @@ function PhysicsTags({ items }: { items: string[] }) {
       }
       if (mouse) Matter.Mouse.clearSourceEvents(mouse);
     };
-  }, [items]);
+  }, [items, dimensions.width, dimensions.height]);
 
   return (
     <div ref={containerRef} className="relative w-full h-full flex-1 overflow-hidden mt-4 min-h-[120px] rounded-xl z-20">

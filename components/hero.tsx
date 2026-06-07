@@ -5,7 +5,7 @@ import { Github, Linkedin, Mail, ArrowRight, ExternalLink } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center pt-20 pb-12">
+    <section id="hero" className="min-h-[80vh] flex flex-col justify-center pt-20 pb-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

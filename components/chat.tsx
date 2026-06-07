@@ -161,7 +161,7 @@ export default function Chat() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full bg-zinc-950/50 border border-zinc-800/80 rounded-3xl overflow-hidden mt-2 relative chat-component-wrapper"
+            className="w-full bg-zinc-950/50 border border-zinc-800/80 rounded-3xl mt-2 relative chat-component-wrapper"
           >
             {/* The component is rendered inside a wrapper. We might need to override padding in the future 
                 if the original components have too much padding for a chat bubble. */}

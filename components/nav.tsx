@@ -1,8 +1,11 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { useActiveSection } from '@/hooks/useActiveSection';
 
 export default function Nav() {
+  const activeSection = useActiveSection(['hero', 'experience', 'projects', 'publications', 'skills', 'contact']);
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -16,13 +19,48 @@ export default function Nav() {
         </a>
         
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-          <a href="/#experience" className="hover:text-zinc-100 transition-colors">Experience</a>
-          <a href="/#projects" className="hover:text-zinc-100 transition-colors">Projects</a>
-          <a href="/#publications" className="hover:text-zinc-100 transition-colors">Publications</a>
-          <a href="/#skills" className="hover:text-zinc-100 transition-colors">Skills</a>
+          <a 
+            href="/#experience" 
+            className={`transition-colors relative py-1 ${activeSection === 'experience' ? 'text-indigo-400 font-semibold' : 'hover:text-zinc-100'}`}
+          >
+            Experience
+            {activeSection === 'experience' && (
+              <motion.span layoutId="activeNavIndicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 rounded-full" />
+            )}
+          </a>
+          <a 
+            href="/#projects" 
+            className={`transition-colors relative py-1 ${activeSection === 'projects' ? 'text-indigo-400 font-semibold' : 'hover:text-zinc-100'}`}
+          >
+            Projects
+            {activeSection === 'projects' && (
+              <motion.span layoutId="activeNavIndicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 rounded-full" />
+            )}
+          </a>
+          <a 
+            href="/#publications" 
+            className={`transition-colors relative py-1 ${activeSection === 'publications' ? 'text-indigo-400 font-semibold' : 'hover:text-zinc-100'}`}
+          >
+            Publications
+            {activeSection === 'publications' && (
+              <motion.span layoutId="activeNavIndicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 rounded-full" />
+            )}
+          </a>
+          <a 
+            href="/#skills" 
+            className={`transition-colors relative py-1 ${activeSection === 'skills' ? 'text-indigo-400 font-semibold' : 'hover:text-zinc-100'}`}
+          >
+            Skills
+            {activeSection === 'skills' && (
+              <motion.span layoutId="activeNavIndicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 rounded-full" />
+            )}
+          </a>
         </nav>
         
-        <a href="/#contact" className="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors">
+        <a 
+          href="/#contact" 
+          className={`text-sm font-medium transition-colors ${activeSection === 'contact' ? 'text-indigo-400 font-semibold' : 'text-indigo-400 hover:text-indigo-300'}`}
+        >
           Contact
         </a>
       </div>
