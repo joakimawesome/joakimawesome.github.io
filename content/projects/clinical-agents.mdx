@@ -1,0 +1,101 @@
+---
+title: "Clinical Agents"
+slug: "clinical-agents"
+description: "Prototyped clinical decision-making simulations using AutoGen and Letta to model clinic conversations among a physician, nurse, patient, and electronic medical record agent."
+date: "2024-11-20"
+tags:
+  - AutoGen
+  - Letta
+  - Multi-Agent Systems
+  - Clinical Simulations
+  - AI Ethics
+thumbnail: "/assets/projects/clinical-agents.png"
+featured: true
+---
+
+<Section title="Overview">
+
+<ProjectImage 
+  src="/assets/projects/clinical-agents.png" 
+  alt="Multi-Agent Clinical Simulation Overview" 
+  caption="The Multi-Agent Clinical Simulation architecture (v3.1) showing interactions between the Physician, Patient, Nurse, and EMR Agents." 
+/>
+
+Clinical decision-making is a collaborative process involving multiple healthcare professionals, the patient, and various data systems. Simulating these interactions using autonomous agents helps researchers study clinical outcomes, explore AI safety/ethics in medicine, and design better Electronic Medical Record (EMR) interfaces.
+
+**Clinical Agents** is a prototype simulation platform built with AutoGen and Letta. It models a live, multi-agent clinic conversation where a physician, a nurse, a patient, and a virtual EMR database agent interact in real-time to diagnose and plan treatment for medical cases.
+
+<Callout variant="info" title="Why Clinical Simulations?">
+Simulations allow us to test how LLMs behave in high-stakes clinical scenarios without risking patient safety. We can analyze how errors propagate through the agent network and design safety boundaries.
+</Callout>
+
+</Section>
+
+<Section title="Simulation Architecture">
+
+### Specialized Agent Roles
+
+The simulation (v3.1) coordinates four specialized LLM agents in a directed conversation graph:
+
+1. **Physician Agent (AGENT-Dr)**:
+   * **State**: `ACTIVE/DIAGNOSING`
+   * **Key Tasks**: Reviewing patient symptoms, ordering diagnostic tests, and synthesizing medical data to form a differential diagnosis.
+   * **Interactions**: Direct communication with the Patient and Nurse Agents, and query access to the EMR Agent.
+
+2. **Patient Agent (AGENT-Pt)**:
+   * **State**: `SYMPTOM REPORTING`
+   * **Key Tasks**: Reporting physical distress, sharing medical history, and submitting symptoms logs.
+
+3. **EMR Agent (EMR-v1.2)**:
+   * **State**: `DATA ACCESSING`
+   * **Key Tasks**: Updating medical history logs, checking clinical lab results, and syncing clinical data.
+   * **Interactions**: Acts as a queryable database agent accessed by the physician and nurse.
+
+4. **Nurse Agent (AGENT-Ns)**:
+   * **State**: `CARE EXECUTING`
+   * **Key Tasks**: Implementing the physician's care plan, monitoring patient vitals (simulating 98% sync stability), and relaying key updates between the physician and patient.
+
+### Agent Interaction Flow
+
+The conversation flow is non-linear and event-driven:
+* The **Patient Agent** initiates the session by reporting distress to the **Nurse Agent**.
+* The **Nurse Agent** performs initial triaging, updates the **EMR Agent**, and notifies the **Physician Agent**.
+* The **Physician Agent** reviews EMR history, conducts an interactive diagnosis with the Patient, updates the EMR, and instructs the Nurse on the care plan.
+
+```python
+# Conceptual conversation orchestrator using AutoGen
+import autogen
+
+# Define configuration and system prompts for each role
+physician = autogen.AssistantAgent(name="PhysicianAgent", system_message="...")
+patient = autogen.UserProxyAgent(name="PatientAgent", system_message="...")
+nurse = autogen.AssistantAgent(name="NurseAgent", system_message="...")
+emr = autogen.AssistantAgent(name="EMRAgent", system_message="...")
+
+# Set up group chat and manager
+groupchat = autogen.GroupChat(
+    agents=[physician, patient, nurse, emr], 
+    messages=[], 
+    max_round=50
+)
+manager = autogen.GroupChatManager(groupchat=groupchat)
+```
+
+</Section>
+
+<Section title="Ethics and Safety">
+
+By observing the agent metrics and activity feeds in real-time (monitoring logs, event timeline, and vitals sync), we study:
+* **Hallucination propagation**: How incorrect patient details written by one agent affect subsequent clinical actions.
+* **Consent and privacy**: Simulating EMR data access restrictions to prevent unauthorized information leakage.
+
+</Section>
+
+<Section title="Tools & Technologies">
+
+- **Agent Frameworks**: Microsoft AutoGen, Letta (MemGPT successor)
+- **Language Models**: GPT-4o, Llama-3-70b (via local hosting)
+- **Monitoring & Logging**: Live Chronology Feed, custom console dashboard
+- **Hosting**: Python-based containerized environment
+
+</Section>

@@ -1,0 +1,73 @@
+---
+title: "DataRoom AI"
+slug: "dataroom-ai"
+description: "AI-powered due diligence platform with a multi-agent pipeline that autonomously researches companies across market, competitive, IP, financial, and sentiment dimensions."
+date: "2025-05-02"
+tags:
+  - Azure Cloud
+  - OpenAI Agents SDK
+  - Streamlit
+  - Agentic Workflows
+thumbnail: "/assets/projects/pe-llm-agents.jpg"
+featured: true
+---
+
+<Section title="Overview">
+
+<ProjectImage 
+  src="/assets/projects/pe-llm-agents.jpg" 
+  alt="DataRoom AI Due Diligence Pipeline" 
+  caption="The 5-stage Multi-LLM Pipeline for Company Due Diligence and Data Room Analysis, tailored for healthcare innovation." 
+/>
+
+Conducting comprehensive due diligence on early-stage healthcare and biotechnology firms requires auditing hundreds of clinical trials, patents, complex financial statements, and regulatory documents. For investment teams, this process takes weeks of manual, high-cognition labor.
+
+**DataRoom AI** is an AI-powered due diligence platform that uses a multi-agent pipeline to autonomously research target companies. It extracts, structures, and cross-references data room files across financial, intellectual property (IP), competitive, and regulatory dimensions, producing investor-ready memos in minutes.
+
+<Callout variant="info" title="Targeting Healthcare Complexity">
+While generic document search tools fail at parsing clinical data or technical patents, DataRoom AI is designed from the ground up to interpret clinical trials, FDA filings, and specialized financial models.
+</Callout>
+
+</Section>
+
+<Section title="The Pipeline">
+
+The platform runs a structured 5-stage workflow powered by collaborative LLMs and specialized agents:
+
+### 1. Data Ingestion & Pre-processing
+* **Inputs**: The user uploads clinical trial datasets, FDA regulatory filings, patents, financial statements, and market reports.
+* **Process**: A specialized **Document Parser LLM** digests the raw data room files and sorts them into organized, searchable folders.
+
+### 2. Intelligent Structuring & Extraction
+* A trio of collaborative LLMs works in parallel to transform raw text into high-fidelity structured data:
+  * **Entity Extraction LLM**: Maps out key entities, clinical trial endpoints, and financial figures.
+  * **Relationship Mapping LLM**: Correlates patents to clinical programs.
+  * **Table/Chart Analyzer LLM**: Parses financial sheets and charts.
+* All parsed data is committed to a **Structured Healthcare Data Lake** for relational querying.
+
+### 3. Specialized Analysis Agents
+A multi-agent team collaborates on the structured data lake to perform deep-dive analyses:
+* **Market & Competitive Landscape Agent**: Gauges market size and competitor overlaps.
+* **Financial Modeling & Valuation Agent**: Audits financial sheets, calculates burn rate, and models valuations.
+* **Clinical & Regulatory Risk Agent**: Analyzes clinical trial phases, FDA guidelines, and drug profiles.
+
+### 4. Risk Assessment & Red Flag Detection
+* The system evaluates key risks including regulatory hurdles, reimbursement barriers, IP litigation, and clinical trial failures.
+* It outputs an automated **Risk Scorecard** featuring a hazard gauge from green to red.
+
+### 5. Investment Insights & Reporting
+* Synthesizes all findings into final growth equity deliverables:
+  * **Comprehensive Investment Memo**
+  * **Valuation Summary**
+  * **Strategic Fit Analysis**
+
+</Section>
+
+<Section title="Tools & Technologies">
+
+- **Agent Orchestration**: OpenAI Agents SDK, custom task routing
+- **Frontend / Interface**: Streamlit (for rapid deployment and clean data room uploading)
+- **Database & Storage**: Azure Cloud (Blob storage & Cosmos DB)
+- **Infrastructure**: Secure tenant deployment for data privacy compliance
+
+</Section>

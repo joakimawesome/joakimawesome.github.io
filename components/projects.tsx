@@ -32,14 +32,14 @@ const projects = [
     description: "AI-powered due diligence platform with a multi-agent pipeline that autonomously researches companies across market, competitive, IP, financial, and sentiment dimensions — delivering structured reports with full execution traceability.",
     tags: ["Azure Cloud", "OpenAI Agents SDK", "Streamlit", "Agentic Workflows"],
     image: peLlmAgentsImg,
-    link: "#"
+    link: "/projects/dataroom-ai"
   },
   {
     title: "Clinical Agents",
     description: "Prototyped clinical decision-making simulations using AutoGen and Letta to model a clinic conversation among a physician, nurse, patient, and electronic medical record agent, exploring multi-agent interactions and clinical outcomes back when this area of research was completely novel.",
     tags: ["AutoGen", "Letta", "Multi-Agent Systems", "Clinical Simulations", "AI Ethics"],
     image: clinicalAgentsImg,
-    link: "#"
+    link: "/projects/clinical-agents"
   },
   {
     title: "Sleep State Prediction Pipeline",
