@@ -68,6 +68,7 @@ export default function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [messages, activeThinking, suggestions]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     triggerNode('welcome');
     return () => {
@@ -75,7 +76,6 @@ export default function Chat() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const triggerNode = (nodeId: string, userText?: string) => {

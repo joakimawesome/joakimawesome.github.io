@@ -21,8 +21,10 @@ export default function Home() {
   useEffect(() => {
     const savedMode = localStorage.getItem('portfolio-chat-mode');
     if (savedMode === 'true') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsChatMode(true);
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
 
