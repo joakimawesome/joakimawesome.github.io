@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { Sparkles, User } from 'lucide-react';
 
@@ -44,7 +45,7 @@ export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) 
       className="sticky top-0 z-50 w-full backdrop-blur-md bg-zinc-950/80 border-b border-zinc-800/50"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        <a 
+        <Link 
           href="/" 
           onClick={(e) => {
             if (isChatMode && onToggleChatMode) {
@@ -55,10 +56,10 @@ export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) 
           className="font-serif text-xl font-medium text-zinc-100 tracking-tight"
         >
           JHN.
-        </a>
+        </Link>
         
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-          <a 
+          <Link 
             href="/#experience" 
             onClick={(e) => handleNavLinkClick(e, 'experience')}
             className={`transition-colors relative py-1 ${!isChatMode && activeSection === 'experience' ? 'text-indigo-400 font-semibold' : 'hover:text-zinc-100'}`}
@@ -67,8 +68,8 @@ export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) 
             {!isChatMode && activeSection === 'experience' && (
               <motion.span layoutId="activeNavIndicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 rounded-full" />
             )}
-          </a>
-          <a 
+          </Link>
+          <Link 
             href="/#projects" 
             onClick={(e) => handleNavLinkClick(e, 'projects')}
             className={`transition-colors relative py-1 ${!isChatMode && activeSection === 'projects' ? 'text-indigo-400 font-semibold' : 'hover:text-zinc-100'}`}
@@ -77,8 +78,8 @@ export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) 
             {!isChatMode && activeSection === 'projects' && (
               <motion.span layoutId="activeNavIndicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 rounded-full" />
             )}
-          </a>
-          <a 
+          </Link>
+          <Link 
             href="/#publications" 
             onClick={(e) => handleNavLinkClick(e, 'publications')}
             className={`transition-colors relative py-1 ${!isChatMode && activeSection === 'publications' ? 'text-indigo-400 font-semibold' : 'hover:text-zinc-100'}`}
@@ -87,8 +88,8 @@ export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) 
             {!isChatMode && activeSection === 'publications' && (
               <motion.span layoutId="activeNavIndicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 rounded-full" />
             )}
-          </a>
-          <a 
+          </Link>
+          <Link 
             href="/#skills" 
             onClick={(e) => handleNavLinkClick(e, 'skills')}
             className={`transition-colors relative py-1 ${!isChatMode && activeSection === 'skills' ? 'text-indigo-400 font-semibold' : 'hover:text-zinc-100'}`}
@@ -97,7 +98,7 @@ export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) 
             {!isChatMode && activeSection === 'skills' && (
               <motion.span layoutId="activeNavIndicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 rounded-full" />
             )}
-          </a>
+          </Link>
         </nav>
         
         <div className="flex items-center gap-4 sm:gap-6">
@@ -123,13 +124,13 @@ export default function Nav({ isChatMode = false, onToggleChatMode }: NavProps) 
             )}
           </button>
 
-          <a 
+          <Link 
             href="/#contact" 
             onClick={(e) => handleNavLinkClick(e, 'contact')}
             className={`text-sm font-medium transition-colors ${!isChatMode && activeSection === 'contact' ? 'text-indigo-400 font-semibold' : 'text-indigo-400 hover:text-indigo-300'}`}
           >
             Contact
-          </a>
+          </Link>
         </div>
       </div>
     </motion.header>

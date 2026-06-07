@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
+import Link from 'next/link';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { getAllProjects, getProjectBySlug } from '@/lib/projects';
 import { mdxComponents } from '@/components/mdx-components';
@@ -54,13 +55,13 @@ export default async function ProjectPage({
     <PageTransition>
     <article>
       {/* Back link */}
-      <a
+      <Link
         href="/#projects"
         className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-indigo-400 transition-colors mb-10 group"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         Back to projects
-      </a>
+      </Link>
 
       {/* Header */}
       <header className="mb-12">
