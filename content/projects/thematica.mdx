@@ -1,12 +1,14 @@
 ---
 title: "Thematica"
 slug: "thematica"
-description: "Multi-agent LLM system for qualitative research automation. Features Coder, Sub-Themer, Themer, and Reviewer agents for analyzing clinical interviews."
+description: "Multi-agent LLM system for qualitative research automation. Interchangeable coder strategies, verbatim quote grounding, and a validity/reliability/interpretability evaluation framework for inductive thematic analysis of clinical interviews."
 date: "2025-04-10"
 tags:
   - LangChain
   - LangGraph
   - Multi-Agent LLMs
+  - Quote Grounding
+  - Evaluation
   - Hydra
 thumbnail: "/images/projects/thematica.jpg"
 featured: true
@@ -20,78 +22,139 @@ featured: true
   caption="Thematic analysis workflow: from raw unstructured data sources and AI de-identification to the iterative Human-AI Analysis Loop and actionable insight exports." 
 />
 
-Qualitative research in healthcare—particularly thematic analysis of clinical interviews—is a rigorous but incredibly time-consuming process. A single study can involve hundreds of hours of manual coding, theme identification, and iterative refinement.
+Inductive thematic analysis (ITA) of clinical interviews is the backbone of qualitative health research—and one of its biggest bottlenecks. Methodological rigor requires at least two trained coders to independently read every transcript, generate codes, and negotiate themes across multiple rounds of consensus. The familiarization step alone (close, repeated reading) is the single most time-consuming phase, and a study of a few dozen 90-minute interviews can run to hundreds of analyst-hours before a single theme is finalized.
 
-**Thematica** is a multi-agent LLM system that automates the full thematic analysis pipeline, from raw interview transcripts to structured codebooks and thematic maps—while maintaining the methodological rigor expected in academic research.
+**Thematica** automates the labor-intensive middle of that pipeline—coding, sub-theme search, and theme generation—while preserving the traceability and human judgment that make the method credible. It is explicitly *not* a summarizer: summarization compresses text, whereas thematic analysis is a structured, auditable process for surfacing recurring patterns and tracing each one back to the words that produced it.
 
 ### The End-to-End Workflow
 
-Unlike simple text summaries, Thematica structures qualitative analysis into a secure, grounded pipeline:
-
-1. **Ingestion & De-identification**: Messy text documents and audio recordings (with video planned for future support) are funneled through a **Smart Prep & Privacy** phase. The system applies **AI De-identification & Cleaning** to strip Protected Health Information (PHI) before processing, producing secure anonymized transcripts.
-2. **The Analysis Loop**: Once ingested, the core engine processes transcripts using a cyclic Human-AI loop:
-   * **AI-Assisted Coding** and semantic grouping (Theme Building / Subthemes).
-   * **Quote Grounding (Truth Check)**: Every extracted insight is hyperlinked directly back to specific transcript segments to ensure empirical grounding and prevent LLM hallucinations.
-   * **Human Curation & Refinement**: Researchers can edit, tag, and organize themes on a collaborative interface, combining AI speed with expert human domain knowledge.
-3. **Actionable Insights & Export**: The system generates visual analysis reports (donut charts, coverage statistics, audit trails) and exports the results in PDF, Excel, and **REFI-QDA** (the standard XML exchange format for QDA software like NVivo and ATLAS.ti).
+1. **Ingestion & De-identification** — Transcripts and audio (video planned) pass through a **Smart Prep & Privacy** stage: modality routing, turn-boundary-aware chunking, and a multi-stage de-identification pipeline that strips Protected Health Information (PHI) using consistent pseudonymization (the same entity maps to the same pseudonym throughout, so coreference and narrative continuity survive anonymization).
+2. **The Analysis Loop** — A cyclic Human–AI loop runs over the prepared text:
+   * **AI-assisted coding** via interchangeable coder strategies, optionally conditioned on expert personas (e.g., cardiac surgeon, qualitative researcher).
+   * **Code merging & de-duplication**, then **semantic clustering** of codes into sub-themes and overarching themes.
+   * **Quote Grounding (Truth Check)** — every code and theme is hyperlinked back to exact transcript spans by character offset, with verification that the cited span actually supports the claim. This is the core defense against hallucinated or unsupported insights.
+   * **Human Curation & Refinement** — researchers edit, tag, merge, and reorganize on a collaborative interface; the AI does the legwork, the expert stays in control.
+3. **Actionable Insights & Export** — Visual reports (code-distribution donut charts, coverage statistics, audit trails) and export to PDF, Excel, and **REFI-QDA** (the XML interchange standard for QDA tools like NVivo and ATLAS.ti), so Thematica drops into existing research workflows rather than replacing them.
 
 <Callout variant="info" title="What is Thematic Analysis?">
-Thematic analysis is a method for identifying, analyzing, and reporting patterns (themes) within qualitative data. It involves six phases: familiarization, generating initial codes, searching for themes, reviewing themes, defining themes, and producing the report.
+Thematic analysis identifies, analyzes, and reports patterns (themes) in qualitative data through six phases: familiarization, generating initial codes, searching for themes, reviewing themes, defining themes, and producing the report. *Inductive* TA derives themes directly from the data with no predefined codebook—which is what makes it powerful for novel insight, and hard to evaluate.
 </Callout>
 
 </Section>
 
 <Section title="Architecture">
 
-### Multi-Agent Design
+### Staged Multi-Agent Design
 
-Thematica uses a graph-based multi-agent architecture built with **LangGraph**, where each agent specializes in a distinct phase of the analysis:
+Thematica is a graph-based pipeline (built on **LangGraph**) in which each stage maps to a phase of Braun & Clarke's framework and can be inspected and corrected independently:
 
-1. **Coder Agent** — Reads interview transcripts and generates initial codes with supporting quotes
-2. **Sub-Themer Agent** — Groups codes into candidate sub-themes based on semantic similarity
-3. **Themer Agent** — Synthesizes sub-themes into overarching themes with clear definitions
-4. **Reviewer Agent** — Evaluates thematic coherence, identifies gaps, and triggers refinement loops
+1. **Coder Agent** — Reads transcripts and emits initial codes, each with one or more supporting verbatim quotes.
+2. **Sub-Themer Agent** — Clusters codes into candidate sub-themes by semantic similarity.
+3. **Themer Agent** — Synthesizes sub-themes into named, defined themes.
+4. **Reviewer Agent** — Scores thematic coherence and distinctiveness, flags gaps, and triggers refinement loops.
+
+### Interchangeable Coder Strategies
+
+The Coder stage is a pluggable interface rather than a single prompt, which makes the coding step itself an object of study:
+
+- **Coder** — Baseline single-pass inductive coder.
+- **SynthCoder** — Synthesizes codes that emerge from patterns spanning multiple turns or participants.
+- **LOGOSCoder** — Adds vector clustering over generated codes to consolidate near-duplicates and surface structure before sub-theming.
+
+Coders can be **identity-augmented**: prompting an agent to read through the lens of a specific expert role (surgeon, physician, psychologist, qualitative researcher) and then merging perspectives produces richer, more clinically resonant coverage than a single undifferentiated agent—mirroring how a real coding team works.
+
+### Grounding Subsystem
+
+Grounding is treated as a first-class component, not a prompt instruction:
+
+- **Exact match + NLI verification** — A candidate quote is first matched verbatim against the source chunk; an NLI/entailment check (MiniCheck) then confirms the span actually supports the code, catching paraphrase drift and fabrication.
+- **Retrieval for fuzzy cases** — Lexical (BM25) and dense (FAISS) retrieval with cross-encoder reranking locate the best-supporting span when the model's quote isn't a clean substring.
+- **Char-offset provenance** — Every grounded unit carries a `QuoteRef` (document, chunk, character span), so the audit trail from insight → theme → code → quote is exact and exportable.
+
+<Callout variant="warning" title="The hard problem of grounding">
+Some codes are <em>synthesized</em>: their meaning arises from relational patterns across many spans (e.g., "balancing hope and fear") and, by construction, cannot be pinned to one locatable passage. Thematica marks these with an explicit <code>synthesized_code</code> type that requires mandatory human review rather than forcing a misleading single citation.
+</Callout>
+
+### Data Model & Configuration
+
+A normalized schema—**Session, Document, Chunk, Turn, QuoteRef**—carries provenance through every stage. All pipeline parameters (model selection, prompts, chunking, coder strategy, evaluation criteria) are managed through **Hydra** config, so experiments and ablations are reproducible by construction.
 
 ```python
-# LangGraph workflow definition
-workflow = StateGraph(ThematicState)
-workflow.add_node("coder", coder_agent)
-workflow.add_node("sub_themer", sub_themer_agent)
-workflow.add_node("themer", themer_agent)
-workflow.add_node("reviewer", reviewer_agent)
+# Coder strategy is swappable; grounding wraps every coded unit
+coder = build_coder(cfg.coder.strategy)        # coder | synth | logos
+codes = coder.code(chunks, persona=cfg.coder.persona)
 
-workflow.add_edge("coder", "sub_themer")
-workflow.add_edge("sub_themer", "themer")
-workflow.add_edge("themer", "reviewer")
-workflow.add_conditional_edges("reviewer", should_refine)
+for c in codes:
+    span = grounder.locate(c.quote, chunks)    # exact -> retrieval fallback
+    c.grounded = grounder.verify(c.text, span) # NLI entailment (MiniCheck)
+    c.ref = span.quote_ref if c.grounded else None
 ```
 
-### Configuration with Hydra
+</Section>
 
-All pipeline parameters—model selection, prompts, chunking strategies, and evaluation criteria—are managed through **Hydra** configuration files, enabling reproducible experiments and easy ablation studies.
+<Section title="Evaluation & Metrics">
 
-<Callout variant="tip" title="Why Multi-Agent?">
-Breaking the analysis into specialized agents mirrors how human research teams work: coders, thematic analysts, and senior reviewers each bring focused expertise. This decomposition also makes each step independently evaluable and debuggable.
+Evaluation is the genuinely hard part of this problem, and the area where the field is most fragmented. Inductive TA has **no gold standard**: two expert coders routinely disagree, and when asked *why* they merged two codes they often answer "by feeling"—there is no strict guideline to recover. One clinician described evaluating ITA as "shooting in the dark." Worse, human and model outputs rarely map one-to-one: a single model theme may absorb several human themes, and some human themes have no model counterpart at all. Any honest metric has to accommodate that partial overlap rather than assume alignment.
+
+Thematica adopts a **three-pillar evaluation framework**—validity, reliability, interpretability—instead of a single accuracy number.
+
+### 1. Validity — do the themes faithfully represent the data?
+
+Because there is no 1:1 mapping, validity is computed as a **maximum-weight bipartite matching** on a similarity matrix `S`, where `S[i][j]` is the similarity between human theme *i* and model theme *j*. Similarity combines:
+
+- **Lexical overlap** — Jaccard, optionally ROUGE for n-gram overlap.
+- **Semantic similarity** — cosine over sentence embeddings (`all-mpnet-base-v2`) or BERTScore.
+
+Reported as: **Precision / Recall / F1@match**, **Coverage@τ** (fraction of human themes matched above threshold τ), **Redundancy** (mean intra-model theme similarity), and **Novelty rate** (model themes with no human counterpart—which can be error *or* genuine discovery).
+
+### 2. Reliability — are the results stable and confirmable?
+
+- **Inter-coder agreement** — Krippendorff's α or Cohen's/Fleiss's κ, used as diagnostics for vague definitions and unclear code boundaries.
+- **Stability** — re-run the pipeline across random seeds and bootstrap samples; measure **Adjusted Rand Index (ARI)** and **Variation of Information (VI)** on code assignments.
+- **Confirmability** — does a theme come from the data, or from a given model's internal biases? Run the same pipeline across models and compare; divergence that tracks the model rather than the data is a red flag.
+
+### 3. Interpretability — are themes coherent and distinct?
+
+- **Coherence** — average embedding similarity among the quotes within a theme.
+- **Distinctiveness** — distance between theme centroids.
+- **Coverage** — fraction of passages assigned to any theme, and fraction of participants represented per theme.
+- Supported by rationale generation and expert adjudication for clinically nuanced cases.
+
+### Grounding fidelity
+
+Beyond the three pillars, grounding gets its own metrics, since it is Thematica's core differentiator:
+
+- **Grounding rate** — proportion of codes/themes traceable to at least one verbatim span (the synthesized-code fraction is reported separately, not silently dropped).
+- **Quote fidelity** — NLI entailment rate: does the cited span actually support the code? This separates "a quote was attached" from "the right quote was attached."
+- **Dependability (D)** and **Transferability (T)** — run-to-run consistency (bidirectional ROUGE-1/2 across independent runs) and cross-subset generalization, carried over from the reinforcement-learning refinement work.
+
+<Callout variant="info" title="On the early results">
+On the pediatric AAOCA cohort, identity-augmented multi-agent coding improved semantic code alignment with expert ground truth from ~0.79 to ~0.89 and theme coherence from ~0.58 to ~0.76 (sentence-embedding cosine). These are <em>semantic-alignment</em> scores on a single cohort, not inter-rater agreement (κ/α) and not a generalization claim—the productionized pipeline is being re-benchmarked against the same human-coded ground truth so the comparison is apples-to-apples.
 </Callout>
 
 </Section>
 
-<Section title="Results">
+<Section title="Open Problems & Gaps">
 
-Early evaluation on a dataset of pediatric clinical interviews shows:
+The honest version of this project names what it can't yet do:
 
-- **85%+ inter-rater agreement** between Thematica and human expert coders
-- **10× faster** processing compared to manual analysis
-- Generated themes are rated as "coherent and clinically relevant" by domain experts
+1. **No shared ground truth.** Most published comparisons withhold their human-coded data (citing IRB/privacy), so cross-study benchmarking is nearly impossible. A real contribution here is an **open, de-identified benchmark** with human-coded themes—which is on the roadmap precisely because the field lacks one.
+2. **The hard problem of grounding.** Synthesized codes can't be tied to a single span by construction. The `synthesized_code` type plus mandatory human review is a containment strategy, not a solution; quantifying *how much* of a corpus is irreducibly synthesized is open.
+3. **Reproducibility and model drift.** Run-to-run variance and changing model behavior over time threaten dependability. The seed/bootstrap + ARI/VI machinery measures the problem; eliminating it (vs. just reporting it) is unsolved.
+4. **Partial mappings resist a single score.** Bipartite matching handles non-1:1 overlap, but the choice of similarity function, threshold τ, and embedding model still moves the numbers—so absolute scores aren't comparable across papers using different embeddings.
+5. **Long and non-dialogue inputs.** Turn-aware chunking assumes conversational structure; free-form text (open-ended survey responses, notes) breaks that assumption, and long transcripts invite "lost-in-the-middle" coverage gaps. An extractive-QA grounding path (overlapping-window chunker + a span-extraction model emitting character indices) is reserved for these heterogeneous cases.
+6. **Human-in-the-loop is a feature, not a limitation.** Familiarization remains the practical bottleneck, and clinicians and researchers explicitly want to stay in control of interpretation. Full end-to-end automation is technically reachable but would trade away the trust and accountability that make the output usable—so the design keeps the expert in the loop by intent.
 
 </Section>
 
 <Section title="Tools & Technologies">
 
-- **LLM Orchestration**: LangChain, LangGraph
-- **Configuration**: Hydra (OmegaConf)
-- **Models**: GPT-4o, Claude 3.5 Sonnet
-- **Evaluation**: Custom inter-rater reliability metrics
+- **LLM Orchestration**: [LangChain](https://www.langchain.com/), [LangGraph](https://langchain.com/langgraph)
+- **Configuration**: [Hydra](https://hydra.cc/)
+- **Retrieval & Grounding**: FAISS (dense), BM25 (lexical), cross-encoder reranking, [MiniCheck](https://github.com/Liyan06/MiniCheck) (NLI verification), rapidfuzz
+- **De-identification**: [Microsoft Presidio](https://microsoft.github.io/presidio/) with consistent pseudonymization
+- **Models**: [GPT-4o-mini](https://developers.openai.com/api/docs/models/gpt-4o-mini), [GPT-4.1](https://developers.openai.com/api/docs/models/gpt-4.1), [Claude 3.5 Sonnet](https://www.anthropic.com/news/claude-3-5-sonnet)
+- **Evaluation**: Bipartite theme matching; validity / reliability / interpretability metrics; grounding-fidelity (NLI entailment) checks
 - **Data**: De-identified clinical interview transcripts
 
 </Section>
